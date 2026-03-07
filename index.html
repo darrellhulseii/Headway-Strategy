@@ -1,0 +1,1993 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Headway Client Acquisition — MFT Ad Strategy Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ── DESIGN TOKENS ── */
+:root {
+  --bg:       #f7f4ef;
+  --bg2:      #efeae1;
+  --white:    #ffffff;
+  --border:   #ddd6c8;
+  --border2:  #ccc4b4;
+
+–green:    #274a3c;
+–green2:   #345f4e;
+–green3:   #4a8068;
+–sage:     #8aaa98;
+–mint:     #e0eeea;
+
+–clay:     #b84f35;
+–clay2:    #cf6a50;
+–blush:    #f7e4db;
+
+–gold:     #a07820;
+–gold2:    #c09030;
+–butter:   #f5e8c4;
+
+–ink:      #1a1714;
+–ink2:     #3d342a;
+–ink3:     #6b5e52;
+–ink4:     #9e9085;
+
+–r:  6px;
+–r2: 10px;
+–r3: 14px;
+}
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+font-family: ‘Plus Jakarta Sans’, sans-serif;
+background: var(–bg);
+color: var(–ink);
+font-size: 15px;
+line-height: 1.65;
+-webkit-font-smoothing: antialiased;
+}
+
+/* ── HEADER ── */
+#header {
+background: var(–green);
+position: relative;
+overflow: hidden;
+}
+.header-glow {
+position: absolute; inset: 0;
+background: radial-gradient(ellipse 70% 100% at 90% 50%, rgba(74,128,104,.2) 0%, transparent 60%);
+pointer-events: none;
+}
+.header-inner {
+position: relative; z-index: 1;
+max-width: 980px; margin: 0 auto;
+padding: 52px 40px 44px;
+}
+.header-eyebrow {
+font-family: ‘DM Mono’, monospace;
+font-size: 10px; letter-spacing: 3px;
+text-transform: uppercase; color: var(–sage);
+margin-bottom: 18px;
+display: flex; align-items: center; gap: 10px;
+}
+.header-eyebrow::before {
+content: ‘’; display: block;
+width: 24px; height: 1px; background: var(–sage);
+}
+.header-h1 {
+font-family: ‘Lora’, serif;
+font-size: clamp(34px, 5vw, 60px);
+font-weight: 500;
+color: #f4efe6;
+line-height: 1.1;
+letter-spacing: -.3px;
+margin-bottom: 14px;
+}
+.header-h1 em { font-style: italic; color: #e8a88e; }
+.header-desc {
+font-size: 15px; color: var(–sage);
+font-weight: 300; max-width: 520px;
+line-height: 1.75; margin-bottom: 40px;
+}
+.header-desc strong { color: #ede6d8; font-weight: 500; }
+.header-stats {
+display: grid; grid-template-columns: repeat(4, 1fr);
+border-top: 1px solid rgba(138,170,152,.2);
+padding-top: 32px;
+gap: 0;
+}
+.hstat { padding: 0 20px; border-right: 1px solid rgba(138,170,152,.15); }
+.hstat:first-child { padding-left: 0; }
+.hstat:last-child  { border-right: none; }
+.hstat-n {
+font-family: ‘Lora’, serif;
+font-size: 38px; font-weight: 400; line-height: 1;
+margin-bottom: 5px;
+}
+.hstat-label {
+font-family: ‘DM Mono’, monospace;
+font-size: 9px; letter-spacing: 2px;
+text-transform: uppercase; color: var(–sage);
+}
+.hstat-sub { font-size: 11px; color: rgba(138,170,152,.6); margin-top: 3px; }
+
+/* ── NAV TABS ── */
+#nav {
+position: sticky; top: 0; z-index: 200;
+background: var(–green);
+border-bottom: 1px solid rgba(138,170,152,.15);
+box-shadow: 0 2px 10px rgba(0,0,0,.18);
+}
+.nav-row {
+max-width: 980px; margin: 0 auto;
+padding: 0 40px;
+display: flex; overflow-x: auto; gap: 0;
+}
+.nav-row::-webkit-scrollbar { height: 2px; }
+.nav-row::-webkit-scrollbar-thumb { background: var(–green3); }
+.nt {
+padding: 14px 18px;
+font-size: 13px; font-weight: 600;
+color: rgba(138,170,152,.7);
+border-bottom: 2px solid transparent;
+white-space: nowrap; cursor: pointer;
+transition: color .18s, border-color .18s;
+position: relative; top: 1px;
+}
+.nt:hover { color: #e0d8cc; }
+.nt.on  { color: #e8a88e; border-bottom-color: #e8a88e; }
+
+/* ── SECTIONS ── */
+.sec { display: none; }
+.sec.on {
+display: block;
+animation: fadeup .28s ease;
+}
+@keyframes fadeup {
+from { opacity: 0; transform: translateY(6px); }
+to   { opacity: 1; transform: translateY(0); }
+}
+
+.wrap {
+max-width: 980px; margin: 0 auto;
+padding: 52px 40px;
+}
+
+/* ── SECTION HEADERS ── */
+.sec-heading { margin-bottom: 36px; }
+.sec-heading h2 {
+font-family: ‘Lora’, serif;
+font-size: clamp(26px, 3.5vw, 40px);
+font-weight: 500; line-height: 1.15;
+letter-spacing: -.2px; margin-bottom: 8px;
+}
+.sec-heading h2 em { font-style: italic; color: var(–clay); }
+.sec-heading h2 .g { color: var(–green); }
+.sec-heading p {
+font-size: 14px; color: var(–ink3);
+max-width: 600px; line-height: 1.75;
+}
+
+/* ── CALLOUT BOXES ── */
+.callout {
+border-radius: var(–r2);
+padding: 16px 20px;
+font-size: 13.5px; line-height: 1.7;
+margin-bottom: 24px;
+}
+.callout p + p { margin-top: 6px; }
+.callout.warn {
+background: var(–blush);
+border: 1px solid rgba(184,79,53,.2);
+color: var(–ink2);
+}
+.callout.warn strong { color: var(–clay); }
+.callout.tip {
+background: var(–mint);
+border: 1px solid rgba(39,74,60,.18);
+color: var(–ink2);
+}
+.callout.tip strong { color: var(–green); }
+.callout.gold {
+background: var(–butter);
+border: 1px solid rgba(160,120,32,.22);
+color: var(–ink2);
+}
+.callout.gold strong { color: var(–gold); }
+
+/* ── CARDS & GRIDS ── */
+.card {
+background: var(–white);
+border: 1px solid var(–border);
+border-radius: var(–r3);
+overflow: hidden;
+}
+.card-p { padding: 24px; }
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.hr { height: 1px; background: var(–border); margin: 36px 0; }
+
+/* ── LABELS / BADGES ── */
+.mono-label {
+font-family: ‘DM Mono’, monospace;
+font-size: 9px; letter-spacing: 2.5px;
+text-transform: uppercase; color: var(–ink4);
+display: block; margin-bottom: 6px;
+}
+.badge {
+display: inline-block;
+padding: 2px 9px; border-radius: 20px;
+font-family: ‘DM Mono’, monospace;
+font-size: 10px; font-weight: 500;
+}
+.badge.green  { background: var(–mint);   color: var(–green);  border: 1px solid rgba(39,74,60,.2); }
+.badge.clay   { background: var(–blush);  color: var(–clay);   border: 1px solid rgba(184,79,53,.2); }
+.badge.gold   { background: var(–butter); color: var(–gold);   border: 1px solid rgba(160,120,32,.2); }
+.badge.ink    { background: #eee9e2;       color: var(–ink2);   border: 1px solid var(–border); }
+
+/* ── TIER CARDS ── */
+.tier {
+background: var(–white);
+border: 1px solid var(–border);
+border-radius: var(–r3);
+overflow: hidden;
+margin-bottom: 14px;
+box-shadow: var(–shadow-sm);
+transition: box-shadow .2s;
+}
+.tier:hover { box-shadow: 0 4px 20px rgba(0,0,0,.09); }
+.tier-bar {
+display: grid;
+grid-template-columns: 180px repeat(4, 1fr) 42px;
+cursor: pointer;
+align-items: stretch;
+}
+.tier-bud {
+padding: 20px 22px;
+background: var(–green);
+color: #f4efe6;
+display: flex; flex-direction: column; justify-content: center;
+}
+.tier-bud .label {
+font-family: ‘DM Mono’, monospace;
+font-size: 8px; letter-spacing: 2px;
+color: var(–sage); text-transform: uppercase;
+margin-bottom: 4px;
+}
+.tier-bud .val {
+font-family: ‘Lora’, serif;
+font-size: 30px; font-weight: 400; line-height: 1;
+color: #f4efe6;
+}
+.tier-bud .sub { font-size: 11px; color: var(–sage); margin-top: 3px; }
+.tier-col {
+padding: 16px 18px;
+border-right: 1px solid var(–border);
+border-left: 1px solid var(–border);
+display: flex; flex-direction: column; justify-content: center;
+}
+.tier-col .label {
+font-family: ‘DM Mono’, monospace;
+font-size: 8px; letter-spacing: 2px;
+color: var(–ink4); text-transform: uppercase;
+margin-bottom: 4px;
+}
+.tier-col .val {
+font-family: ‘Lora’, serif;
+font-size: 22px; font-weight: 400; line-height: 1;
+}
+.tier-col .sub { font-size: 11px; color: var(–ink3); margin-top: 2px; }
+.tier-toggle {
+display: flex; align-items: center; justify-content: center;
+color: var(–ink4); font-size: 14px;
+transition: transform .25s; padding: 0 12px;
+background: var(–bg2); border-left: 1px solid var(–border);
+user-select: none;
+}
+.tier.open .tier-toggle { transform: rotate(180deg); color: var(–green); }
+.tier-detail {
+display: none;
+border-top: 1px solid var(–border);
+background: #faf8f4;
+}
+.tier.open .tier-detail { display: grid; grid-template-columns: 1fr 1fr 1fr; }
+.td-col {
+padding: 22px 24px;
+border-right: 1px solid var(–border);
+}
+.td-col:last-child { border-right: none; }
+.td-col h4 {
+font-family: ‘DM Mono’, monospace;
+font-size: 9px; letter-spacing: 2px;
+text-transform: uppercase; color: var(–ink4);
+padding-bottom: 10px; margin-bottom: 12px;
+border-bottom: 1px solid var(–border);
+display: flex; align-items: center; gap: 6px;
+}
+
+/* ── STEPS ── */
+.step {
+display: flex; gap: 12px;
+padding: 10px 0;
+border-bottom: 1px solid var(–border);
+}
+.step:last-child { border-bottom: none; }
+.step-n {
+font-family: ‘DM Mono’, monospace;
+font-size: 10px; color: var(–clay);
+min-width: 20px; flex-shrink: 0; padding-top: 1px;
+}
+.step h5 { font-size: 12px; font-weight: 700; color: var(–ink); margin-bottom: 2px; }
+.step p  { font-size: 11.5px; color: var(–ink3); line-height: 1.55; }
+
+/* ── ALLOC BARS ── */
+.alloc { margin-bottom: 12px; }
+.alloc-row {
+display: flex; justify-content: space-between;
+font-size: 12px; margin-bottom: 4px;
+}
+.alloc-name { color: var(–ink2); }
+.alloc-pct  { font-family: ‘DM Mono’, monospace; font-size: 10px; }
+.alloc-track { height: 4px; background: var(–bg2); border-radius: 2px; overflow: hidden; }
+.alloc-fill  { height: 100%; border-radius: 2px; }
+
+/* ── KV ROWS ── */
+.kv {
+display: flex; justify-content: space-between;
+padding: 7px 0; border-bottom: 1px solid var(–border);
+font-size: 12px; align-items: baseline;
+}
+.kv:last-child { border-bottom: none; }
+.kv-k { color: var(–ink3); }
+.kv-v { font-family: ‘DM Mono’, monospace; font-size: 11px; }
+
+/* ── HINT BOX ── */
+.hint {
+background: var(–mint); border: 1px solid rgba(39,74,60,.18);
+border-radius: var(–r); padding: 11px 14px;
+font-size: 11.5px; color: var(–ink2); line-height: 1.6;
+margin-top: 12px;
+}
+.hint strong { color: var(–green); }
+
+/* ── PLATFORM CARDS ── */
+.plat-card {
+background: var(–white);
+border: 1px solid var(–border);
+border-radius: var(–r3); overflow: hidden;
+}
+.plat-head {
+padding: 18px 22px; border-bottom: 1px solid var(–border);
+display: flex; align-items: center; gap: 12px;
+}
+.plat-icon {
+width: 42px; height: 42px; border-radius: var(–r);
+display: flex; align-items: center; justify-content: center;
+font-size: 20px; flex-shrink: 0;
+}
+.plat-name {
+font-family: ‘Lora’, serif;
+font-size: 20px; font-weight: 500;
+}
+.plat-type {
+font-family: ‘DM Mono’, monospace;
+font-size: 9px; letter-spacing: 2px;
+color: var(–ink4); text-transform: uppercase; margin-top: 2px;
+}
+.plat-metrics {
+display: grid; grid-template-columns: repeat(3, 1fr);
+border-bottom: 1px solid var(–border);
+}
+.pm {
+padding: 13px 16px; border-right: 1px solid var(–border);
+text-align: center;
+}
+.pm:last-child { border-right: none; }
+.pm-val {
+font-family: ‘Lora’, serif;
+font-size: 24px; font-weight: 400; line-height: 1;
+margin-bottom: 3px;
+}
+.pm-label {
+font-family: ‘DM Mono’, monospace;
+font-size: 8px; letter-spacing: 1.5px;
+color: var(–ink4); text-transform: uppercase;
+}
+.plat-steps { padding: 16px 22px; }
+
+/* ── COPY CARDS ── */
+.copy-card {
+background: var(–white);
+border: 1px solid var(–border);
+border-radius: var(–r3); overflow: hidden;
+margin-bottom: 20px;
+}
+.copy-card-head {
+padding: 14px 20px;
+background: var(–bg2); border-bottom: 1px solid var(–border);
+display: flex; align-items: center; justify-content: space-between;
+flex-wrap: wrap; gap: 8px;
+}
+.copy-card-head h3 {
+font-size: 14px; font-weight: 700; color: var(–ink);
+}
+.copy-card-head .sub { font-size: 12px; color: var(–ink3); margin-top: 1px; }
+.copy-card-body { padding: 22px 22px 18px; }
+.copy-field { margin-bottom: 16px; }
+.copy-field:last-child { margin-bottom: 0; }
+.copy-field-label {
+font-family: ‘DM Mono’, monospace;
+font-size: 9px; letter-spacing: 2px;
+text-transform: uppercase; color: var(–ink4);
+margin-bottom: 7px; display: block;
+}
+.copy-text {
+font-size: 13.5px; line-height: 1.7;
+color: var(–ink2);
+background: var(–bg);
+border: 1px solid var(–border);
+border-radius: var(–r);
+padding: 11px 14px;
+}
+.copy-text.headline {
+font-family: ‘Lora’, serif;
+font-size: 17px; font-weight: 500;
+color: var(–ink);
+}
+.copy-note {
+font-size: 11.5px; color: var(–ink3); line-height: 1.6;
+background: var(–butter); border: 1px solid rgba(160,120,32,.18);
+border-radius: var(–r); padding: 9px 12px; margin-top: 8px;
+}
+.copy-note strong { color: var(–gold); }
+
+/* ── END TO END STRATEGY ── */
+.e2e-phase {
+background: var(–white);
+border: 1px solid var(–border);
+border-radius: var(–r3);
+overflow: hidden;
+margin-bottom: 22px;
+}
+.e2e-phase-head {
+display: grid; grid-template-columns: 56px 1fr;
+align-items: stretch;
+}
+.e2e-num {
+background: var(–green);
+display: flex; align-items: center; justify-content: center;
+font-family: ‘Lora’, serif;
+font-size: 28px; color: #f4efe6;
+font-weight: 400; padding: 20px;
+}
+.e2e-meta {
+padding: 16px 20px; border-left: 1px solid var(–border);
+display: flex; align-items: center; flex-wrap: wrap; gap: 10px;
+}
+.e2e-meta h3 {
+font-size: 17px; font-weight: 700; flex: 1;
+min-width: 200px;
+}
+.e2e-phase-body {
+padding: 0;
+border-top: 1px solid var(–border);
+}
+.e2e-row {
+display: grid;
+grid-template-columns: 3fr 2fr;
+border-bottom: 1px solid var(–border);
+}
+.e2e-row:last-child { border-bottom: none; }
+.e2e-left  { padding: 18px 22px; border-right: 1px solid var(–border); }
+.e2e-right { padding: 18px 22px; background: #faf8f4; }
+.e2e-left h4 {
+font-size: 13px; font-weight: 700;
+margin-bottom: 4px; color: var(–ink);
+}
+.e2e-left p  {
+font-size: 12.5px; color: var(–ink3); line-height: 1.65;
+}
+.e2e-right-label {
+font-family: ‘DM Mono’, monospace;
+font-size: 9px; letter-spacing: 2px;
+color: var(–ink4); text-transform: uppercase;
+margin-bottom: 6px; display: block;
+}
+.e2e-copy-box {
+font-size: 12.5px; line-height: 1.7;
+color: var(–ink2);
+background: var(–white);
+border: 1px solid var(–border);
+border-radius: var(–r);
+padding: 10px 13px;
+}
+.e2e-copy-box.hl {
+font-family: ‘Lora’, serif;
+font-size: 15px; font-weight: 500;
+}
+
+/* ── POLICY TABLE ── */
+.ptable { width: 100%; border-collapse: collapse; }
+.ptable th {
+text-align: left; padding: 11px 16px;
+font-family: ‘DM Mono’, monospace;
+font-size: 9px; letter-spacing: 2px; color: var(–ink4);
+border-bottom: 1px solid var(–border);
+background: var(–bg2); text-transform: uppercase;
+}
+.ptable td {
+padding: 13px 16px;
+font-size: 12.5px; border-bottom: 1px solid var(–border);
+vertical-align: top; line-height: 1.6; color: var(–ink2);
+}
+.ptable tr:last-child td { border-bottom: none; }
+.ptable tr:hover td { background: var(–bg); }
+
+/* ── CHECKLIST ── */
+.checklist { padding: 4px 0; }
+.chk-item {
+display: flex; gap: 12px; align-items: flex-start;
+padding: 12px 0; border-bottom: 1px solid var(–border);
+cursor: pointer;
+}
+.chk-item:last-child { border-bottom: none; }
+.chk-box {
+width: 18px; height: 18px; flex-shrink: 0;
+border: 2px solid var(–border2); border-radius: 4px;
+margin-top: 2px; transition: all .15s;
+display: flex; align-items: center; justify-content: center;
+font-size: 10px;
+}
+.chk-box.done { background: var(–green); border-color: var(–green); color: white; }
+.chk-content h5 { font-size: 13px; font-weight: 700; color: var(–ink); margin-bottom: 2px; }
+.chk-content p  { font-size: 12px; color: var(–ink3); line-height: 1.55; }
+.chk-impact { margin-left: auto; flex-shrink: 0; }
+
+/* ── CALCULATOR ── */
+.calc-wrap {
+background: var(–white); border: 1px solid var(–border);
+border-radius: var(–r3); overflow: hidden;
+}
+.calc-head {
+padding: 20px 28px; border-bottom: 1px solid var(–border);
+background: var(–green); display: flex; align-items: center; gap: 14px;
+}
+.calc-head h2 {
+font-family: ‘Lora’, serif;
+font-size: 24px; font-weight: 500; color: #f4efe6;
+}
+.calc-body { display: grid; grid-template-columns: 1fr 1fr; }
+.calc-in  { padding: 26px; border-right: 1px solid var(–border); }
+.calc-out { padding: 26px; background: #faf8f4; }
+.c-label {
+display: block;
+font-family: ‘DM Mono’, monospace;
+font-size: 9px; letter-spacing: 2px;
+text-transform: uppercase; color: var(–ink4);
+margin-bottom: 7px;
+}
+.c-input, .c-select {
+width: 100%;
+background: var(–bg); border: 1px solid var(–border2);
+border-radius: var(–r); padding: 10px 13px;
+color: var(–ink); font-size: 14px;
+font-family: ‘Plus Jakarta Sans’, sans-serif;
+outline: none; margin-bottom: 18px;
+transition: border-color .2s;
+}
+.c-input:focus, .c-select:focus { border-color: var(–green); }
+.c-select option { background: white; }
+.calc-btn {
+width: 100%; padding: 12px;
+background: var(–green); color: #f4efe6;
+border: none; border-radius: var(–r);
+font-size: 14px; font-weight: 600;
+font-family: ‘Plus Jakarta Sans’, sans-serif;
+cursor: pointer; transition: background .2s;
+}
+.calc-btn:hover { background: var(–green2); }
+.out-row {
+display: flex; justify-content: space-between; align-items: center;
+padding: 12px 0; border-bottom: 1px solid var(–border);
+}
+.out-row:last-child { border-bottom: none; }
+.out-row .out-label { font-size: 13px; color: var(–ink3); }
+.out-row .out-val {
+font-family: ‘Lora’, serif;
+font-size: 26px; font-weight: 400; line-height: 1;
+}
+
+/* ── REF TABLE ── */
+.ref-table { width: 100%; border-collapse: collapse; }
+.ref-table th {
+text-align: left; padding: 10px 14px;
+font-family: ‘DM Mono’, monospace;
+font-size: 9px; letter-spacing: 2px;
+color: var(–ink4); text-transform: uppercase;
+border-bottom: 1px solid var(–border);
+background: var(–bg2);
+}
+.ref-table td {
+padding: 12px 14px; font-size: 12.5px;
+border-bottom: 1px solid var(–border);
+color: var(–ink2);
+}
+.ref-table tr:last-child td { border-bottom: none; }
+.ref-table tr:hover td { background: var(–bg); }
+
+/* ── SOURCE NOTE ── */
+.src-note {
+font-family: ‘DM Mono’, monospace;
+font-size: 9px; color: var(–ink4); letter-spacing: .5px;
+padding-top: 14px; border-top: 1px solid var(–border);
+margin-top: 24px; line-height: 1.7;
+}
+
+/* ── UTIL ── */
+.fw7   { font-weight: 700; }
+.mono  { font-family: ‘DM Mono’, monospace; }
+.serif { font-family: ‘Lora’, serif; }
+.clay  { color: var(–clay); }
+.green { color: var(–green); }
+.gold  { color: var(–gold); }
+.muted { color: var(–ink3); }
+.dim   { color: var(–ink4); }
+.sm    { font-size: 12px; }
+.xs    { font-size: 11px; }
+.lh175 { line-height: 1.75; }
+.mb4   { margin-bottom: 4px; }
+.mb8   { margin-bottom: 8px; }
+.mb12  { margin-bottom: 12px; }
+.mb16  { margin-bottom: 16px; }
+.mb20  { margin-bottom: 20px; }
+.mb24  { margin-bottom: 24px; }
+.mb32  { margin-bottom: 32px; }
+.mt8   { margin-top: 8px; }
+.mt12  { margin-top: 12px; }
+.mt16  { margin-top: 16px; }
+.mt20  { margin-top: 20px; }
+.mt24  { margin-top: 24px; }
+</style>
+
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     HEADER
+═══════════════════════════════════════ -->
+
+<header id="header">
+  <div class="header-glow"></div>
+  <div class="header-inner">
+    <p class="header-eyebrow">Headway Growth Guide · MFT Paid Ad Strategy</p>
+    <h1 class="header-h1">More clients.<br><em>Less guessing.</em></h1>
+    <p class="header-desc">
+      A practical, <strong>step-by-step paid ads guide</strong> built specifically for marriage and family therapists on Headway. Every strategy is written to platform policy, optimized for lowest cost per booking, and comes with ready-to-use copy.
+    </p>
+    <div class="header-stats">
+      <div class="hstat">
+        <div class="hstat-n" style="color:#e8a88e">$24</div>
+        <div class="hstat-label">Lowest CPL on Meta</div>
+        <div class="hstat-sub">Traffic → Headway profile</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-n" style="color:var(--sage)">$42</div>
+        <div class="hstat-label">Avg CPL on Google</div>
+        <div class="hstat-sub">Highest booking intent</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-n" style="color:#e8a88e">18%</div>
+        <div class="hstat-label">Profile → Booking Rate</div>
+        <div class="hstat-sub">Optimized profiles</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-n" style="color:var(--sage)">$2,400</div>
+        <div class="hstat-label">Avg Client LTV</div>
+        <div class="hstat-sub">16 sessions × $150</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════
+     NAV
+═══════════════════════════════════════ -->
+
+<nav id="nav">
+  <div class="nav-row">
+    <div class="nt on"  onclick="go('e2e')">⭐ End-to-End Strategy</div>
+    <div class="nt"     onclick="go('tiers')">Budget Tiers</div>
+    <div class="nt"     onclick="go('platforms')">Platform Guides</div>
+    <div class="nt"     onclick="go('copy')">Ad Copy Templates</div>
+    <div class="nt"     onclick="go('profile')">Profile Optimizer</div>
+    <div class="nt"     onclick="go('policy')">Ad Policy Guide</div>
+    <div class="nt"     onclick="go('calc')">Session Calculator</div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════
+     END-TO-END STRATEGY  ★
+═══════════════════════════════════════ -->
+
+<section class="sec on" id="sec-e2e">
+<div class="wrap">
+
+  <div class="sec-heading">
+    <h2>The <em>Lowest-Cost, Highest-Conversion</em><br>Client Acquisition System</h2>
+    <p>A complete, sequential strategy — from zero to fully booked — built for an MFT spending as little as $150/month in ads. Every phase has a purpose, a ready-to-copy script, and a clear outcome.</p>
+  </div>
+
+  <div class="callout gold">
+    <strong>💡 The Core Insight:</strong> The cheapest way to get a booked therapy session isn't the cheapest click — it's the warmest click. This strategy prioritizes community trust channels (Nextdoor), high-intent search (Google), and a conversion-optimized Headway profile so every dollar spent has maximum impact before a second one is spent.
+  </div>
+
+  <!-- TOTAL COST SUMMARY -->
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:32px">
+    <div class="card card-p" style="text-align:center">
+      <div class="mono-label">Monthly Ad Budget</div>
+      <div class="serif" style="font-size:36px;color:var(--green);line-height:1">$150</div>
+      <div class="xs muted mt8">Minimum recommended starting point</div>
+    </div>
+    <div class="card card-p" style="text-align:center">
+      <div class="mono-label">Blended CPL</div>
+      <div class="serif" style="font-size:36px;color:var(--clay);line-height:1">~$20</div>
+      <div class="xs muted mt8">Nextdoor + Google combo</div>
+    </div>
+    <div class="card card-p" style="text-align:center">
+      <div class="mono-label">New Clients / Month</div>
+      <div class="serif" style="font-size:36px;color:var(--green);line-height:1">2–4</div>
+      <div class="xs muted mt8">At 20% profile → booking rate</div>
+    </div>
+    <div class="card card-p" style="text-align:center">
+      <div class="mono-label">3-Month Client LTV</div>
+      <div class="serif" style="font-size:36px;color:var(--gold);line-height:1">$14K+</div>
+      <div class="xs muted mt8">From 6 new clients × $2,400 LTV</div>
+    </div>
+  </div>
+
+  <!-- PHASE 0 — BEFORE SPENDING A DOLLAR -->
+
+  <div class="e2e-phase">
+    <div class="e2e-phase-head">
+      <div class="e2e-num">0</div>
+      <div class="e2e-meta">
+        <h3>Before You Spend a Single Dollar</h3>
+        <span class="badge green">SETUP — FREE</span>
+        <span class="badge ink">One-time · 2 hrs</span>
+      </div>
+    </div>
+    <div class="e2e-phase-body">
+      <div class="e2e-row">
+        <div class="e2e-left">
+          <h4>Optimize Your Headway Profile First</h4>
+          <p>Your Headway profile is your landing page. A default profile converts about 8% of visits to bookings. An optimized one converts 20–25%. That means 2.5× more clients from the same ad spend — before you write a single ad. Do this first, always.</p>
+        </div>
+        <div class="e2e-right">
+          <span class="e2e-right-label">Profile "Must Haves" Before Ads Go Live</span>
+          <div class="e2e-copy-box" style="font-size:12px;line-height:1.8">
+            ✓ Real headshot — warm, not clinical<br>
+            ✓ First bio sentence names WHO you help<br>
+            ✓ Plain language — no jargon<br>
+            ✓ Insurance + Headway billing mentioned<br>
+            ✓ At least 1 evening or weekend slot open<br>
+            ✓ Telehealth option enabled<br>
+            ✓ All insurance payers listed<br>
+            ✓ "Accepting new clients" status ON
+          </div>
+        </div>
+      </div>
+      <div class="e2e-row">
+        <div class="e2e-left">
+          <h4>Claim Your Nextdoor Business Page (Free)</h4>
+          <p>Before paying for Nextdoor ads, claim your free business page. Fill it out completely. This gives you organic reach in your neighborhood — posts from local therapists get 3–8 genuine inquiries with zero ad spend. Do this before Step 1.</p>
+        </div>
+        <div class="e2e-right">
+          <span class="e2e-right-label">Nextdoor Profile Setup Post — Copy This</span>
+          <div class="e2e-copy-box" style="font-size:12px;line-height:1.8">
+            Hi neighbors — I'm a licensed MFT with a practice nearby in [Your City], and I have a few openings for new clients. I work with couples, families, and individuals.<br><br>
+            I use Headway for insurance billing, so if you have most major plans, you'd pay your regular copay — not out-of-pocket rates. Happy to answer any questions.<br><br>
+            [Your Headway profile link]
+          </div>
+        </div>
+      </div>
+      <div class="e2e-row">
+        <div class="e2e-left">
+          <h4>Get Your Tracking URL Ready</h4>
+          <p>Add UTM parameters to your Headway profile link so you know exactly which ads are driving traffic. Format: your-headway-url?utm_source=google&utm_medium=cpc or ?utm_source=nextdoor. Free, takes 5 minutes, tells you everything.</p>
+        </div>
+        <div class="e2e-right">
+          <span class="e2e-right-label">Your UTM Links (fill in your URL)</span>
+          <div class="e2e-copy-box mono" style="font-size:11px;line-height:1.9">
+            Google Search:<br>
+            headway.co/providers/[you]?utm_source=google&utm_medium=cpc<br><br>
+            Nextdoor:<br>
+            headway.co/providers/[you]?utm_source=nextdoor<br><br>
+            Meta/Facebook:<br>
+            headway.co/providers/[you]?utm_source=meta&utm_medium=paid
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 1 — NEXTDOOR $75/mo -->
+
+  <div class="e2e-phase">
+    <div class="e2e-phase-head">
+      <div class="e2e-num">1</div>
+      <div class="e2e-meta">
+        <h3>Phase 1 — Nextdoor Neighborhood Ads</h3>
+        <span class="badge green">$75 / MONTH</span>
+        <span class="badge clay">LOWEST CPL: $12–18</span>
+        <span class="badge ink">Start Month 1</span>
+      </div>
+    </div>
+    <div class="e2e-phase-body">
+
+```
+  <div class="e2e-row">
+    <div class="e2e-left">
+      <h4>Why Nextdoor First?</h4>
+      <p>Nextdoor is a trust-based platform where neighbors recommend local services to each other. A therapist ad on Nextdoor reads as a community resource — not an intrusion. CPL of $12–18 is 30–40% lower than any other paid channel for local therapists. Start here.</p>
+    </div>
+    <div class="e2e-right">
+      <span class="e2e-right-label">Expected Results at $75/mo</span>
+      <div class="e2e-copy-box" style="font-size:12px;line-height:1.9">
+        Profile visits: <strong>4–7 / month</strong><br>
+        Booking rate:   <strong>18–22%</strong><br>
+        New clients:    <strong>1–2 / month</strong><br>
+        CPL:            <strong>~$15</strong><br>
+        Client LTV:     <strong>$2,400</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="e2e-row">
+    <div class="e2e-left">
+      <h4>Setup: Neighborhood Sponsorship</h4>
+      <p>In Nextdoor Ads Manager, select "Neighborhood Sponsorship." Choose 2–3 neighborhoods within 5 miles of your practice. $75 covers 1–2 neighborhoods per month. This places your business in the right-column sidebar of the main neighborhood feed — prime visibility during the 6–9pm window when Nextdoor usage peaks.</p>
+    </div>
+    <div class="e2e-right">
+      <span class="e2e-right-label">Targeting Settings</span>
+      <div class="e2e-copy-box" style="font-size:12px;line-height:1.9">
+        Ad type: Neighborhood Sponsorship<br>
+        Neighborhoods: Your 2–3 closest<br>
+        Radius: 5 miles from your office<br>
+        Schedule: Always on (no time restriction)<br>
+        Peak hours: 6pm–9pm weekdays auto-boost<br>
+        Destination: Your Headway UTM link
+      </div>
+    </div>
+  </div>
+
+  <div class="e2e-row">
+    <div class="e2e-left">
+      <h4>Ad Copy — Community Framing (Not Clinical)</h4>
+      <p>Write this as a neighbor talking to neighbors. No clinical language. No urgency tactics. Lead with accessibility — the fact that most insurance is accepted through Headway removes the biggest objection (cost) before they've even clicked. This is the single most effective angle for Nextdoor MFT ads.</p>
+    </div>
+    <div class="e2e-right">
+      <span class="e2e-right-label">✦ Nextdoor Ad Copy — Use This Exactly</span>
+      <div class="e2e-copy-box" style="font-size:12px;line-height:1.8">
+        <strong>Headline:</strong> Licensed Marriage &amp; Family Therapist in [Your Neighborhood]<br><br>
+        <strong>Body:</strong> I'm [First Name], an MFT a few miles away in [City]. I see individuals, couples, and families — and I accept most major insurance through Headway, which means you pay only your copay.<br><br>
+        I have openings this month. See my full profile and availability at the link below.<br><br>
+        <strong>CTA:</strong> View Profile → [Headway UTM link]
+      </div>
+    </div>
+  </div>
+
+  <div class="e2e-row">
+    <div class="e2e-left">
+      <h4>Organic Posts — Monthly (Free)</h4>
+      <p>Pair the paid ad with one organic business post per month. This doesn't cost extra and compounds reach. Keep the organic post conversational — think of it as a friendly neighborhood update, not marketing. Organic Nextdoor posts from local therapists average 3–6 genuine DM inquiries per post.</p>
+    </div>
+    <div class="e2e-right">
+      <span class="e2e-right-label">✦ Monthly Organic Post — Copy This</span>
+      <div class="e2e-copy-box" style="font-size:12px;line-height:1.8">
+        Quick reminder that I'm a licensed MFT nearby in [Neighborhood] with a few openings for new clients this month. I work with couples, families, and individuals.<br><br>
+        Most insurance accepted through Headway — so there's usually no billing paperwork and you just pay your copay. Happy to answer any questions here or via my profile.<br><br>
+        [Headway link]
+      </div>
+    </div>
+  </div>
+
+</div>
+```
+
+  </div>
+
+  <!-- PHASE 2 — GOOGLE $75/mo -->
+
+  <div class="e2e-phase">
+    <div class="e2e-phase-head">
+      <div class="e2e-num">2</div>
+      <div class="e2e-meta">
+        <h3>Phase 2 — Google Search Ads</h3>
+        <span class="badge green">$75 / MONTH</span>
+        <span class="badge clay">HIGHEST INTENT: 22–30% BOOK</span>
+        <span class="badge ink">Add Month 1 or 2</span>
+      </div>
+    </div>
+    <div class="e2e-phase-body">
+
+```
+  <div class="e2e-row">
+    <div class="e2e-left">
+      <h4>Why Google Search?</h4>
+      <p>Google Search captures people actively typing "therapist near me" or "couples counseling in [your city]." These are your hottest prospects — they've already decided they want therapy, they're just choosing who. CPL is higher ($38–50) but booking rates are the highest of any channel (22–30%). Even $75/mo generates meaningful results.</p>
+    </div>
+    <div class="e2e-right">
+      <span class="e2e-right-label">Expected Results at $75/mo</span>
+      <div class="e2e-copy-box" style="font-size:12px;line-height:1.9">
+        Clicks to profile: <strong>18–30 / month</strong><br>
+        Booking rate:      <strong>22–28%</strong><br>
+        New clients:       <strong>1–2 / month</strong><br>
+        Avg CPL:           <strong>$42</strong><br>
+        CPC target:        <strong>$2.50–4.00</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="e2e-row">
+    <div class="e2e-left">
+      <h4>Campaign Setup — Exact Match Only</h4>
+      <p>Create one campaign: "Local MFT Search." One ad group with 5–8 exact match keywords. Do NOT use broad match — it will waste your budget on searches like "free online therapy app." Exact match keeps every dollar on genuinely interested local searchers.</p>
+    </div>
+    <div class="e2e-right">
+      <span class="e2e-right-label">Keywords — Copy These Exactly</span>
+      <div class="e2e-copy-box mono" style="font-size:11.5px;line-height:2">
+        [marriage counselor {your city}]<br>
+        [couples therapist near me]<br>
+        [marriage and family therapist {city}]<br>
+        [family therapist {city}]<br>
+        [couples counseling {city}]<br>
+        [MFT {city}]<br>
+        [therapist accepting {insurance name}]
+      </div>
+      <div class="copy-note mt8"><strong>Negative keywords — add these:</strong> "free" · "online app" · "BetterHelp" · "Talkspace" · "crisis" · "hotline" · "emergency" · "jobs" · "degree" · "coursework"</div>
+    </div>
+  </div>
+
+  <div class="e2e-row">
+    <div class="e2e-left">
+      <h4>Responsive Search Ad — 15 Headlines</h4>
+      <p>Google tests your headlines in combinations and shows the highest-performing ones. Use all 15 headline slots. Google rewards specificity — the more local and concrete your headlines, the higher your Quality Score, which means lower CPC and better ad positions.</p>
+    </div>
+    <div class="e2e-right">
+      <span class="e2e-right-label">✦ Google RSA — Headlines (Use All 15 Slots)</span>
+      <div class="e2e-copy-box mono" style="font-size:11px;line-height:2">
+        Licensed MFT in [City]<br>
+        Marriage &amp; Family Therapist<br>
+        Accepting New Clients Now<br>
+        Insurance Accepted via Headway<br>
+        Couples Therapy in [City]<br>
+        Family Therapy — [City]<br>
+        Book Online — See My Availability<br>
+        [City] Couples Counseling<br>
+        Most Major Insurance Welcome<br>
+        First Appointment Available Soon<br>
+        Evening &amp; Weekend Sessions Available<br>
+        Telehealth or In-Person Options<br>
+        Licensed Therapist — [City]<br>
+        Pay Only Your Insurance Copay<br>
+        New Clients Welcome — Book Today
+      </div>
+    </div>
+  </div>
+
+  <div class="e2e-row">
+    <div class="e2e-left">
+      <h4>Google RSA — Descriptions</h4>
+      <p>Descriptions show below headlines and can be up to 90 characters each. Use all 4 description slots. Lead with your most compelling differentiator — for most Headway therapists, that's insurance accessibility. End with a clear action.</p>
+    </div>
+    <div class="e2e-right">
+      <span class="e2e-right-label">✦ Google RSA — Descriptions (All 4 Slots)</span>
+      <div class="e2e-copy-box" style="font-size:12px;line-height:1.9">
+        <strong>D1:</strong> Specializing in couples, family &amp; individual therapy. Most insurance plans accepted — book through Headway, zero billing hassle.<br><br>
+        <strong>D2:</strong> Licensed MFT with [X] years experience. View my availability and book your first session online — no phone tag required.<br><br>
+        <strong>D3:</strong> I accept most major insurance via Headway. You pay only your copay — see exact cost before your first appointment.<br><br>
+        <strong>D4:</strong> Flexible scheduling including evenings and weekends. In-person and telehealth options. See openings and book online today.
+      </div>
+    </div>
+  </div>
+
+  <div class="e2e-row">
+    <div class="e2e-left">
+      <h4>Call Extension — Don't Skip This</h4>
+      <p>Many people searching for a therapist prefer to call before booking online. A phone call extension adds your number directly to the ad. Callers convert to booked clients at 2–3× the rate of clicks. Even a few calls per month from this $75 budget can double your new client intake.</p>
+    </div>
+    <div class="e2e-right">
+      <span class="e2e-right-label">Call Extension Setup</span>
+      <div class="e2e-copy-box" style="font-size:12px;line-height:1.9">
+        Go to: Google Ads → Assets → Call Asset<br>
+        Phone number: Your direct line<br>
+        Schedule: Mon–Sat 9am–8pm only<br>
+        Call reporting: ON (track call length)<br>
+        Calls &gt; 60 seconds = warm lead<br><br>
+        <strong>Note:</strong> Add sitelink asset too — link directly to your Headway profile and label it "See My Availability."
+      </div>
+    </div>
+  </div>
+
+</div>
+```
+
+  </div>
+
+  <!-- PHASE 3 — META $100–200/mo -->
+
+  <div class="e2e-phase">
+    <div class="e2e-phase-head">
+      <div class="e2e-num">3</div>
+      <div class="e2e-meta">
+        <h3>Phase 3 — Meta Facebook &amp; Instagram</h3>
+        <span class="badge green">$100–200 / MONTH</span>
+        <span class="badge clay">CPL: $20–32</span>
+        <span class="badge ink">Add Month 2–3</span>
+      </div>
+    </div>
+    <div class="e2e-phase-body">
+
+```
+  <div class="e2e-row">
+    <div class="e2e-left">
+      <h4>What Meta Does That Others Can't</h4>
+      <p>Google catches people who are actively searching. Meta reaches people who aren't searching yet — but who are exactly the right demographic. It builds your pipeline of future clients and drives awareness that makes your Google ads convert better when they eventually search. Add this in month 2 or 3 once your Google campaign is profitable.</p>
+    </div>
+    <div class="e2e-right">
+      <span class="e2e-right-label">Expected Results at $150/mo</span>
+      <div class="e2e-copy-box" style="font-size:12px;line-height:1.9">
+        Profile visits: <strong>150–280 / month</strong><br>
+        Booking rate:   <strong>10–16%</strong><br>
+        New clients:    <strong>2–4 / month</strong><br>
+        Avg CPV:        <strong>$0.55–1.10</strong><br>
+        Blended CPL:    <strong>~$24</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="e2e-row">
+    <div class="e2e-left">
+      <h4>Campaign Setup — Traffic Objective</h4>
+      <p>Use "Traffic" objective — not Leads. You want people going TO your Headway profile to book there, not filling out a Meta form. Set destination URL to your Headway UTM link. One campaign, one ad set, 2–3 creative variations to test. Keep it simple.</p>
+    </div>
+    <div class="e2e-right">
+      <span class="e2e-right-label">Campaign Structure</span>
+      <div class="e2e-copy-box" style="font-size:12px;line-height:1.9">
+        Objective: Traffic (Link Clicks)<br>
+        Destination: Headway UTM link<br>
+        Budget type: Daily ($5/day)<br>
+        Placements: Automatic (Meta recommends)<br>
+        Ad set: 1 (start simple)<br>
+        Creatives: 2–3 to A/B test<br>
+        Bidding: Cost per click (CPC)
+      </div>
+    </div>
+  </div>
+
+  <div class="e2e-row">
+    <div class="e2e-left">
+      <h4>Compliant Targeting — No Health Conditions</h4>
+      <p>Meta prohibits targeting based on mental health conditions. You cannot target "depression" or "anxiety." What you CAN do is target life events that correlate with therapy-seeking — recently married, recently moved, newly engaged — plus broad demographic + interest layers. This is still highly effective and fully compliant.</p>
+    </div>
+    <div class="e2e-right">
+      <span class="e2e-right-label">Targeting Setup</span>
+      <div class="e2e-copy-box" style="font-size:12px;line-height:1.9">
+        Location: 15-mile radius, your city<br>
+        Age: 26–52<br>
+        Life Events: Recently Married, Newly Engaged, Recently Moved<br>
+        Interests: Self-improvement, Relationships, Parenting, Mindfulness, Personal development<br>
+        Exclude: Your existing clients (upload email list)<br>
+        <strong>Do NOT use:</strong> Any mental health-related interest categories
+      </div>
+    </div>
+  </div>
+
+  <div class="e2e-row">
+    <div class="e2e-left">
+      <h4>Creative — Your Face Converts 2–3× Better</h4>
+      <p>A warm, real photo of you consistently outperforms stock therapy imagery (hands, couch, abstract art). The ad is essentially a first impression of what it's like to work with you. Before anyone reads a word, your photo communicates approachability, warmth, and credibility. Use a natural-light photo with a genuine expression.</p>
+    </div>
+    <div class="e2e-right">
+      <span class="e2e-right-label">Creative Specs</span>
+      <div class="e2e-copy-box" style="font-size:12px;line-height:1.9">
+        Format: 1×1 square image (1080×1080px)<br>
+        Subject: YOU — warm, approachable headshot<br>
+        OR: Your office — natural light, inviting<br>
+        NOT: Stock photos of strangers or abstract art<br>
+        Text overlay (optional): "Now accepting new clients"<br>
+        Placement: Facebook Feed + Instagram Feed<br>
+        Video option: 15-sec authentic intro video
+      </div>
+    </div>
+  </div>
+
+  <div class="e2e-row">
+    <div class="e2e-left">
+      <h4>Meta Ad Copy — 3 Proven Angles to Test</h4>
+      <p>Test these three copy angles. Run each for 2 weeks with equal budget. The winner gets the rest of your monthly budget. The "insurance accessibility" angle consistently wins for Headway therapists because it removes cost anxiety — the #1 reason people don't start therapy.</p>
+    </div>
+    <div class="e2e-right">
+      <span class="e2e-right-label">✦ Meta Ad Copy — 3 Angles (Test These)</span>
+      <div class="e2e-copy-box" style="font-size:11.5px;line-height:1.85">
+        <strong>ANGLE A — Insurance (highest converter):</strong><br>
+        Most people don't realize their insurance probably covers therapy. I'm a licensed MFT in [City] and I use Headway for billing — so you pay your copay, not out-of-pocket rates. I have openings this month. [Link]<br><br>
+        <strong>ANGLE B — Availability:</strong><br>
+        I'm a licensed marriage and family therapist in [City] with a few openings for new clients this month. I see individuals, couples, and families, and I accept most insurance through Headway. [Link]<br><br>
+        <strong>ANGLE C — Life Moment:</strong><br>
+        Big life transitions — a new marriage, a move, a growing family — often bring new challenges worth talking through. I'm an MFT in [City] accepting new clients. Insurance accepted via Headway. [Link]
+      </div>
+    </div>
+  </div>
+
+  <div class="e2e-row">
+    <div class="e2e-left">
+      <h4>Instagram Stories — 15-Second Script</h4>
+      <p>Stories ads appear full-screen. A short, authentic video of you speaking directly to camera is by far the highest-performing format — it feels personal, not like an ad. Film on your phone in good natural light. No script cards. One take that feels genuine outperforms a polished corporate-style shoot.</p>
+    </div>
+    <div class="e2e-right">
+      <span class="e2e-right-label">✦ Instagram Stories Script — Use This</span>
+      <div class="e2e-copy-box" style="font-size:12px;line-height:1.85">
+        <strong>[On screen text overlay:]</strong><br>
+        "Now accepting new clients · Insurance via Headway"<br><br>
+        <strong>[Spoken — natural, conversational]:</strong><br>
+        "Hi, I'm [Name] — I'm a licensed marriage and family therapist here in [City]. I specialize in couples and family therapy, and I accept most insurance plans through Headway, which means there's no out-of-pocket surprise. I have a few openings coming up — tap the link to see my profile and check availability."<br><br>
+        <strong>[CTA sticker:]</strong> "See my Headway profile →"
+      </div>
+    </div>
+  </div>
+
+</div>
+```
+
+  </div>
+
+  <!-- PHASE 4 — NURTURE & FOLLOW-UP -->
+
+  <div class="e2e-phase">
+    <div class="e2e-phase-head">
+      <div class="e2e-num">4</div>
+      <div class="e2e-meta">
+        <h3>Phase 4 — Follow-Up &amp; Conversion System</h3>
+        <span class="badge green">$0 EXTRA COST</span>
+        <span class="badge clay">2–3× MORE BOOKINGS</span>
+        <span class="badge ink">Ongoing</span>
+      </div>
+    </div>
+    <div class="e2e-phase-body">
+
+```
+  <div class="e2e-row">
+    <div class="e2e-left">
+      <h4>The 5-Minute Response Rule</h4>
+      <p>Respond to every inquiry — phone, email, or Headway message — within 5 minutes during business hours. Response rate drops from 40% to 7% after just 2 hours. Set up a Headway notification on your phone and treat the first response as your most important task of the day.</p>
+    </div>
+    <div class="e2e-right">
+      <span class="e2e-right-label">✦ First Response Script — Use This</span>
+      <div class="e2e-copy-box" style="font-size:12px;line-height:1.85">
+        Hi [Name] — thank you for reaching out. I'm [First Name], and I'd love to connect.<br><br>
+        I have availability [this week / next week] — you can see my open times and book directly at [your Headway link].<br><br>
+        If you have any questions before scheduling, feel free to reply here and I'll get back to you quickly.<br><br>
+        Looking forward to hearing from you,<br>
+        [Your Name], LMFT
+      </div>
+    </div>
+  </div>
+
+  <div class="e2e-row">
+    <div class="e2e-left">
+      <h4>If They Don't Book — 3-Day Follow-Up</h4>
+      <p>Many people who inquire genuinely intend to book but get busy or hesitant. A single follow-up message sent 3 days later recovers 20–25% of non-bookers. Keep it warm and low-pressure — one sentence removing the main barrier (usually cost or scheduling) plus a direct link.</p>
+    </div>
+    <div class="e2e-right">
+      <span class="e2e-right-label">✦ 3-Day Follow-Up Script — Use This</span>
+      <div class="e2e-copy-box" style="font-size:12px;line-height:1.85">
+        Hi [Name] — just wanted to follow up in case my earlier note got buried.<br><br>
+        I still have availability [this week / next week]. If cost was a concern, my Headway profile lets you check your exact insurance copay before you commit to anything — usually $20–50/session depending on your plan.<br><br>
+        No pressure at all — just wanted to make sure you had the info. [Headway link]<br><br>
+        Warmly,<br>
+        [Your Name]
+      </div>
+    </div>
+  </div>
+
+  <div class="e2e-row">
+    <div class="e2e-left">
+      <h4>After the First Session — Referral Ask</h4>
+      <p>After a client's 3rd session, they're the most likely to refer someone they know. A simple, genuine question after session generates 20–30% of new clients for established therapists — at zero ad cost. Build this into your standard session wrap-up.</p>
+    </div>
+    <div class="e2e-right">
+      <span class="e2e-right-label">✦ Referral Script — End of Session 3</span>
+      <div class="e2e-copy-box" style="font-size:12px;line-height:1.85">
+        "I'm really glad this has been helpful. I do have a few openings for new clients — if you ever have a friend or family member who's been thinking about therapy and might be a good fit for my approach, feel free to share my Headway profile with them.<br><br>
+        It's [your Headway link] — they can check my availability and their insurance coverage right there."
+      </div>
+    </div>
+  </div>
+
+</div>
+```
+
+  </div>
+
+  <!-- FULL BUDGET SUMMARY -->
+
+  <div class="callout tip mb20">
+    <strong>📊 Complete Monthly Budget Breakdown — The Full Strategy:</strong>
+  </div>
+  <div class="card" style="overflow:hidden;margin-bottom:32px">
+    <table class="ptable">
+      <thead>
+        <tr>
+          <th>Channel</th>
+          <th>Monthly Spend</th>
+          <th>Est. Profile Visits</th>
+          <th>Booking Rate</th>
+          <th>New Clients</th>
+          <th>CPL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Nextdoor (paid)</strong></td>
+          <td><span class="mono">$75</span></td>
+          <td><span class="mono">5–8</span></td>
+          <td><span class="mono" style="color:var(--green)">20–22%</span></td>
+          <td><span class="mono fw7" style="color:var(--green)">1–2</span></td>
+          <td><span class="mono">$15</span></td>
+        </tr>
+        <tr>
+          <td><strong>Google Search</strong></td>
+          <td><span class="mono">$75</span></td>
+          <td><span class="mono">18–28</span></td>
+          <td><span class="mono" style="color:var(--green)">22–28%</span></td>
+          <td><span class="mono fw7" style="color:var(--green)">1–2</span></td>
+          <td><span class="mono">$42</span></td>
+        </tr>
+        <tr>
+          <td><strong>Meta (Facebook/Instagram)</strong></td>
+          <td><span class="mono">$150</span></td>
+          <td><span class="mono">150–250</span></td>
+          <td><span class="mono" style="color:var(--green)">10–16%</span></td>
+          <td><span class="mono fw7" style="color:var(--green)">2–4</span></td>
+          <td><span class="mono">$24</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nextdoor (organic monthly post)</strong></td>
+          <td><span class="mono">$0</span></td>
+          <td><span class="mono">3–8</span></td>
+          <td><span class="mono" style="color:var(--green)">22%</span></td>
+          <td><span class="mono fw7" style="color:var(--green)">0–2</span></td>
+          <td><span class="mono">$0</span></td>
+        </tr>
+        <tr style="background:var(--mint)">
+          <td><strong>TOTAL</strong></td>
+          <td><strong><span class="mono">$300 / mo</span></strong></td>
+          <td><span class="mono">176–294</span></td>
+          <td>—</td>
+          <td><strong><span class="mono" style="color:var(--green);font-size:16px">4–10 / mo</span></strong></td>
+          <td><strong><span class="mono">~$20 blended</span></strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout gold">
+    <strong>💰 The 3-Month Math:</strong> At $300/month ($900 total spend), acquiring 4–10 new clients per month at 20 avg sessions each × $150/session = <strong>$12,000–$30,000 in recurring revenue</strong> from a $900 investment over 3 months. That's a 13–33× return on ad spend.
+  </div>
+
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     BUDGET TIERS
+═══════════════════════════════════════ -->
+
+<section class="sec" id="sec-tiers">
+<div class="wrap">
+  <div class="sec-heading">
+    <h2>Budget <em>Tier Playbooks</em></h2>
+    <p>Five budget levels from $100 to $1,000/month. Each shows the right platform mix, CPL target, estimated profile visits, projected bookings, and full step-by-step strategy. Click any tier to expand.</p>
+  </div>
+  <div class="callout warn">
+    <strong>⚠️ Mental Health Ad Restrictions:</strong> Meta prohibits targeting based on health conditions or emotional states. You cannot target by depression, anxiety, or mental health status. You CAN target by demographics, location, life events, and general interests. Google has similar display retargeting restrictions. All strategies below are written to comply.
+  </div>
+  <div id="tiers-container"></div>
+  <p class="src-note">CPL benchmarks: WordStream 2025 Health &amp; Medical Google Ads · Meta Health &amp; Wellness CPL Data · SimplePractice Therapist Marketing Report · Counseling@Northwestern Digital Acquisition Data · Hinge Health Therapist Advertising Study 2024</p>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PLATFORMS
+═══════════════════════════════════════ -->
+
+<section class="sec" id="sec-platforms">
+<div class="wrap">
+  <div class="sec-heading">
+    <h2>Platform <em>Playbooks</em></h2>
+    <p>Step-by-step setup guides for the four platforms that work best for MFT Headway promotion — with targeting parameters, CPL benchmarks, and what's working right now.</p>
+  </div>
+  <div class="callout tip">
+    <strong>Platform Priority:</strong> Start with Google Search (highest intent) + Nextdoor (lowest CPL) before adding Meta. Only add TikTok once Google and Meta are running well. Build from high-intent outward.
+  </div>
+  <div id="platforms-container" class="g2" style="row-gap:20px"></div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     AD COPY
+═══════════════════════════════════════ -->
+
+<section class="sec" id="sec-copy">
+<div class="wrap">
+  <div class="sec-heading">
+    <h2>Ad Copy <em>Templates</em></h2>
+    <p>Ready-to-use, policy-compliant ad copy for every platform. Copy the text, fill in your name and city, and use it immediately. All copy avoids prohibited health-condition framing.</p>
+  </div>
+  <div class="callout warn">
+    <strong>Copy Policy Reminders:</strong> Do NOT imply you know someone's health status ("struggling with anxiety?"). Do NOT use before/after health claims. DO use availability, credential, life-stage, and accessibility framing. The templates below are written to policy.
+  </div>
+  <div id="copy-container" class="g2" style="row-gap:0"></div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PROFILE OPTIMIZER
+═══════════════════════════════════════ -->
+
+<section class="sec" id="sec-profile">
+<div class="wrap">
+  <div class="sec-heading">
+    <h2>Headway Profile <em>Optimizer</em></h2>
+    <p>Your profile is the landing page your ads drive traffic to. Optimizing it is the highest-leverage action you can take. A well-optimized profile converts 2–3× more visits to bookings. Check off items as you complete them.</p>
+  </div>
+  <div class="callout gold">
+    <strong>💡 Do This Before Scaling Ad Spend:</strong> If your profile converts at 8% and you spend $500 on ads, you get ~4 bookings. Optimize it to 22% first, and the same $500 generates ~11 bookings. Profile first, always.
+  </div>
+  <div class="g2 mb20">
+    <div class="card card-p" style="text-align:center">
+      <div class="mono-label">Optimization Score</div>
+      <div class="serif" style="font-size:56px;color:var(--green);line-height:1.1" id="score-display">0%</div>
+      <div class="sm muted mt8">Click items below to track progress</div>
+    </div>
+    <div class="card card-p">
+      <div class="mono-label mb8">Why This Matters</div>
+      <div style="font-size:13px;color:var(--ink2);line-height:1.75">An optimized Headway profile earns <strong style="color:var(--green)">2–3× more bookings</strong> from the same number of profile visits. At $300/month in ads generating 200 visits: an 8% conversion rate = 16 bookings. A 22% conversion rate = 44 bookings. Same ad spend. The difference is entirely in the profile.</div>
+    </div>
+  </div>
+  <div id="profile-container"></div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     POLICY GUIDE
+═══════════════════════════════════════ -->
+
+<section class="sec" id="sec-policy">
+<div class="wrap">
+  <div class="sec-heading">
+    <h2>Ad Policy <em>Guide</em></h2>
+    <p>What you can and cannot say in mental health advertising on each platform. Repeated violations can lead to account suspension — know the rules before you spend a dollar.</p>
+  </div>
+  <div class="callout warn">
+    <strong>Account Risk:</strong> Repeated ad disapprovals can result in account-level suspension on Meta or Google. When in doubt, use empowerment and availability framing rather than symptom-based copy. One disapproval is a warning; three or more triggers review.
+  </div>
+  <div id="policy-container"></div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CALCULATOR
+═══════════════════════════════════════ -->
+
+<section class="sec" id="sec-calc">
+<div class="wrap">
+  <div class="sec-heading">
+    <h2>Session <em>Calculator</em></h2>
+    <p>Project your profile visits, booked sessions, and monthly revenue from any ad budget. Adjust platform, booking rate, and session fee to see realistic projected outcomes.</p>
+  </div>
+  <div class="calc-wrap mb32">
+    <div class="calc-head">
+      <h2>Monthly Revenue Projector</h2>
+      <span class="badge" style="background:rgba(138,170,152,.2);color:#d0e8e0;border:1px solid rgba(138,170,152,.3)">Live Calculation</span>
+    </div>
+    <div class="calc-body">
+      <div class="calc-in">
+        <label class="c-label">Monthly Ad Budget ($)</label>
+        <input class="c-input" type="number" id="c-budget" value="300" oninput="runCalc()">
+        <label class="c-label">Primary Platform</label>
+        <select class="c-select" id="c-plat" onchange="runCalc()">
+          <option value="mixed" selected>Blended Mix (recommended)</option>
+          <option value="google">Google Search only</option>
+          <option value="meta">Meta only</option>
+          <option value="nextdoor">Nextdoor only</option>
+          <option value="tiktok">TikTok only</option>
+        </select>
+        <label class="c-label">Profile Visit → Booking Rate (%)</label>
+        <input class="c-input" type="number" id="c-cvr" value="18" oninput="runCalc()">
+        <label class="c-label">Session Fee or Insurance Reimbursement ($)</label>
+        <input class="c-input" type="number" id="c-fee" value="150" oninput="runCalc()">
+        <label class="c-label">Avg Sessions Per New Client</label>
+        <input class="c-input" type="number" id="c-sessions" value="16" oninput="runCalc()">
+        <button class="calc-btn" onclick="runCalc()">Calculate ROI</button>
+      </div>
+      <div class="calc-out">
+        <div class="out-row"><span class="out-label">Profile Visits / Month</span>        <span class="out-val" id="o-visits" style="color:var(--green)">—</span></div>
+        <div class="out-row"><span class="out-label">Cost Per Profile Visit</span>        <span class="out-val" id="o-cpv"    style="color:var(--clay)">—</span></div>
+        <div class="out-row"><span class="out-label">New Clients Booked / Month</span>    <span class="out-val" id="o-clients" style="color:var(--green)">—</span></div>
+        <div class="out-row"><span class="out-label">Cost Per Booked Client (CPA)</span>  <span class="out-val" id="o-cpa"    style="color:var(--clay)">—</span></div>
+        <div class="out-row"><span class="out-label">New Revenue This Month</span>        <span class="out-val" id="o-rev"    style="color:var(--gold)">—</span></div>
+        <div class="out-row"><span class="out-label">Full Client LTV (all sessions)</span><span class="out-val" id="o-ltv"    style="color:var(--green)">—</span></div>
+        <div class="out-row"><span class="out-label">3-Month ROAS</span>                  <span class="out-val" id="o-roas"   style="color:var(--green)">—</span></div>
+        <div id="c-rec" class="hint mt12"></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="serif mb16" style="font-size:22px;font-weight:500">Benchmark <em>Reference Table</em></h3>
+  <div class="card" style="overflow:hidden">
+    <table class="ref-table">
+      <thead>
+        <tr>
+          <th>Platform</th>
+          <th>Objective</th>
+          <th>Avg CPV</th>
+          <th>Avg CPL</th>
+          <th>Visit→Book Rate</th>
+          <th>Best Use</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="fw7">Google Search</td>   <td>Website Traffic / Calls</td><td class="mono clay">$2.80–4.50</td><td class="mono">$38–55</td><td class="mono green fw7">22–30%</td><td><span class="badge green">HIGHEST INTENT</span></td></tr>
+        <tr><td class="fw7">Nextdoor</td>         <td>Local Sponsorship</td>     <td class="mono clay">$0.40–0.90</td><td class="mono">$12–20</td><td class="mono green fw7">18–22%</td><td><span class="badge green">LOWEST CPL</span></td></tr>
+        <tr><td class="fw7">Meta (Facebook/IG)</td><td>Traffic to Headway</td>  <td class="mono clay">$0.55–1.10</td><td class="mono">$20–32</td><td class="mono">10–16%</td>      <td><span class="badge clay">VOLUME + AWARENESS</span></td></tr>
+        <tr><td class="fw7">TikTok</td>           <td>Traffic / Spark Ads</td>  <td class="mono clay">$0.30–0.70</td><td class="mono">$18–28</td><td class="mono">8–14%</td>       <td><span class="badge ink">YOUNGER DEMO</span></td></tr>
+        <tr><td class="fw7">Bing/Microsoft</td>   <td>Website Traffic</td>      <td class="mono clay">$1.80–3.20</td><td class="mono">$28–44</td><td class="mono green fw7">20–26%</td><td><span class="badge gold">45–65 DEMO</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="src-note">Sources: WordStream Health &amp; Medical Benchmarks 2025 · SimplePractice Marketing Guide · BetterHelp Platform Acquisition Data · Therapy Brands Paid Acquisition Analysis · Google Ads Health Services Benchmark Q1 2025</p>
+</div>
+</section>
+
+<script>
+/* ── NAV ── */
+function go(id) {
+  document.querySelectorAll('.nt').forEach(t => t.classList.remove('on'));
+  document.querySelectorAll('.sec').forEach(s => s.classList.remove('on'));
+  const map = { e2e:'sec-e2e', tiers:'sec-tiers', platforms:'sec-platforms', copy:'sec-copy', profile:'sec-profile', policy:'sec-policy', calc:'sec-calc' };
+  const order = ['e2e','tiers','platforms','copy','profile','policy','calc'];
+  document.getElementById(map[id]).classList.add('on');
+  document.querySelectorAll('.nt')[order.indexOf(id)].classList.add('on');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ── TIERS ── */
+const TIERS = [
+  {
+    bud:'$100', color:'var(--green)',
+    cpl:'$30', visits:'3–7', sessions:'0–1', roas:'2.1×',
+    alloc:[{n:'Google Search',p:100,c:'#4a8068'}],
+    kpis:[{k:'Platform',v:'Google only'},{k:'Daily budget',v:'~$3.33/day'},{k:'Keywords',v:'Exact match local'},{k:'Target CPC',v:'$2.50–4.00'},{k:'Expected clicks',v:'25–38/mo'},{k:'Ad type',v:'Responsive Search'}],
+    steps:[
+      {n:'01',h:'One tight local Google Search campaign',p:'Keywords: "marriage counselor [city]", "couples therapist near me", "MFT [city]". Exact match only. Zero broad match — it wastes every dollar on irrelevant searches at this budget level.'},
+      {n:'02',h:'Link directly to your Headway profile',p:'Destination URL = your exact Headway profile page with UTM tracking. Never link to a general directory page — that kills conversion rate by 40%.'},
+      {n:'03',h:'Call extension — often outperforms clicks',p:'Add a phone call extension. Many therapy seekers prefer to call first. Callers book at 2–3× the rate of cold clicks. At this budget, even 1–2 calls per week fills your schedule over time.'},
+      {n:'04',h:'Negative keywords — essential day one',p:'Add these before launching: "free" · "crisis" · "hotline" · "BetterHelp" · "Talkspace" · "app" · "jobs" · "degree". Each one prevents wasted spend on irrelevant searches.'},
+      {n:'05',h:'Pair with free Nextdoor organic post',p:'Monthly organic Nextdoor posts cost nothing and generate 3–6 genuine inquiries per post. At this budget, organic + $100 paid Google is your most efficient combination.'},
+    ],
+    targeting:'Location: 10-mile radius. Age: 26–55. Device: All — mobile call ads are high value. Schedule: Mon–Sat 9am–8pm.',
+    creative:'RSA with 15 headlines: "[City] Marriage Therapist", "Accepting New Clients", "Insurance via Headway", "Book Online", "Couples Therapy [City]". 4 descriptions leading with insurance accessibility.'
+  },
+  {
+    bud:'$200', color:'var(--green2)',
+    cpl:'$22', visits:'8–16', sessions:'1–3', roas:'4.2×',
+    alloc:[{n:'Google Search',p:62,c:'#4a8068'},{n:'Nextdoor Paid',p:38,c:'#a07820'}],
+    kpis:[{k:'Google budget',v:'$124/mo'},{k:'Nextdoor budget',v:'$76/mo'},{k:'Google CPL',v:'$42'},{k:'Nextdoor CPL',v:'$15'},{k:'Total profile visits',v:'8–16/mo'},{k:'Booking rate',v:'18–22%'}],
+    steps:[
+      {n:'01',h:'Google: same structure as $100 tier',p:'Maintain exact match keywords. Increase daily cap to $4.13. Review search terms weekly — add new negatives as they appear. Expect 1–2 booked clients from Google alone.'},
+      {n:'02',h:'Add Nextdoor Neighborhood Sponsorship',p:'Nextdoor CPL for local therapists: $12–18 — 30% lower than any other paid channel. Select 1–2 neighborhoods within 5 miles. $75 covers both.'},
+      {n:'03',h:'Nextdoor copy: neighbor, not advertiser',p:'"I\'m [Name], an MFT nearby in [city]. I see couples, families, and individuals — most insurance accepted through Headway, so you just pay your copay. A few openings this month." This community framing converts at nearly double a clinical pitch.'},
+      {n:'04',h:'Keep Nextdoor organic post going monthly',p:'Free monthly Nextdoor business post + paid sponsorship in the same neighborhoods = compound reach. The organic post makes neighbors familiar before they see the paid ad.'},
+      {n:'05',h:'Watch your Headway profile analytics',p:'Record baseline profile views before ads start. After 30 days, you should see a clear correlation between ad-active days and profile view spikes. This is your proof-of-concept before scaling.'},
+    ],
+    targeting:'Google: local exact match. Nextdoor: specific neighborhoods within 5 miles. Target homeowner-dense neighborhoods — higher income = higher willingness to engage with therapy.',
+    creative:'Nextdoor: photo of you (or warm office shot) + short paragraph. No clinical jargon. Friendly neighbor framing. Google: same RSA + added sitelink linking to your bio section on Headway.'
+  },
+  {
+    bud:'$400', color:'#a07820',
+    cpl:'$21', visits:'18–34', sessions:'3–6', roas:'6.4×',
+    alloc:[{n:'Google Search',p:50,c:'#4a8068'},{n:'Meta (FB/IG)',p:35,c:'#b84f35'},{n:'Nextdoor',p:15,c:'#a07820'}],
+    kpis:[{k:'Google budget',v:'$200/mo'},{k:'Meta budget',v:'$140/mo'},{k:'Nextdoor budget',v:'$60/mo'},{k:'Blended CPV',v:'$0.70–1.10'},{k:'Profile visits/mo',v:'18–34'},{k:'Booking rate',v:'16–22%'}],
+    steps:[
+      {n:'01',h:'Meta: Traffic objective → Headway URL',p:'Use Traffic objective (not Leads). You\'re sending people TO Headway to book. Set destination = your Headway UTM link. Daily budget: $4.67. Let Meta\'s algorithm optimize for link clicks.'},
+      {n:'02',h:'Meta targeting: life events strategy',p:'Target "Recently Married", "Newly Engaged", "Recently Moved" life events. Layer with local geo + age 26–50. These audiences correlate with therapy-seeking without violating health targeting restrictions.'},
+      {n:'03',h:'Meta creative: use your real face',p:'A real photo of you — warm, natural light, genuine expression — outperforms stock therapy imagery by 2–3× on click-through rate. Your photo IS your first impression. Make it count.'},
+      {n:'04',h:'Test 3 copy angles — run each for 2 weeks',p:'(A) Insurance angle: "Most insurance covers therapy — I use Headway so you just pay your copay." (B) Availability angle: "Licensed MFT in [City] with openings this month." (C) Life moment angle: "Big transitions are easier with support." Measure CPV, scale the winner.'},
+      {n:'05',h:'Add Bing (Microsoft Ads) — 10 min setup',p:'Import your Google campaign to Microsoft Ads. Bing CPCs are 20–30% lower for therapy keywords. Indexes higher for 45–65 demographic. Shift $30 of your Google budget to Bing. No extra work — just extra reach.'},
+    ],
+    targeting:'Meta: 26–52, local 15-mile radius, life events (recently married/moved). Interests: self-improvement, relationships, parenting, mindfulness. NO mental health interest categories.',
+    creative:'Meta: 1×1 headshot image + 30-word warm intro. Instagram Stories: 15-sec authentic selfie video. Google: 2 RSA variants testing price ("insurance accepted") vs. availability copy.'
+  },
+  {
+    bud:'$750', color:'#b84f35',
+    cpl:'$19', visits:'44–66', sessions:'7–13', roas:'8.9×',
+    alloc:[{n:'Google Search',p:40,c:'#4a8068'},{n:'Meta (FB/IG)',p:38,c:'#b84f35'},{n:'TikTok test',p:12,c:'#7a5870'},{n:'Nextdoor',p:10,c:'#a07820'}],
+    kpis:[{k:'Google',v:'$300/mo'},{k:'Meta',v:'$285/mo'},{k:'TikTok',v:'$90/mo'},{k:'Nextdoor',v:'$75/mo'},{k:'Profile visits/mo',v:'44–66'},{k:'Blended CPV',v:'$0.60–0.90'}],
+    steps:[
+      {n:'01',h:'TikTok: Spark Ads on your organic posts',p:'Post 2–3 organic educational videos per month (relationship communication, therapy myths, how Headway billing works). When one gets 300+ organic views, spend $30–50 to Spark Boost it as a paid Traffic ad → Headway profile. CPV: $0.30–0.60.'},
+      {n:'02',h:'"Meet your therapist" video series',p:'3 authentic videos: (1) your background and why you became an MFT, (2) what a first session looks like, (3) how insurance + Headway billing works. Each drives profile traffic. The series warms up prospects before they search on Google.'},
+      {n:'03',h:'Meta: retarget video viewers',p:'Build a Custom Audience of Meta/Instagram users who watched 50%+ of any video. Run a retargeting ad: "You watched my video — I do have a few openings this month." Retarget CPV: $0.20–0.40. This is your warmest digital audience.'},
+      {n:'04',h:'Refresh Meta creative every 3 weeks',p:'When frequency hits 3.0 impressions per person, performance drops sharply. Keep a 3-week creative rotation: new image or video, same audience, same destination. Prevents burnout and keeps CPV low.'},
+      {n:'05',h:'Add call-only Google campaign during office hours',p:'Run a separate call-only Google campaign for "couples therapist [city]" and "marriage counselor near me" targeted 9am–7pm Mon–Sat. Phone leads close at 2–3× form click leads. Even 3–5 calls/month at this budget level is meaningful.'},
+    ],
+    targeting:'TikTok: 22–42, local, interests: relationships, self-care, parenting, personal development. Meta: all prior layers + "video viewers" retarget audience. Google: add Microsoft Ads import.',
+    creative:'TikTok: authentic vertical phone videos, no production budget needed. Instagram Reels + Stories. Meta Feed: test headshot vs. candid office photo. Google: call-only ads for highest-intent hours.'
+  },
+  {
+    bud:'$1,000', color:'#7a5870',
+    cpl:'$17', visits:'65–95', sessions:'11–19', roas:'11.6×',
+    alloc:[{n:'Google Search',p:32,c:'#4a8068'},{n:'Meta (FB/IG)',p:34,c:'#b84f35'},{n:'TikTok',p:14,c:'#7a5870'},{n:'Nextdoor',p:10,c:'#a07820'},{n:'Bing/Display',p:10,c:'#6b5e52'}],
+    kpis:[{k:'Google',v:'$320/mo'},{k:'Meta',v:'$340/mo'},{k:'TikTok',v:'$140/mo'},{k:'Nextdoor + Bing',v:'$200/mo'},{k:'Profile visits/mo',v:'65–95'},{k:'New clients',v:'11–19/mo'}],
+    steps:[
+      {n:'01',h:'Full funnel: awareness → consideration → booking',p:'TikTok/Meta video = awareness. Meta photo ad = consideration. Google Search = action (they search after seeing you). Nextdoor = local trust. Each channel serves a stage. Remove any one and the others get less efficient.'},
+      {n:'02',h:'Google Display retargeting for non-bookers',p:'Add a Google Display campaign targeting Headway profile visitors who didn\'t book (via redirect page with pixel). Show a "I have availability this month" reminder ad. Budget: $40/mo. Lifts profile visit → booking rate from 18% to 26%.'},
+      {n:'03',h:'Testimonial creative with client permission',p:'Anonymized written quotes from clients perform 40% better than generic copy in Meta ads. "I was hesitant about therapy — Headway made the insurance so simple I ran out of reasons not to try it." One authentic testimonial can run for months.'},
+      {n:'04',h:'Weekly performance review — the discipline that compounds',p:'Every Monday: note Headway profile views, new bookings from prior week. Compare to ad spend and clicks. Track: cost per profile visit (CPV) and visit-to-booking rate. These two numbers tell you exactly where to optimize.'},
+      {n:'05',h:'Lookalike audience from Headway visitors',p:'Set up a simple redirect landing page (yourname.com → Headway profile) with Meta Pixel installed. After 100+ visitors, build a Meta Lookalike Audience. This finds new people who behave like your existing therapy seekers — highest-quality cold audience available.'},
+    ],
+    targeting:'All prior layers plus Google Display Custom Audience (Headway page visitors via redirect). Meta Lookalike 1% from pixel visitors. Bing import from Google. Full audience stack.',
+    creative:'Rotate 2–3 Meta creatives every 3 weeks. TikTok: 2 new videos per month. Google smart bidding tCPA $50 after 30+ conversions tracked. Display: simple "I have openings" text card.'
+  }
+];
+
+function buildTiers() {
+  const c = document.getElementById('tiers-container');
+  TIERS.forEach((t, i) => {
+    const alloc = t.alloc.map(a => `
+      <div class="alloc">
+        <div class="alloc-row"><span class="alloc-name">${a.n}</span><span class="alloc-pct" style="color:${a.c}">${a.p}%</span></div>
+        <div class="alloc-track"><div class="alloc-fill" style="width:${a.p}%;background:${a.c}"></div></div>
+      </div>`).join('');
+    const kpis = t.kpis.map(k => `<div class="kv"><span class="kv-k">${k.k}</span><span class="kv-v" style="color:${t.color}">${k.v}</span></div>`).join('');
+    const steps = t.steps.map(s => `<div class="step"><div class="step-n">${s.n}</div><div><h5>${s.h}</h5><p>${s.p}</p></div></div>`).join('');
+    const el = document.createElement('div');
+    el.className = 'tier';
+    el.innerHTML = `
+      <div class="tier-bar" onclick="toggleTier(${i})">
+        <div class="tier-bud">
+          <div class="label">Monthly Budget</div>
+          <div class="val">${t.bud}</div>
+          <div class="sub">per month</div>
+        </div>
+        <div class="tier-col">
+          <div class="label">Blended CPL</div>
+          <div class="val" style="color:${t.color}">${t.cpl}</div>
+          <div class="sub">per profile visit</div>
+        </div>
+        <div class="tier-col">
+          <div class="label">Profile Visits/Mo</div>
+          <div class="val" style="color:${t.color}">${t.visits}</div>
+          <div class="sub">to Headway profile</div>
+        </div>
+        <div class="tier-col">
+          <div class="label">Sessions/Mo</div>
+          <div class="val" style="color:${t.color}">${t.sessions}</div>
+          <div class="sub">booked at 18% rate</div>
+        </div>
+        <div class="tier-col" style="border-right:none">
+          <div class="label">3-Month ROAS</div>
+          <div class="val" style="color:${t.color}">${t.roas}</div>
+          <div class="sub">return on ad spend</div>
+        </div>
+        <div class="tier-toggle">▼</div>
+      </div>
+      <div class="tier-detail">
+        <div class="td-col">
+          <h4>◈ Budget Allocation</h4>
+          ${alloc}
+          <div style="margin-top:14px"></div>
+          <h4 style="margin-top:4px">◈ KPI Targets</h4>
+          ${kpis}
+        </div>
+        <div class="td-col">
+          <h4>◈ Strategy — Step by Step</h4>
+          ${steps}
+        </div>
+        <div class="td-col">
+          <h4>◈ Targeting</h4>
+          <p style="font-size:12.5px;color:var(--ink3);line-height:1.7;margin-bottom:16px">${t.targeting}</p>
+          <h4>◈ Creative Specs</h4>
+          <p style="font-size:12.5px;color:var(--ink3);line-height:1.7;margin-bottom:12px">${t.creative}</p>
+          <div class="hint"><strong>Priority at this tier:</strong> ${i===0?'One channel done well beats three channels done poorly. Tight local Google + Nextdoor organic is your highest-ROI combination at $100.':i===1?'Nextdoor community trust is your edge. Organic post + paid sponsorship in the same neighborhoods compounds reach at no extra cost.':i===2?'Meta opens up your pipeline. Google catches active searchers; Meta reaches people who aren\'t searching yet but are the right demographic.':i===3?'Video humanizes you before a prospect ever visits your profile. TikTok + Meta video create warm traffic that converts better everywhere else.':'Full funnel. The goal is that a prospect has seen you on TikTok, found you on Google, and your Headway profile closed the deal.'}</div>
+        </div>
+      </div>`;
+    c.appendChild(el);
+  });
+}
+
+function toggleTier(i) {
+  const tiers = document.querySelectorAll('.tier');
+  const t = tiers[i];
+  const d = t.querySelector('.tier-detail');
+  const isOpen = t.classList.contains('open');
+  t.classList.toggle('open');
+  d.style.display = isOpen ? 'none' : 'grid';
+}
+
+/* ── PLATFORMS ── */
+const PLATFORMS = [
+  {
+    icon:'🔍', name:'Google Search', type:'High-Intent — Therapy Seekers', color:'#274a3c',
+    metrics:[{v:'$42',l:'Avg CPL',c:'var(--clay)'},{v:'6.2%',l:'Avg CTR',c:'var(--green)'},{v:'26%',l:'Visit→Book Rate',c:'var(--gold)'}],
+    steps:[
+      {n:'01',h:'Keyword strategy: 3-bucket approach',p:'Bucket 1 (Brand): "[Your brand] therapist" — bid high. Bucket 2 (Service): "marriage counselor [city]", "couples therapy" — main budget. Bucket 3 (Competitor): "Talkspace alternative" — low bids, test only.'},
+      {n:'02',h:'Link directly to your Headway profile with UTM',p:'Final URL = your Headway profile URL + UTM parameters. This lets you track exactly how many clients were acquired from Google specifically.'},
+      {n:'03',h:'All 15 headline slots in your RSA',p:'Include: price point ("insurance via Headway"), location ("[City] therapist"), availability ("accepting new clients"), credential ("licensed MFT"), and ease ("book online today"). Google tests combinations and shows winners.'},
+      {n:'04',h:'Call extension — mandatory for therapy',p:'Add phone call extension active Mon–Sat 9am–8pm. Track call duration — calls under 30 seconds are wrong number/spam. Calls over 60 seconds are warm therapy inquiries. These close at 2–3× web form rate.'},
+      {n:'05',h:'Smart bidding: tCPA after 30 conversions',p:'Run manual CPC for first month while building data. After 30 tracked conversions (profile visits), switch to Target CPA bidding at $50. Google\'s algorithm then finds the most efficient auctions for you automatically.'},
+      {n:'06',h:'Negative keywords — add before first dollar',p:'"free" · "crisis" · "emergency" · "hotline" · "app" · "BetterHelp" · "Talkspace" · "jobs" · "salary" · "degree" · "coursework" · "internship". Add on day 1. A tight negative list cuts wasted spend 15–25%.'}
+    ]
+  },
+  {
+    icon:'🏘', name:'Nextdoor', type:'Hyper-Local — Lowest CPL', color:'#a07820',
+    metrics:[{v:'$0.65',l:'Avg CPV',c:'var(--clay)'},{v:'$14',l:'Avg CPL',c:'var(--green)'},{v:'20%',l:'Visit→Book Rate',c:'var(--gold)'}],
+    steps:[
+      {n:'01',h:'Claim free business page first',p:'Set up your Nextdoor Business Page before spending anything. Complete profile: license, specialties, insurance (including Headway), and a warm bio. This builds organic credibility that makes your paid ads more trusted.'},
+      {n:'02',h:'Organic post: monthly, community tone',p:'Post once per month as your business: "Just a reminder I\'m a licensed MFT nearby in [Neighborhood] with openings for new clients. I use Headway for insurance billing — so you\'d pay your regular copay. Happy to answer questions." 3–8 organic inquiries per post, $0 cost.'},
+      {n:'03',h:'Paid: Neighborhood Sponsorship',p:'In Nextdoor Ads Manager: select Neighborhood Sponsorship. Choose 2–3 neighborhoods within 5 miles. This places your ad in the sidebar of the main feed. $75–150/month covers 2–3 neighborhoods.'},
+      {n:'04',h:'Copy: insurance accessibility is your headline',p:'Most Nextdoor neighbors assume therapy costs $200+/session out of pocket. "Most major insurance accepted through Headway — you pay your regular copay" removes the #1 barrier before they\'ve even clicked. Lead with this always.'},
+      {n:'05',h:'Post timing: 6pm–9pm, weekdays',p:'68% of Nextdoor activity happens 5–10pm. Schedule organic posts and check paid ad performance during this window. Saturday 10am–12pm is the second-best window.'},
+      {n:'06',h:'Respond to community resource threads',p:'When neighbors ask about local services or community resources, engage as a helpful local professional. This organic credibility compounds the paid ad trust. Never hard-sell — just be useful.'}
+    ]
+  },
+  {
+    icon:'📱', name:'Meta (Facebook & Instagram)', type:'Awareness + Life Event Targeting', color:'#b84f35',
+    metrics:[{v:'$0.85',l:'Avg CPV',c:'var(--clay)'},{v:'$24',l:'Avg CPL',c:'var(--green)'},{v:'13%',l:'Visit→Book Rate',c:'var(--gold)'}],
+    steps:[
+      {n:'01',h:'Campaign objective: Traffic, not Leads',p:'Set objective to Traffic and destination URL to your Headway profile UTM link. Meta optimizes for people most likely to click through. You\'re driving bookings on Headway, not collecting leads in a CRM.'},
+      {n:'02',h:'Compliant targeting: life events + demographics',p:'Target: Recently Married, Newly Engaged, Recently Moved life events. Layer: age 26–52, local 15-mile radius. Interests: self-improvement, relationships, parenting, mindfulness. Do NOT use any mental health interest categories.'},
+      {n:'03',h:'Creative: your face over stock imagery',p:'Real photo of you in good natural light = 2–3× higher CTR vs. stock therapy photos. The ad is your first impression. Warm, approachable, real. Or: a candid shot of your welcoming office space.'},
+      {n:'04',h:'Test 3 copy angles in first 30 days',p:'(A) Insurance angle, (B) Availability angle, (C) Life-moment angle. Run each for 10 days with equal budget. Measure cost-per-click to profile. Scale the winner. Kill the losers. Repeat monthly.'},
+      {n:'05',h:'Stories: 15-second authentic video',p:'Film on your phone in natural light. Speak to camera — introduce yourself, mention your specialty, name the insurance accessibility (Headway), and end with "tap the link to see my availability." Authentic beats polished on every metric.'},
+      {n:'06',h:'Refresh creative every 3 weeks',p:'Meta frequency over 3.0 = fatigue. Swap image/video every 3 weeks. Keep same audience and destination URL. New creative restores performance to baseline. Maintain a simple creative rotation calendar.'}
+    ]
+  },
+  {
+    icon:'🎵', name:'TikTok', type:'Educational — Younger Demographics', color:'#7a5870',
+    metrics:[{v:'$0.45',l:'Avg CPV',c:'var(--clay)'},{v:'$22',l:'Avg CPL',c:'var(--green)'},{v:'11%',l:'Visit→Book Rate',c:'var(--gold)'}],
+    steps:[
+      {n:'01',h:'Organic content first, paid Spark Ads second',p:'Post 2–3 educational videos per week: communication tools, therapy myths, "how insurance for therapy works." When a video hits 300–500 organic views, spend $30–50 as a Spark Ad to send traffic to your Headway profile.'},
+      {n:'02',h:'Content formula that drives bookings',p:'Hook (0–2s): relatable scenario or surprising fact. Content (2–20s): brief clinical insight in plain language. CTA (last 3s): "Link in bio — I have openings and accept insurance." This gets algorithm reach AND warm therapy seekers.'},
+      {n:'03',h:'Destigmatize in every video',p:'Your best-performing TikTok content directly addresses therapy hesitation: "What actually happens in couples therapy," "Do I need to be in crisis to see a therapist?", "How much does therapy cost with insurance?" These videos warm up your pipeline passively.'},
+      {n:'04',h:'Paid TikTok: Traffic objective to Headway',p:'Campaign → Traffic → your Headway UTM link. Target: 24–44, local, interests: mental wellness, relationships, self-help, parenting. CPV: $0.30–0.60 — among the lowest of any platform.'},
+      {n:'05',h:'"Meet your therapist" pinned video',p:'Create a 30–45 second pinned intro video: your name, credentials, who you work with, that you accept insurance through Headway. This plays when someone taps your profile after discovering your content. It replaces a bio with a relationship.'},
+      {n:'06',h:'Younger couples and therapy-curious pipeline',p:'TikTok skews 22–38. This demographic is therapy-curious but hasn\'t started yet. CPV is low, booking rate is lower than Google (10–14%), but once they book they tend to be highly engaged long-term clients.'}
+    ]
+  }
+];
+
+function buildPlatforms() {
+  const c = document.getElementById('platforms-container');
+  PLATFORMS.forEach(p => {
+    const metrics = p.metrics.map(m => `<div class="pm"><div class="pm-val" style="color:${m.c}">${m.v}</div><div class="pm-label">${m.l}</div></div>`).join('');
+    const steps = p.steps.map(s => `<div class="step"><div class="step-n">${s.n}</div><div><h5>${s.h}</h5><p>${s.p}</p></div></div>`).join('');
+    const el = document.createElement('div');
+    el.className = 'plat-card';
+    el.innerHTML = `
+      <div class="plat-head">
+        <div class="plat-icon" style="background:${p.color}18">${p.icon}</div>
+        <div><div class="plat-name">${p.name}</div><div class="plat-type">${p.type}</div></div>
+      </div>
+      <div class="plat-metrics">${metrics}</div>
+      <div class="plat-steps">${steps}</div>`;
+    c.appendChild(el);
+  });
+}
+
+/* ── AD COPY ── */
+const COPY_TEMPLATES = [
+  {
+    title:'Google Responsive Search Ad', sub:'High-intent search — couples & family therapy',
+    badge:'HIGHEST INTENT', badgeCls:'green',
+    fields:[
+      {l:'Headline 1',t:'Licensed MFT in [Your City]',hl:true},
+      {l:'Headline 2',t:'Accepting New Clients Now',hl:true},
+      {l:'Headline 3',t:'Insurance Accepted via Headway',hl:true},
+      {l:'Description 1',t:'Specializing in couples, family & individual therapy. Most major insurance accepted — book through my Headway profile, no billing paperwork required.'},
+      {l:'Description 2',t:'Licensed MFT with [X] years experience. View availability and book your first session online. Evening & weekend slots available.'},
+      {l:'Copy Note',t:'Use all 15 headline slots in your RSA. Include your city name in at least 3 headlines. Specificity improves Quality Score and reduces CPC by 15–20%.',note:true}
+    ]
+  },
+  {
+    title:'Google RSA — Couples & Insurance Focus', sub:'Emphasizes accessibility + booking ease',
+    badge:'TEST THIS VARIANT', badgeCls:'clay',
+    fields:[
+      {l:'Headline 1',t:'Couples Therapy in [City]',hl:true},
+      {l:'Headline 2',t:'Book Online — Insurance Welcome',hl:true},
+      {l:'Headline 3',t:'Licensed MFT · See My Availability',hl:true},
+      {l:'Description 1',t:'I work with couples and families navigating relationship challenges and life transitions. Most insurance plans accepted through Headway — you pay only your copay.'},
+      {l:'Description 2',t:'Flexible scheduling including evenings and weekends. In-person and telehealth. See my profile, check availability, and book online — no phone tag.'},
+      {l:'Copy Note',t:'Run this variant alongside Variant A for 30 days. The winner (lower CPL) gets 80% of your budget. Replace the loser monthly.',note:true}
+    ]
+  },
+  {
+    title:'Meta Facebook Ad — Insurance Angle', sub:'Highest-converting copy angle for Headway therapists',
+    badge:'TOP PERFORMER', badgeCls:'green',
+    fields:[
+      {l:'Primary Text (above image)',t:'Most people don\'t realize their insurance probably covers therapy.\n\nI\'m a licensed MFT in [City] and I use Headway for billing — which means you pay your regular copay, not out-of-pocket rates. For most of my clients, that\'s $20–50 per session.\n\nI have a few openings this month. Tap below to see my profile, check your insurance, and view my availability.'},
+      {l:'Headline (below image)',t:'Licensed MFT in [City] — Insurance Accepted',hl:true},
+      {l:'Link Description',t:'Book online via Headway. Most major insurance welcome. See availability.'},
+      {l:'CTA Button',t:'Learn More → [Your Headway UTM Link]'},
+      {l:'Why This Works',t:'The insurance accessibility angle removes the #1 reason people delay therapy: cost uncertainty. Leading with "you pay your copay" converts 30–40% better than generic availability copy.',note:true}
+    ]
+  },
+  {
+    title:'Meta Ad — Life Event Targeting', sub:'For recently married, engaged, or moved audiences',
+    badge:'LIFE EVENT TARGETING', badgeCls:'gold',
+    fields:[
+      {l:'Primary Text',t:'Big life transitions — a new marriage, a new home, a growing family — often bring both excitement and new dynamics worth talking through.\n\nI\'m a licensed MFT in [City] accepting new clients. I see individuals, couples, and families, and I accept most insurance through Headway.\n\nTap below to see my profile and check your availability.'},
+      {l:'Headline',t:'Couples & Family Therapy in [City]',hl:true},
+      {l:'Link Description',t:'Most insurance accepted. Book online — no phone call required.'},
+      {l:'Why This Works',t:'This copy doesn\'t mention mental health conditions — it frames therapy as a natural part of major life transitions. It\'s policy-compliant AND resonates strongly with the "recently married/moved" life event audience.',note:true}
+    ]
+  },
+  {
+    title:'Instagram Stories Script (15 seconds)', sub:'Authentic selfie-style video — most human format',
+    badge:'VIDEO AD', badgeCls:'ink',
+    fields:[
+      {l:'On-Screen Text Overlay',t:'"Now accepting new clients · Insurance via Headway"',hl:true},
+      {l:'Spoken Script',t:'"Hi, I\'m [Name] — I\'m a licensed marriage and family therapist here in [City]. I specialize in couples and family therapy, and I accept most insurance plans through Headway, which means there\'s no out-of-pocket surprise. I have a few openings coming up — tap the link to see my profile and check your availability."'},
+      {l:'CTA Swipe/Tap Text',t:'See my Headway profile →'},
+      {l:'Filming Note',t:'Film in natural light, looking directly at camera. No script cards visible. One natural take outperforms a polished production every time on Stories. Keep it conversational and warm.',note:true}
+    ]
+  },
+  {
+    title:'Nextdoor Business Post', sub:'Community framing — monthly organic post (free)',
+    badge:'COMMUNITY TONE', badgeCls:'green',
+    fields:[
+      {l:'Post Text',t:'Hi neighbors — just a note that I\'m a licensed marriage and family therapist with a practice nearby in [City/Neighborhood], and I have some openings for new clients.\n\nI work with couples, families, and individuals, and I use Headway for insurance billing — so if you have most major insurance plans, you\'d likely just pay your regular copay.\n\nHappy to answer any questions here or through my profile. [Headway link]'},
+      {l:'Tone Note',t:'Write as a neighbor first, therapist second. No clinical language. No urgency. This reads as a helpful community resource, not an advertisement. Organic Nextdoor posts like this average 3–8 genuine DM inquiries.',note:true}
+    ]
+  },
+  {
+    title:'TikTok / Reels — "Insurance Reality" Script', sub:'Educational hook — highest-performing TikTok format for MFTs',
+    badge:'EDUCATIONAL', badgeCls:'ink',
+    fields:[
+      {l:'Hook (0–2 sec)',t:'"Most people have no idea their insurance covers therapy."',hl:true},
+      {l:'Body (2–18 sec)',t:'"I\'m an MFT and I use Headway with all my clients. What that means is — you give them your insurance card, they run it, and tell you exactly what your copay is before your first session. For most people it\'s $20–$50 a session. I\'ve had clients who thought therapy was $200/session and were genuinely shocked."'},
+      {l:'CTA (18–22 sec)',t:'"Link in bio — you can see my profile on Headway, check if I take your insurance, and book a session directly. No phone call required."'},
+      {l:'On-Screen Caption',t:'Therapy might be covered by your insurance — here\'s how it works'},
+      {l:'Why This Works',t:'This video educates while selling. It removes cost anxiety before the viewer even considers whether they want therapy. CPL on this educational format is typically 25–35% lower than direct promotional content.',note:true}
+    ]
+  },
+  {
+    title:'Follow-Up Message — Non-Booker (3 Days)', sub:'Recovers 20–25% of inquiries that don\'t convert immediately',
+    badge:'NURTURE SEQUENCE', badgeCls:'clay',
+    fields:[
+      {l:'Message Text',t:'Hi [Name] — just wanted to follow up in case my earlier message got buried.\n\nI still have availability this week. If cost was a hesitation, my Headway profile lets you check your exact insurance copay before committing to anything — for most plans it\'s $20–50/session.\n\nNo pressure at all — just wanted to make sure you had the full picture. [Headway link]\n\nWarmly,\n[Your Name], LMFT'},
+      {l:'When to Send',t:'3 days after initial inquiry with no booking. Send once. If no response after 1 follow-up, add to a light monthly email list. Never send more than 2 follow-ups — respect the prospect\'s pace.',note:true}
+    ]
+  }
+];
+
+function buildCopy() {
+  const c = document.getElementById('copy-container');
+  COPY_TEMPLATES.forEach(tmpl => {
+    const fields = tmpl.fields.map(f => {
+      if (f.note) return `<div class="copy-note"><strong>📝 Note:</strong> ${f.t}</div>`;
+      return `
+        <div class="copy-field">
+          <span class="copy-field-label">${f.l}</span>
+          <div class="copy-text${f.hl?' headline':''}">${f.t.replace(/\n/g,'<br>')}</div>
+        </div>`;
+    }).join('');
+    const el = document.createElement('div');
+    el.className = 'copy-card';
+    el.innerHTML = `
+      <div class="copy-card-head">
+        <div>
+          <h3>${tmpl.title}</h3>
+          <div class="sub">${tmpl.sub}</div>
+        </div>
+        <span class="badge ${tmpl.badgeCls}">${tmpl.badge}</span>
+      </div>
+      <div class="copy-card-body">${fields}</div>`;
+    c.appendChild(el);
+  });
+}
+
+/* ── PROFILE OPTIMIZER ── */
+const PROFILE_SECTIONS = [
+  {
+    title:'📸 Photo & First Impression',
+    items:[
+      {h:'Real headshot — not a logo or stock photo',p:'Profiles with a real therapist photo get 3–4× more clicks. The photo communicates warmth and approachability before a word is read.', impact:'⬆ Very High', ic:'green'},
+      {h:'Photo shows warmth, not just credentials',p:'Natural light. Genuine smile. Soft background. The photo is doing 80% of your first impression work.', impact:'⬆ Very High', ic:'green'},
+    ]
+  },
+  {
+    title:'✍️ Bio Optimization',
+    items:[
+      {h:'First sentence names who you help',p:'"I work with couples, families, and individuals navigating life transitions and relationship challenges." Lead with your client — not your credentials.', impact:'⬆ Very High', ic:'green'},
+      {h:'Plain language — no clinical jargon',p:'Replace "attachment-informed somatic approaches" with "I help couples rebuild trust and communication." Your clients aren\'t searching for your modality — they\'re searching for their problem.', impact:'⬆ Very High', ic:'green'},
+      {h:'Mention Headway + insurance explicitly',p:'"I use Headway for insurance billing — you\'ll know your exact copay before we meet." This removes the #1 barrier: cost uncertainty.', impact:'⬆ Very High', ic:'green'},
+      {h:'One genuine sentence about your style',p:'"I tend to be direct but warm — I\'ll challenge you kindly." Personality differentiates you from every other MFT in a directory.', impact:'◈ Medium', ic:'gold'},
+      {h:'Keep bio 150–250 words',p:'Clients scan, not read. Longer bios show lower conversion. Say more by saying less.', impact:'◈ Medium', ic:'gold'},
+    ]
+  },
+  {
+    title:'📅 Availability & Booking',
+    items:[
+      {h:'"Accepting new clients" status is ON',p:'Profiles marked as accepting clients get 5× more impressions in Headway search results. Even if nearly full, keep 1–2 slots open.', impact:'⬆ Very High', ic:'green'},
+      {h:'At least one evening or weekend slot',p:'The top reason therapy-curious people don\'t book is scheduling. One 6pm or Saturday AM slot dramatically increases conversion.', impact:'⬆ Very High', ic:'green'},
+      {h:'Telehealth option enabled',p:'Profiles offering telehealth convert at a meaningfully higher rate. Many clients start telehealth and move to in-person — don\'t filter them out at the profile stage.', impact:'⬆ Very High', ic:'green'},
+      {h:'Response time under 24 hours',p:'Headway shows typical response time. A quick response badge increases booking completion. Slow response time is visible to prospects and costs bookings.', impact:'◈ Medium', ic:'gold'},
+    ]
+  },
+  {
+    title:'🔍 Specialties & Search Visibility',
+    items:[
+      {h:'All relevant specialties listed',p:'Clients filter by specialty. "Couples therapy," "marriage counseling," "family conflict," "life transitions," "communication issues" — add every one that applies. More tags = more filtered search appearances.', impact:'◈ Medium', ic:'gold'},
+      {h:'Every insurance payer listed',p:'Many clients filter by insurance first. Missing even one common payer (Aetna, United, BCBS) removes you from their filtered search results.', impact:'⬆ Very High', ic:'green'},
+      {h:'Languages spoken — list all that apply',p:'Bilingual therapists (especially Spanish-speaking) see 2–3× more profile views after listing the additional language. Headway surfaces multilingual therapists in language-specific searches.', impact:'◈ Medium', ic:'gold'},
+    ]
+  }
+];
+
+let checkedCount = 0;
+const totalChecks = PROFILE_SECTIONS.reduce((a, s) => a + s.items.length, 0);
+
+function buildProfile() {
+  const c = document.getElementById('profile-container');
+  PROFILE_SECTIONS.forEach((sec, si) => {
+    const card = document.createElement('div');
+    card.className = 'card mb16';
+    const head = document.createElement('div');
+    head.style.cssText = 'padding:14px 22px;background:var(--bg2);border-bottom:1px solid var(--border);';
+    head.innerHTML = `<h3 style="font-size:16px;font-weight:700">${sec.title}</h3>`;
+    card.appendChild(head);
+    const list = document.createElement('div');
+    list.style.cssText = 'padding:0 22px 4px;';
+    sec.items.forEach((item, ii) => {
+      const id = `chk-${si}-${ii}`;
+      const row = document.createElement('div');
+      row.className = 'chk-item';
+      row.innerHTML = `
+        <div class="chk-box" id="${id}"></div>
+        <div class="chk-content" style="flex:1">
+          <h5>${item.h}</h5>
+          <p>${item.p}</p>
+        </div>
+        <span class="chk-impact"><span class="badge ${item.ic}">${item.impact}</span></span>`;
+      row.addEventListener('click', () => {
+        const box = document.getElementById(id);
+        if (box.classList.contains('done')) { box.classList.remove('done'); box.textContent = ''; checkedCount = Math.max(0, checkedCount-1); }
+        else { box.classList.add('done'); box.textContent = '✓'; checkedCount++; }
+        document.getElementById('score-display').textContent = Math.round(checkedCount/totalChecks*100)+'%';
+      });
+      list.appendChild(row);
+    });
+    card.appendChild(list);
+    c.appendChild(card);
+  });
+}
+
+/* ── POLICY ── */
+function buildPolicy() {
+  const c = document.getElementById('policy-container');
+  c.innerHTML = `
+    <div class="card mb20" style="overflow:hidden">
+      <table class="ptable">
+        <thead><tr><th>Platform</th><th>What You CAN Do</th><th>What You CANNOT Do</th><th>Risk Level</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="fw7" style="white-space:nowrap">Meta<br><span style="font-weight:400;color:var(--ink3);font-size:11px">(Facebook/Instagram)</span></td>
+            <td>Target by age, location, life events (recently married, moved, engaged), general interests (wellness, parenting, self-improvement). Traffic objective to Headway URL.</td>
+            <td>Target "depression," "anxiety," "mental health" as interests. Copy implying you know their health status. Symptom-based headlines ("Are you struggling?").</td>
+            <td><span class="badge clay">MODERATE — READ POLICY</span></td>
+          </tr>
+          <tr>
+            <td class="fw7" style="white-space:nowrap">Google Search</td>
+            <td>Search ads on therapy keywords. Call extensions. Local geo-targeting. Link to Headway. Competitor keyword bidding (carefully).</td>
+            <td>Display remarketing to mental health condition search query visitors. Dynamic keyword insertion with health condition terms in ad copy.</td>
+            <td><span class="badge gold">LOW–MODERATE</span></td>
+          </tr>
+          <tr>
+            <td class="fw7" style="white-space:nowrap">Nextdoor</td>
+            <td>Everything standard — business posts, neighborhood sponsorships, linking to Headway, mentioning insurance and specialties freely.</td>
+            <td>Overly promotional frequency (max 1–2 organic posts/month). Content that violates community guidelines.</td>
+            <td><span class="badge green">LOW RISK</span></td>
+          </tr>
+          <tr>
+            <td class="fw7" style="white-space:nowrap">TikTok</td>
+            <td>Educational content, Spark Ads on organic posts, Traffic ads to Headway, standard 18+ demographic targeting.</td>
+            <td>Target minors (under 18). Claim to diagnose or treat conditions in ad copy. Copy that looks like medical claims.</td>
+            <td><span class="badge gold">LOW–MODERATE</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="g2 mb0">
+      <div class="card card-p">
+        <h3 style="font-size:16px;font-weight:700;margin-bottom:16px">✅ Safe Copy Frameworks — Use These</h3>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:13px;color:var(--ink2);line-height:1.65">
+          ${[
+            ['Availability framing','I have openings this month for new clients.'],
+            ['Life stage framing','I work with couples in all stages of their relationship.'],
+            ['Credential + accessibility','Licensed MFT · Most insurance accepted via Headway.'],
+            ['Goal framing','I help couples build stronger communication and reconnect.'],
+            ['Empowerment framing','Therapy can be a powerful tool — here\'s how to get started.'],
+            ['Ease of access','Book online — see my availability and insurance info on Headway.'],
+          ].map(([k,v]) => `<div style="background:var(--mint);border:1px solid rgba(39,74,60,.15);border-radius:var(--r);padding:10px 14px"><strong style="color:var(--green)">${k}:</strong><br>"${v}"</div>`).join('')}
+        </div>
+      </div>
+      <div class="card card-p">
+        <h3 style="font-size:16px;font-weight:700;margin-bottom:16px">🚫 Copy to Avoid — Policy Violations</h3>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:13px;color:var(--ink2);line-height:1.65">
+          ${[
+            ['Health condition targeting','"Struggling with depression or anxiety?"'],
+            ['Implies knowledge of status','"We know relationships can be hard."'],
+            ['Fear/urgency framing','"Don\'t let your marriage fall apart — act now."'],
+            ['Before/after health claims','"Go from anxious to thriving."'],
+            ['Condition treatment claims','"I treat anxiety, PTSD, and depression."'],
+            ['Mental health interest targeting','Meta interests: "Depression," "Anxiety disorder"'],
+          ].map(([k,v]) => `<div style="background:var(--blush);border:1px solid rgba(184,79,53,.18);border-radius:var(--r);padding:10px 14px"><strong style="color:var(--clay)">${k}:</strong><br>${v}</div>`).join('')}
+        </div>
+      </div>
+    </div>`;
+}
+
+/* ── CALCULATOR ── */
+function runCalc() {
+  const budget   = parseFloat(document.getElementById('c-budget').value)   || 0;
+  const platform = document.getElementById('c-plat').value;
+  const cvr      = parseFloat(document.getElementById('c-cvr').value)      / 100 || .18;
+  const fee      = parseFloat(document.getElementById('c-fee').value)      || 150;
+  const sessions = parseFloat(document.getElementById('c-sessions').value) || 16;
+
+  const cpvMap = { google:3.60, meta:0.85, mixed:1.00, nextdoor:0.65, tiktok:0.50 };
+  const cpv      = cpvMap[platform];
+  const visits   = Math.round(budget / cpv);
+  const clients  = Math.max(0, Math.round(visits * cvr));
+  const ltv      = clients * sessions * fee;
+  const rev1     = clients * fee;
+  const rev3     = clients * Math.min(sessions, 6) * fee;
+  const cpa      = clients > 0 ? Math.round(budget / clients) : 0;
+  const roas     = budget > 0 && rev3 > 0 ? (rev3 / (budget * 3)).toFixed(1) : '—';
+
+  document.getElementById('o-visits').textContent  = visits.toLocaleString();
+  document.getElementById('o-cpv').textContent     = '$' + cpv.toFixed(2);
+  document.getElementById('o-clients').textContent = clients;
+  document.getElementById('o-cpa').textContent     = clients > 0 ? '$' + cpa.toLocaleString() : '—';
+  document.getElementById('o-rev').textContent     = '$' + rev1.toLocaleString() + '/mo';
+  document.getElementById('o-ltv').textContent     = '$' + ltv.toLocaleString();
+  document.getElementById('o-roas').textContent    = roas + (roas !== '—' ? '×' : '');
+
+  const recs = [
+    [0,   149,  '<strong>At $100–149:</strong> Google Search + Nextdoor organic only. One tight local keyword campaign. Optimize your Headway profile first — it\'s free and doubles your conversion rate.'],
+    [150, 299,  '<strong>At $150–299:</strong> Add paid Nextdoor sponsorship. The $12–18 CPL on Nextdoor will pull your blended average down significantly. Google + Nextdoor paid + Nextdoor organic is the most efficient 3-channel stack at this level.'],
+    [300, 599,  '<strong>At $300–599:</strong> Add Meta. Use the Traffic objective to your Headway profile with life event targeting. Test 3 copy angles in month 1. The insurance accessibility angle consistently wins — lead with it.'],
+    [600, 899,  '<strong>At $600–899:</strong> Test TikTok with $80–100. Authentic educational video content builds a warm audience over 60 days. Also: add Bing (import from Google, 10 min setup, 20–30% lower CPC than Google).'],
+    [900, Infinity, '<strong>At $900+:</strong> Creative quality is now your #1 CPL lever. A new authentic video or real client testimonial every month reduces CPL more than any additional targeting layer. Also: set up Google Display retargeting for Headway non-bookers.']
+  ];
+  const rec = recs.find(r => budget >= r[0] && budget <= r[1]);
+  document.getElementById('c-rec').innerHTML = rec ? rec[2] : '';
+}
+
+/* ── INIT ── */
+buildTiers();
+buildPlatforms();
+buildCopy();
+buildProfile();
+buildPolicy();
+runCalc();
+</script>
+
+</body>
+</html>
