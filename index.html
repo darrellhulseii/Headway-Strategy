@@ -4,194 +4,1046 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LMFT Brand & Marketing Guide — Magin + Hard Knockz Frameworks</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>LMFT Brand & Marketing Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+/* ═══════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════ */
 :root {
-  --forest:#1e3a2f;--forest2:#2a5040;--forest3:#3a7058;
-  --sage:#7aaa90;--mint:#dceee6;
-  --rust:#b5462a;--blush:#f5e0d8;
-  --gold:#9a7018;--butter:#f5e8c0;
-  --mauve:#6b4e6a;--lavender:#eedbe8;
-  --bg:#f8f5f0;--bg2:#f0ece4;
-  --white:#ffffff;--bdr:#ddd6ca;--bdr2:#ccc4b4;
-  --t1:#1a1510;--t2:#3d3020;--t3:#6b5e50;--t4:#9e9080;
+  --forest:   #1a3528;
+  --forest2:  #254d3b;
+  --forest3:  #336b53;
+  --sage:     #7aaa90;
+  --mint:     #e2f0e9;
+  --mint2:    #c8e3d4;
+  --rust:     #a83d22;
+  --rust2:    #c4582e;
+  --blush:    #f7e4dc;
+  --gold:     #8a6010;
+  --gold2:    #b07c18;
+  --butter:   #f5e9c0;
+  --mauve:    #5e4060;
+  --mauve2:   #7a5680;
+  --lavender: #ede0f0;
+  --bg:       #f7f4ef;
+  --bg2:      #ede9e1;
+  --bg3:      #e5e0d6;
+  --white:    #ffffff;
+  --bdr:      #dbd4c8;
+  --bdr2:     #c9c0b0;
+  --ink:      #1a1208;
+  --t1:       #1e160a;
+  --t2:       #3a2c18;
+  --t3:       #6a5a44;
+  --t4:       #9a8c78;
+  --t5:       #bfb4a4;
+  --nav-w:    240px;
+  --radius:   12px;
+  --shadow:   0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.06);
+  --shadow-lg:0 2px 8px rgba(0,0,0,.08), 0 12px 40px rgba(0,0,0,.10);
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
-.hdr{background:var(--forest);position:relative;overflow:hidden}
-.hdr-glow{position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 80% 40%,rgba(58,112,88,.25),transparent 60%),radial-gradient(ellipse 40% 60% at 10% 80%,rgba(181,70,42,.12),transparent 50%);pointer-events:none}
-.hdr-inner{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:52px 44px 48px}
-.hdr-tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--sage);display:flex;align-items:center;gap:10px;margin-bottom:18px}
-.hdr-tag::before{content:'';display:block;width:24px;height:1px;background:var(--sage)}
-.hdr-h1{font-family:'Playfair Display',serif;font-size:clamp(34px,5vw,62px);font-weight:400;color:#f4efe6;line-height:1.08;margin-bottom:14px}
-.hdr-h1 em{font-style:italic;color:#e8a888}
-.hdr-sub{font-size:15px;color:var(--sage);font-weight:300;max-width:580px;line-height:1.8;margin-bottom:28px}
-.hdr-sub strong{color:#ede6d8;font-weight:500}
-.hdr-credits{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px}
-.hdr-credit{background:rgba(122,170,144,.12);border:1px solid rgba(122,170,144,.22);border-radius:8px;padding:10px 16px;color:var(--sage);font-size:12px;display:flex;flex-direction:column;gap:2px}
-.hdr-credit strong{color:#e0d8cc;font-weight:600;font-size:13px}
-.hdr-credit span{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(122,170,144,.7)}
-.hdr-pills{display:flex;gap:8px;flex-wrap:wrap}
-.hdr-pill{background:rgba(122,170,144,.15);border:1px solid rgba(122,170,144,.25);color:var(--sage);padding:5px 12px;border-radius:16px;font-size:11.5px;font-weight:500}
-#nav{position:sticky;top:0;z-index:100;background:var(--forest);border-bottom:1px solid rgba(122,170,144,.15);box-shadow:0 2px 12px rgba(0,0,0,.2)}
-.nav-row{max-width:1060px;margin:0 auto;padding:0 44px;display:flex;overflow-x:auto}
-.nav-row::-webkit-scrollbar{height:2px}
-.nav-row::-webkit-scrollbar-thumb{background:var(--forest3)}
-.nt{padding:13px 18px;font-size:13px;font-weight:600;color:rgba(122,170,144,.65);border-bottom:2px solid transparent;white-space:nowrap;cursor:pointer;transition:all .18s;position:relative;top:1px}
-.nt:hover{color:#e0d8cc}.nt.on{color:#e8a888;border-bottom-color:#e8a888}
-.sec{display:none}.sec.on{display:block;animation:fadeup .28s ease}
-@keyframes fadeup{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
-.wrap{max-width:1060px;margin:0 auto;padding:52px 44px}
-.sh{margin-bottom:36px}
-.sh h2{font-family:'Playfair Display',serif;font-size:clamp(26px,3.8vw,44px);font-weight:400;line-height:1.1;margin-bottom:10px}
-.sh h2 em{font-style:italic;color:var(--rust)}
-.sh p{font-size:14px;color:var(--t3);max-width:620px;line-height:1.8}
-.sh .src-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--t4);margin-top:8px;display:flex;align-items:center;gap:8px}
-.sh .src-tag::before{content:'';display:block;width:18px;height:1px;background:var(--t4)}
-.box{border-radius:10px;padding:18px 22px;margin-bottom:24px;font-size:13.5px;line-height:1.75}
-.box p+p{margin-top:6px}
-.box.warn{background:var(--blush);border:1px solid rgba(181,70,42,.2);color:var(--t2)}.box.warn strong{color:var(--rust)}
-.box.tip{background:var(--mint);border:1px solid rgba(30,58,47,.18);color:var(--t2)}.box.tip strong{color:var(--forest)}
-.box.gold{background:var(--butter);border:1px solid rgba(154,112,24,.22);color:var(--t2)}.box.gold strong{color:var(--gold)}
-.box.mauve{background:var(--lavender);border:1px solid rgba(107,78,106,.2);color:var(--t2)}.box.mauve strong{color:var(--mauve)}
-.box.dark{background:var(--forest);color:var(--sage);border:none;padding:24px 28px}.box.dark strong{color:#f4efe6;font-size:16px;display:block;margin-bottom:8px}.box.dark .attr{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--sage);margin-top:12px;opacity:.7}
-.card{background:var(--white);border:1px solid var(--bdr);border-radius:12px;overflow:hidden}
-.card-p{padding:22px 24px}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
-.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.divider{height:1px;background:var(--bdr);margin:36px 0}
-.mono-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--t4);display:block;margin-bottom:8px}
-.badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:16px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;white-space:nowrap}
-.b-g{background:var(--mint);color:var(--forest);border:1px solid rgba(30,58,47,.2)}
-.b-r{background:var(--blush);color:var(--rust);border:1px solid rgba(181,70,42,.2)}
-.b-au{background:var(--butter);color:var(--gold);border:1px solid rgba(154,112,24,.2)}
-.b-k{background:#eee9e0;color:var(--t2);border:1px solid var(--bdr)}
-.b-m{background:var(--lavender);color:var(--mauve);border:1px solid rgba(107,78,106,.2)}
-.bq{border-left:3px solid var(--forest);margin:20px 0;padding:14px 20px;background:var(--mint);border-radius:0 8px 8px 0}
-.bq p{font-family:'Playfair Display',serif;font-size:17px;font-style:italic;color:var(--t1);line-height:1.65;margin-bottom:6px}
-.bq cite{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--t4)}
-.bq.r{border-left-color:var(--rust);background:var(--blush)}
-.bq.au{border-left-color:var(--gold);background:var(--butter)}
-.bq.m{border-left-color:var(--mauve);background:var(--lavender)}
-.step{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--bdr)}
-.step:last-child{border-bottom:none}
-.step-n{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--rust);min-width:22px;flex-shrink:0;padding-top:1px}
-.step h5{font-size:12.5px;font-weight:700;color:var(--t1);margin-bottom:2px}
-.step p{font-size:12px;color:var(--t3);line-height:1.55}
-.kv{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--bdr);font-size:12.5px}
-.kv:last-child{border-bottom:none}
-.kv-k{color:var(--t3)}.kv-v{font-family:'JetBrains Mono',monospace;font-size:11px}
-.hint{background:var(--mint);border:1px solid rgba(30,58,47,.18);border-radius:8px;padding:12px 15px;font-size:12.5px;color:var(--t2);line-height:1.65;margin-top:12px}
-.hint strong{color:var(--forest)}
-.hint.au{background:var(--butter);border-color:rgba(154,112,24,.2)}.hint.au strong{color:var(--gold)}
-.hint.m{background:var(--lavender);border-color:rgba(107,78,106,.2)}.hint.m strong{color:var(--mauve)}
-.ptbl{width:100%;border-collapse:collapse}
-.ptbl th{text-align:left;padding:11px 16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--t4);border-bottom:1px solid var(--bdr);background:var(--bg2)}
-.ptbl td{padding:13px 16px;font-size:12.5px;border-bottom:1px solid var(--bdr);vertical-align:top;line-height:1.65;color:var(--t2)}
-.ptbl tr:last-child td{border-bottom:none}
-.ptbl tr:hover td{background:var(--bg)}
-.ptbl .good{color:var(--forest);font-weight:600}.ptbl .bad{color:var(--rust)}
-.fw-card{background:var(--white);border:1px solid var(--bdr);border-radius:14px;overflow:hidden;margin-bottom:20px}
-.fw-head{padding:18px 24px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.fw-num{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:400;flex-shrink:0}
-.fw-head h3{font-size:16px;font-weight:700;flex:1;min-width:200px}
-.fw-head p{font-size:12px;color:var(--t3);flex-basis:100%}
-.fw-row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--bdr)}
-.fw-row:last-child{border-bottom:none}
-.fw-l{padding:18px 22px;border-right:1px solid var(--bdr)}
-.fw-r{padding:18px 22px;background:#faf8f4}
-.fw-l h4{font-size:12.5px;font-weight:700;margin-bottom:5px}
-.fw-l p{font-size:12.5px;color:var(--t3);line-height:1.65}
-.fw-r .rl{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:var(--t4);display:block;margin-bottom:7px}
-.abox{background:var(--white);border:1px solid var(--bdr);border-radius:7px;padding:11px 13px;font-size:12.5px;line-height:1.72;color:var(--t2)}
-.abox.good{border-left:3px solid var(--forest);background:var(--mint)}
-.pillar-card{background:var(--white);border:1px solid var(--bdr);border-radius:12px;overflow:hidden}
-.pillar-stripe{height:5px}
-.pillar-body{padding:20px}
-.pillar-icon{font-size:26px;margin-bottom:10px}
-.pillar-title{font-size:14px;font-weight:700;margin-bottom:6px}
-.pillar-desc{font-size:12.5px;color:var(--t3);line-height:1.65;margin-bottom:14px}
-.pillar-ex{font-size:12px;color:var(--t2);background:var(--bg);border:1px solid var(--bdr);border-radius:5px;padding:7px 11px;line-height:1.55;margin-bottom:6px}
-.gphase{background:var(--white);border:1px solid var(--bdr);border-radius:14px;overflow:hidden;margin-bottom:22px}
-.gp-hd{display:flex;align-items:stretch;border-bottom:1px solid var(--bdr)}
-.gp-num{background:var(--mauve);color:var(--lavender);font-family:'Playfair Display',serif;font-size:30px;font-weight:400;width:70px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.gp-meta{padding:16px 22px;flex:1}
-.gp-meta h3{font-size:16px;font-weight:700;margin-bottom:7px}
-.gp-badges{display:flex;gap:8px;flex-wrap:wrap}
-.gprow{display:grid;grid-template-columns:3fr 2fr;border-bottom:1px solid var(--bdr)}
-.gprow:last-child{border-bottom:none}
-.gpl{padding:18px 22px;border-right:1px solid var(--bdr)}
-.gpr{padding:18px 22px;background:#faf8f4}
-.gpl h4{font-size:13px;font-weight:700;margin-bottom:5px}
-.gpl p{font-size:12.5px;color:var(--t3);line-height:1.7}
-.gpr .rl{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:var(--t4);display:block;margin-bottom:7px}
-.gcopy{background:var(--white);border:1px solid var(--bdr);border-radius:7px;padding:12px 14px;font-size:12.5px;line-height:1.75;color:var(--t2)}
-.cal-week{background:var(--white);border:1px solid var(--bdr);border-radius:12px;overflow:hidden;margin-bottom:16px}
-.cal-hd{background:var(--forest);padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
-.cal-hd h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:400;color:#f4efe6}
-.cal-body{display:grid;grid-template-columns:repeat(7,1fr)}
-.cal-day{padding:12px 10px;border-right:1px solid var(--bdr);border-top:1px solid var(--bdr)}
-.cal-day:last-child{border-right:none}
-.cal-day .dn{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:var(--t4);margin-bottom:6px}
-.cal-day .dc{font-size:11px;color:var(--t2);line-height:1.55}
-.cal-day.hi{background:var(--mint)}
-.cal-day.off{background:var(--bg2);opacity:.6}
-.pdot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:3px;vertical-align:middle}
-.mt8{margin-top:8px}.mt12{margin-top:12px}.mt16{margin-top:16px}.mt20{margin-top:20px}.mt24{margin-top:24px}.mt32{margin-top:32px}
-.mb8{margin-bottom:8px}.mb12{margin-bottom:12px}.mb16{margin-bottom:16px}.mb20{margin-bottom:20px}.mb24{margin-bottom:24px}.mb32{margin-bottom:32px}
-.fw7{font-weight:700}.serif{font-family:'Playfair Display',serif}.mono{font-family:'JetBrains Mono',monospace}
-.t-r{color:var(--rust)}.t-g{color:var(--forest)}.t-au{color:var(--gold)}.t-m{color:var(--mauve)}.t-3{color:var(--t3)}.t-4{color:var(--t4)}
+
+/* ═══════════════════════════════════════════
+RESET & BASE
+═══════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+html { scroll-behavior: smooth }
+body {
+font-family: ‘Inter’, sans-serif;
+background: var(–bg);
+color: var(–t1);
+font-size: 14px;
+line-height: 1.6;
+-webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════════════════════════════════════
+LAYOUT: SIDEBAR + MAIN
+═══════════════════════════════════════════ */
+.layout { display: flex; min-height: 100vh }
+
+/* ─── SIDEBAR ─── */
+.sidebar {
+width: var(–nav-w);
+background: var(–forest);
+position: fixed;
+top: 0; left: 0; bottom: 0;
+display: flex;
+flex-direction: column;
+z-index: 200;
+overflow-y: auto;
+overflow-x: hidden;
+
+transition: transform .25s ease;
+}
+.sidebar::-webkit-scrollbar { width: 3px }
+.sidebar::-webkit-scrollbar-thumb { background: var(–forest3) }
+
+.sidebar-logo {
+padding: 28px 22px 20px;
+border-bottom: 1px solid rgba(255,255,255,.07);
+}
+.sidebar-logo .logo-tag {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 8px;
+letter-spacing: 2.5px;
+text-transform: uppercase;
+color: var(–sage);
+opacity: .7;
+display: block;
+margin-bottom: 6px;
+}
+.sidebar-logo .logo-title {
+font-family: ‘Playfair Display’, serif;
+font-size: 17px;
+color: #f0e8da;
+line-height: 1.25;
+font-weight: 400;
+}
+.sidebar-logo .logo-title em { font-style: italic; color: #e8a060 }
+
+.sidebar-section {
+padding: 18px 0 4px;
+}
+.sidebar-section-label {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 7.5px;
+letter-spacing: 2.5px;
+text-transform: uppercase;
+color: rgba(122,170,144,.45);
+padding: 0 22px;
+margin-bottom: 6px;
+display: block;
+}
+.nav-item {
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 9px 22px;
+cursor: pointer;
+transition: all .15s;
+border-left: 3px solid transparent;
+position: relative;
+}
+.nav-item:hover { background: rgba(255,255,255,.05) }
+.nav-item.on {
+background: rgba(122,170,144,.12);
+border-left-color: #e8a060;
+}
+.nav-item .nav-icon {
+width: 28px; height: 28px;
+border-radius: 7px;
+display: flex; align-items: center; justify-content: center;
+font-size: 13px;
+flex-shrink: 0;
+background: rgba(255,255,255,.06);
+transition: all .15s;
+}
+.nav-item.on .nav-icon { background: rgba(232,160,96,.15) }
+.nav-item .nav-label {
+font-size: 12.5px;
+font-weight: 500;
+color: rgba(224,216,204,.6);
+transition: color .15s;
+line-height: 1.3;
+}
+.nav-item:hover .nav-label { color: rgba(224,216,204,.85) }
+.nav-item.on .nav-label { color: #f0e8da; font-weight: 600 }
+
+.sidebar-footer {
+margin-top: auto;
+padding: 16px 22px;
+border-top: 1px solid rgba(255,255,255,.06);
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 9px;
+color: rgba(122,170,144,.4);
+line-height: 1.7;
+}
+
+/* ─── MAIN CONTENT ─── */
+.main {
+margin-left: var(–nav-w);
+flex: 1;
+min-width: 0;
+}
+
+/* ═══════════════════════════════════════════
+PAGE HEADER (hero per section)
+═══════════════════════════════════════════ */
+.page-hero {
+background: var(–forest);
+position: relative;
+overflow: hidden;
+padding: 48px 56px 44px;
+}
+.page-hero::before {
+content: ‘’;
+position: absolute;
+inset: 0;
+background:
+radial-gradient(ellipse 50% 120% at 90% 50%, rgba(51,107,83,.35) 0%, transparent 60%),
+radial-gradient(ellipse 30% 80% at 10% 80%, rgba(168,61,34,.15) 0%, transparent 50%);
+pointer-events: none;
+}
+.page-hero::after {
+content: ‘’;
+position: absolute;
+right: -40px; top: -40px;
+width: 280px; height: 280px;
+border-radius: 50%;
+border: 1px solid rgba(122,170,144,.08);
+}
+.hero-inner { position: relative; z-index: 1; max-width: 820px }
+.hero-eyebrow {
+display: flex;
+align-items: center;
+gap: 10px;
+margin-bottom: 14px;
+}
+.hero-eyebrow-icon {
+width: 32px; height: 32px;
+background: rgba(122,170,144,.15);
+border: 1px solid rgba(122,170,144,.25);
+border-radius: 8px;
+display: flex; align-items: center; justify-content: center;
+font-size: 14px;
+}
+.hero-eyebrow-text {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 9.5px;
+letter-spacing: 2.5px;
+text-transform: uppercase;
+color: var(–sage);
+}
+.hero-h1 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(26px, 3.5vw, 44px);
+font-weight: 400;
+color: #f0e8da;
+line-height: 1.1;
+margin-bottom: 12px;
+}
+.hero-h1 em { font-style: italic; color: #e8a060 }
+.hero-sub {
+font-size: 13.5px;
+color: rgba(122,170,144,.8);
+line-height: 1.75;
+max-width: 620px;
+margin-bottom: 20px;
+}
+.hero-sub strong { color: #d4c8b8; font-weight: 500 }
+.hero-tags {
+display: flex;
+flex-wrap: wrap;
+gap: 6px;
+}
+.hero-tag {
+background: rgba(122,170,144,.12);
+border: 1px solid rgba(122,170,144,.2);
+color: var(–sage);
+padding: 4px 11px;
+border-radius: 20px;
+font-size: 11px;
+font-weight: 500;
+}
+
+/* ═══════════════════════════════════════════
+SECTION CONTENT AREA
+═══════════════════════════════════════════ */
+.sec { display: none }
+.sec.on { display: block; animation: fadein .22s ease }
+@keyframes fadein { from { opacity: 0; transform: translateY(6px) } to { opacity: 1; transform: none } }
+
+.content { padding: 44px 56px 64px }
+
+/* ─── SECTION DIVIDER HEADING ─── */
+.s-head {
+display: flex;
+align-items: center;
+gap: 14px;
+margin-bottom: 24px;
+margin-top: 44px;
+}
+.s-head:first-child { margin-top: 0 }
+.s-head-accent {
+width: 4px;
+height: 28px;
+border-radius: 4px;
+flex-shrink: 0;
+}
+.s-head h3 {
+font-family: ‘Playfair Display’, serif;
+font-size: 22px;
+font-weight: 400;
+color: var(–t1);
+line-height: 1.2;
+}
+.s-head h3 em { font-style: italic; color: var(–rust) }
+.s-head-sub {
+font-size: 12px;
+color: var(–t4);
+margin-top: 2px;
+}
+.s-head .src-chip {
+margin-left: auto;
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 8.5px;
+letter-spacing: 1.5px;
+text-transform: uppercase;
+color: var(–t5);
+padding: 4px 10px;
+border: 1px solid var(–bdr);
+border-radius: 20px;
+white-space: nowrap;
+flex-shrink: 0;
+}
+
+hr.rule { height: 1px; background: var(–bdr); border: none; margin: 40px 0 }
+
+/* ═══════════════════════════════════════════
+CARDS
+═══════════════════════════════════════════ */
+.card {
+background: var(–white);
+border: 1px solid var(–bdr);
+border-radius: var(–radius);
+overflow: hidden;
+box-shadow: var(–shadow);
+}
+.card-p { padding: 22px 24px }
+.card-title {
+font-size: 13px;
+font-weight: 700;
+color: var(–t1);
+margin-bottom: 8px;
+}
+.card-desc { font-size: 12.5px; color: var(–t3); line-height: 1.7 }
+
+/* accent-top card */
+.card-accent { border-top: 3px solid var(–forest) }
+.card-accent.rust { border-top-color: var(–rust) }
+.card-accent.gold { border-top-color: var(–gold2) }
+.card-accent.mauve { border-top-color: var(–mauve) }
+
+/* stat card */
+.stat-card {
+background: var(–white);
+border: 1px solid var(–bdr);
+border-radius: var(–radius);
+padding: 20px 22px;
+box-shadow: var(–shadow);
+text-align: center;
+}
+.stat-num {
+font-family: ‘Playfair Display’, serif;
+font-size: 38px;
+line-height: 1;
+font-weight: 400;
+margin-bottom: 4px;
+}
+.stat-label {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 8px;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: var(–t4);
+display: block;
+margin-bottom: 6px;
+}
+.stat-sub { font-size: 10.5px; color: var(–t4); line-height: 1.4 }
+
+/* ═══════════════════════════════════════════
+GRIDS
+═══════════════════════════════════════════ */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px }
+.g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px }
+.g4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px }
+.g32 { display: grid; grid-template-columns: 3fr 2fr; gap: 16px }
+
+/* ═══════════════════════════════════════════
+CALLOUT BOXES
+═══════════════════════════════════════════ */
+.box {
+border-radius: 10px;
+padding: 16px 20px;
+margin-bottom: 20px;
+font-size: 13px;
+line-height: 1.75;
+border: 1px solid transparent;
+}
+.box strong { display: inline-block; margin-bottom: 4px }
+.box.tip  { background: var(–mint);     border-color: var(–mint2);               color: var(–t2) }
+.box.tip  strong { color: var(–forest) }
+.box.warn { background: var(–blush);    border-color: rgba(168,61,34,.2);          color: var(–t2) }
+.box.warn strong { color: var(–rust) }
+.box.gold { background: var(–butter);   border-color: rgba(138,96,16,.2);          color: var(–t2) }
+.box.gold strong { color: var(–gold) }
+.box.mauve{ background: var(–lavender); border-color: rgba(94,64,96,.2);           color: var(–t2) }
+.box.mauve strong { color: var(–mauve) }
+.box.dark {
+background: var(–forest);
+border-color: transparent;
+color: rgba(220,236,228,.85);
+padding: 22px 26px;
+}
+.box.dark strong { color: #f0e8da; font-size: 15px; display: block; margin-bottom: 8px }
+.box.dark .attr {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 8.5px;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: rgba(122,170,144,.5);
+margin-top: 12px;
+}
+
+/* ═══════════════════════════════════════════
+BLOCKQUOTE
+═══════════════════════════════════════════ */
+.bq {
+border-left: 3px solid var(–forest3);
+padding: 14px 20px;
+background: var(–mint);
+border-radius: 0 10px 10px 0;
+margin: 20px 0;
+}
+.bq p {
+font-family: ‘Playfair Display’, serif;
+font-size: 16.5px;
+font-style: italic;
+color: var(–t1);
+line-height: 1.65;
+margin-bottom: 6px;
+}
+.bq cite {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 8.5px;
+letter-spacing: 1.5px;
+text-transform: uppercase;
+color: var(–t4);
+}
+.bq.r  { border-left-color: var(–rust);  background: var(–blush) }
+.bq.au { border-left-color: var(–gold2); background: var(–butter) }
+.bq.m  { border-left-color: var(–mauve2);background: var(–lavender) }
+
+/* ═══════════════════════════════════════════
+STEP LIST
+═══════════════════════════════════════════ */
+.steps { }
+.step {
+display: flex;
+gap: 14px;
+padding: 12px 0;
+border-bottom: 1px solid var(–bdr);
+align-items: flex-start;
+}
+.step:last-child { border-bottom: none }
+.step-num {
+width: 24px; height: 24px;
+border-radius: 50%;
+background: var(–bg2);
+border: 1px solid var(–bdr);
+display: flex; align-items: center; justify-content: center;
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 9px;
+font-weight: 500;
+color: var(–t3);
+flex-shrink: 0;
+margin-top: 1px;
+}
+.step-num.rust { background: var(–blush); border-color: rgba(168,61,34,.2); color: var(–rust) }
+.step-num.g    { background: var(–mint);  border-color: rgba(26,53,40,.18); color: var(–forest) }
+.step h5 { font-size: 12.5px; font-weight: 700; color: var(–t1); margin-bottom: 3px }
+.step p  { font-size: 12px; color: var(–t3); line-height: 1.6 }
+
+/* ═══════════════════════════════════════════
+KEY-VALUE LIST
+═══════════════════════════════════════════ */
+.kv-list { }
+.kv {
+display: flex;
+justify-content: space-between;
+align-items: baseline;
+padding: 9px 0;
+border-bottom: 1px solid var(–bdr);
+gap: 12px;
+}
+.kv:last-child { border-bottom: none }
+.kv-k { font-size: 12.5px; color: var(–t3); min-width: 0; flex: 1 }
+.kv-v {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 11px;
+color: var(–t1);
+text-align: right;
+flex-shrink: 0;
+font-weight: 500;
+}
+.kv-v.g  { color: var(–forest) }
+.kv-v.r  { color: var(–rust) }
+.kv-v.au { color: var(–gold) }
+
+/* ═══════════════════════════════════════════
+HINT / CALLOUT INLINE
+═══════════════════════════════════════════ */
+.hint {
+background: var(–mint);
+border: 1px solid var(–mint2);
+border-radius: 8px;
+padding: 11px 14px;
+font-size: 12px;
+color: var(–t2);
+line-height: 1.65;
+margin-top: 12px;
+}
+.hint strong { color: var(–forest); font-weight: 600 }
+.hint.au { background: var(–butter); border-color: rgba(138,96,16,.18) }
+.hint.au strong { color: var(–gold) }
+.hint.m  { background: var(–lavender); border-color: rgba(94,64,96,.18) }
+.hint.m  strong { color: var(–mauve) }
+.hint.r  { background: var(–blush); border-color: rgba(168,61,34,.18) }
+.hint.r  strong { color: var(–rust) }
+
+/* ═══════════════════════════════════════════
+BADGE / CHIP
+═══════════════════════════════════════════ */
+.badge {
+display: inline-flex; align-items: center;
+padding: 3px 9px;
+border-radius: 20px;
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 9.5px; font-weight: 500;
+white-space: nowrap; letter-spacing: .3px;
+}
+.b-g  { background: var(–mint);     color: var(–forest); border: 1px solid var(–mint2) }
+.b-r  { background: var(–blush);    color: var(–rust);   border: 1px solid rgba(168,61,34,.2) }
+.b-au { background: var(–butter);   color: var(–gold);   border: 1px solid rgba(138,96,16,.2) }
+.b-k  { background: var(–bg2);      color: var(–t2);     border: 1px solid var(–bdr) }
+.b-m  { background: var(–lavender); color: var(–mauve);  border: 1px solid rgba(94,64,96,.2) }
+.b-dk { background: var(–forest);   color: var(–sage);   border: 1px solid var(–forest2) }
+
+/* mono label */
+.mlabel {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 8.5px;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: var(–t4);
+display: block;
+margin-bottom: 8px;
+}
+
+/* ═══════════════════════════════════════════
+TABLES
+═══════════════════════════════════════════ */
+.tbl-wrap { border-radius: var(–radius); overflow: hidden; border: 1px solid var(–bdr); box-shadow: var(–shadow); margin-bottom: 24px }
+.tbl-head {
+padding: 12px 18px;
+background: var(–bg2);
+border-bottom: 1px solid var(–bdr);
+display: flex; align-items: center; justify-content: space-between;
+}
+.tbl-head-title { font-size: 12px; font-weight: 700; color: var(–t2) }
+table.ptbl { width: 100%; border-collapse: collapse }
+table.ptbl th {
+text-align: left;
+padding: 10px 16px;
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 8.5px;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: var(–t4);
+background: var(–bg2);
+border-bottom: 1px solid var(–bdr);
+font-weight: 500;
+}
+table.ptbl td {
+padding: 12px 16px;
+font-size: 12.5px;
+border-bottom: 1px solid var(–bdr);
+vertical-align: top;
+line-height: 1.6;
+color: var(–t2);
+}
+table.ptbl tr:last-child td { border-bottom: none }
+table.ptbl tbody tr:hover td { background: #faf8f3 }
+table.ptbl .fw7 { font-weight: 700; color: var(–t1) }
+table.ptbl .c-g  { color: var(–forest); font-weight: 600 }
+table.ptbl .c-r  { color: var(–rust) }
+table.ptbl .c-au { color: var(–gold) }
+table.ptbl .c-m  { color: var(–mauve) }
+table.ptbl tr.hi td { background: var(–mint) }
+
+/* ═══════════════════════════════════════════
+FRAMEWORK CARDS (concept | application)
+═══════════════════════════════════════════ */
+.fw-card {
+background: var(–white);
+border: 1px solid var(–bdr);
+border-radius: var(–radius);
+overflow: hidden;
+margin-bottom: 18px;
+box-shadow: var(–shadow);
+}
+.fw-card-head {
+padding: 16px 20px;
+border-bottom: 1px solid var(–bdr);
+display: flex;
+align-items: center;
+gap: 12px;
+background: #faf8f4;
+cursor: pointer;
+user-select: none;
+}
+.fw-card-head:hover { background: var(–bg2) }
+.fw-num {
+width: 36px; height: 36px;
+border-radius: 10px;
+display: flex; align-items: center; justify-content: center;
+font-family: ‘Playfair Display’, serif;
+font-size: 18px;
+font-weight: 400;
+flex-shrink: 0;
+}
+.fw-card-head h3 { font-size: 14px; font-weight: 700; flex: 1; color: var(–t1) }
+.fw-card-head p  { font-size: 11.5px; color: var(–t3); flex-basis: 100%; margin-top: 2px; display: none }
+.fw-card-head .toggle-icon {
+font-size: 11px; color: var(–t4); flex-shrink: 0;
+transition: transform .2s;
+}
+.fw-card.open .toggle-icon { transform: rotate(180deg) }
+.fw-card-body { display: none }
+.fw-card.open .fw-card-body { display: block }
+.fw-row {
+display: grid;
+grid-template-columns: 1fr 1fr;
+border-bottom: 1px solid var(–bdr);
+}
+.fw-row:last-child { border-bottom: none }
+.fw-l { padding: 16px 20px; border-right: 1px solid var(–bdr) }
+.fw-r { padding: 16px 20px; background: #faf8f4 }
+.fw-l h4 { font-size: 12.5px; font-weight: 700; color: var(–t1); margin-bottom: 4px }
+.fw-l p  { font-size: 12px; color: var(–t3); line-height: 1.65 }
+.fw-r .rl {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 8px; letter-spacing: 2px;
+text-transform: uppercase; color: var(–t4);
+display: block; margin-bottom: 7px;
+}
+.abox {
+background: var(–white);
+border: 1px solid var(–bdr);
+border-radius: 8px;
+padding: 11px 13px;
+font-size: 12px;
+line-height: 1.7;
+color: var(–t2);
+}
+.abox.good { border-left: 3px solid var(–forest); background: var(–mint) }
+
+/* ═══════════════════════════════════════════
+PILLAR CARDS
+═══════════════════════════════════════════ */
+.pillar-card {
+background: var(–white);
+border: 1px solid var(–bdr);
+border-radius: var(–radius);
+overflow: hidden;
+box-shadow: var(–shadow);
+}
+.pillar-stripe { height: 4px }
+.pillar-body { padding: 18px 20px }
+.pillar-icon { font-size: 24px; margin-bottom: 10px }
+.pillar-title { font-size: 13.5px; font-weight: 700; margin-bottom: 6px; color: var(–t1) }
+.pillar-desc { font-size: 12px; color: var(–t3); line-height: 1.65; margin-bottom: 12px }
+.pillar-ex {
+font-size: 11.5px; color: var(–t2);
+background: var(–bg); border: 1px solid var(–bdr);
+border-radius: 6px; padding: 7px 10px;
+line-height: 1.55; margin-bottom: 5px;
+}
+
+/* ═══════════════════════════════════════════
+CALENDAR
+═══════════════════════════════════════════ */
+.cal-week {
+background: var(–white);
+border: 1px solid var(–bdr);
+border-radius: var(–radius);
+overflow: hidden;
+margin-bottom: 14px;
+box-shadow: var(–shadow);
+}
+.cal-hd {
+background: var(–forest);
+padding: 11px 18px;
+display: flex; align-items: center; justify-content: space-between;
+}
+.cal-hd h3 {
+font-family: ‘Playfair Display’, serif;
+font-size: 16px; font-weight: 400; color: #f0e8da;
+}
+.cal-body { display: grid; grid-template-columns: repeat(7, 1fr) }
+.cal-day {
+padding: 11px 9px;
+border-right: 1px solid var(–bdr);
+border-top: 1px solid var(–bdr);
+}
+.cal-day:last-child { border-right: none }
+.cal-day .dn {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 7.5px; letter-spacing: 1.5px;
+text-transform: uppercase; color: var(–t4); margin-bottom: 6px;
+}
+.cal-day .dc { font-size: 10.5px; color: var(–t2); line-height: 1.5 }
+.cal-day.hi { background: var(–mint) }
+.cal-day.off { background: var(–bg2); opacity: .6 }
+.pdot { display: inline-block; width: 5px; height: 5px; border-radius: 50%; margin-right: 3px; vertical-align: middle }
+
+/* ═══════════════════════════════════════════
+GROUP THERAPY PHASES
+═══════════════════════════════════════════ */
+.gphase {
+background: var(–white);
+border: 1px solid var(–bdr);
+border-radius: var(–radius);
+overflow: hidden;
+margin-bottom: 18px;
+box-shadow: var(–shadow);
+}
+.gp-hd { display: flex; align-items: stretch; border-bottom: 1px solid var(–bdr) }
+.gp-num {
+background: var(–mauve);
+color: var(–lavender);
+font-family: ‘Playfair Display’, serif;
+font-size: 28px; font-weight: 400;
+width: 66px;
+display: flex; align-items: center; justify-content: center;
+flex-shrink: 0;
+}
+.gp-meta { padding: 14px 20px; flex: 1 }
+.gp-meta h3 { font-size: 15px; font-weight: 700; margin-bottom: 7px; color: var(–t1) }
+.gp-badges { display: flex; gap: 6px; flex-wrap: wrap }
+.gprow {
+display: grid;
+grid-template-columns: 3fr 2fr;
+border-bottom: 1px solid var(–bdr);
+}
+.gprow:last-child { border-bottom: none }
+.gpl { padding: 16px 20px; border-right: 1px solid var(–bdr) }
+.gpr { padding: 16px 20px; background: #faf8f4 }
+.gpl h4 { font-size: 12.5px; font-weight: 700; margin-bottom: 4px; color: var(–t1) }
+.gpl p  { font-size: 12px; color: var(–t3); line-height: 1.7 }
+.gpr .rl {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 8px; letter-spacing: 2px;
+text-transform: uppercase; color: var(–t4);
+display: block; margin-bottom: 7px;
+}
+.gcopy {
+background: var(–white);
+border: 1px solid var(–bdr);
+border-radius: 8px;
+padding: 11px 13px;
+font-size: 12px; line-height: 1.75; color: var(–t2);
+}
+
+/* ═══════════════════════════════════════════
+COPY TEMPLATE BOXES
+═══════════════════════════════════════════ */
+.copy-block {
+background: var(–forest);
+border-radius: 10px;
+overflow: hidden;
+margin-bottom: 14px;
+box-shadow: var(–shadow);
+}
+.copy-block-head {
+padding: 10px 16px;
+border-bottom: 1px solid rgba(255,255,255,.08);
+display: flex; align-items: center; justify-content: space-between;
+}
+.copy-block-head .lbl {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 8.5px; letter-spacing: 2px;
+text-transform: uppercase; color: var(–sage);
+}
+.copy-block-body {
+padding: 14px 16px;
+font-size: 12.5px; line-height: 1.8;
+color: rgba(220,236,228,.85);
+white-space: pre-line;
+}
+.copy-block-body strong { color: #f0e8da }
+
+/* ═══════════════════════════════════════════
+HOOK GRID
+═══════════════════════════════════════════ */
+.hook-card {
+background: var(–white);
+border: 1px solid var(–bdr);
+border-radius: var(–radius);
+overflow: hidden;
+box-shadow: var(–shadow);
+}
+.hook-card-head {
+display: flex;
+border-bottom: 1px solid var(–bdr);
+}
+.hook-letter {
+width: 52px;
+background: var(–forest);
+display: flex; align-items: center; justify-content: center;
+font-family: ‘Playfair Display’, serif;
+font-size: 24px; font-weight: 400;
+color: #e8a060;
+flex-shrink: 0;
+}
+.hook-meta { padding: 12px 16px }
+.hook-meta h4 { font-size: 13px; font-weight: 700; color: var(–t1); margin-bottom: 3px }
+.hook-meta p  { font-size: 11.5px; color: var(–t3) }
+.hook-body { padding: 14px 16px }
+.hook-formula {
+background: var(–bg);
+border: 1px solid var(–bdr);
+border-radius: 7px;
+padding: 9px 12px;
+font-size: 11.5px; color: var(–t3); line-height: 1.6;
+margin-bottom: 10px;
+}
+.hook-formula strong { color: var(–forest) }
+.hook-ex {
+display: flex; gap: 8px;
+padding: 6px 0;
+border-bottom: 1px solid var(–bdr);
+align-items: flex-start;
+}
+.hook-ex:last-child { border-bottom: none }
+.hook-ex-tag {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 8.5px;
+color: var(–rust);
+flex-shrink: 0;
+padding-top: 1px;
+min-width: 22px;
+}
+.hook-ex p { font-size: 12px; color: var(–t2); font-style: italic; line-height: 1.55 }
+
+/* ═══════════════════════════════════════════
+SOURCE CREDIT
+═══════════════════════════════════════════ */
+.src {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 9px; color: var(–t5);
+padding-top: 14px;
+border-top: 1px solid var(–bdr);
+margin-top: 32px;
+line-height: 1.9;
+letter-spacing: .3px;
+}
+
+/* ═══════════════════════════════════════════
+UTILITIES
+═══════════════════════════════════════════ */
+.mt4{margin-top:4px}.mt8{margin-top:8px}.mt12{margin-top:12px}.mt16{margin-top:16px}.mt20{margin-top:20px}.mt24{margin-top:24px}.mt32{margin-top:32px}
+.mb4{margin-bottom:4px}.mb8{margin-bottom:8px}.mb12{margin-bottom:12px}.mb16{margin-bottom:16px}.mb20{margin-bottom:20px}.mb24{margin-bottom:24px}.mb32{margin-bottom:32px}
+.fw7{font-weight:700}.fw5{font-weight:500}
+.serif{font-family:‘Playfair Display’,serif}
+.mono{font-family:‘JetBrains Mono’,monospace}
+.t-g{color:var(–forest)}.t-r{color:var(–rust)}.t-au{color:var(–gold)}.t-m{color:var(–mauve)}
+.t-3{color:var(–t3)}.t-4{color:var(–t4)}
 .sm{font-size:12.5px}.xs{font-size:11px}.lh18{line-height:1.8}
-.src{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--t4);letter-spacing:.5px;padding-top:14px;border-top:1px solid var(--bdr);margin-top:24px;line-height:1.8}
+.text-center{text-align:center}
+.flex{display:flex}.items-center{align-items:center}.gap-6{gap:6px}.gap-8{gap:8px}.gap-10{gap:10px}.flex-wrap{flex-wrap:wrap}
+.bold-big { font-family:‘Playfair Display’,serif; font-size:clamp(28px,3vw,38px); font-weight:400; line-height:1 }
+
+/* ── Missing utility classes ── */
+.divider { height:1px; background:var(–bdr); margin:32px 0; border:none; }
+.mono-label { font-family:‘JetBrains Mono’,monospace; font-size:8px; letter-spacing:2px; text-transform:uppercase; color:var(–t4); display:block; margin-bottom:8px; }
+.mb6 { margin-bottom:6px; }
+.fw-head { padding:16px 22px; border-bottom:1px solid var(–bdr); display:flex; align-items:center; gap:14px; flex-wrap:wrap; background:#fafaf7; }
+.fw-head h3 { font-size:15px; font-weight:700; color:var(–t1); flex:1; }
+.fw-head p  { font-size:12px; color:var(–t3); flex-basis:100%; margin-top:2px; }
+
+/* ── Mobile hamburger ── */
+.menu-btn {
+display:none;
+position:fixed; top:12px; left:12px; z-index:400;
+width:40px; height:40px; border-radius:10px;
+background:var(–forest); border:none; cursor:pointer;
+flex-direction:column; align-items:center; justify-content:center; gap:5px;
+box-shadow:0 2px 12px rgba(0,0,0,.3);
+}
+.menu-btn span { display:block; width:18px; height:2px; background:var(–sage); border-radius:2px; transition:.2s ease; }
+.menu-btn.open span:nth-child(1){ transform:rotate(45deg) translate(5px,5px); }
+.menu-btn.open span:nth-child(2){ opacity:0; }
+.menu-btn.open span:nth-child(3){ transform:rotate(-45deg) translate(5px,-5px); }
+
+.overlay {
+display:none; position:fixed; inset:0;
+background:rgba(0,0,0,.45); z-index:250;
+opacity:0; transition:opacity .25s;
+}
+.overlay.visible { opacity:1; }
+
+/* ── Table scroll wrapper ── */
+.tbl-scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.tbl-scroll table.ptbl { min-width:520px; }
+
+/* ════ RESPONSIVE ════ */
+@media (max-width: 900px) {
+:root { –nav-w: 220px; }
+}
+
+@media (max-width: 768px) {
+/* Show hamburger, hide sidebar by default */
+.menu-btn { display:flex; }
+.overlay  { display:block; }
+
+.sidebar {
+transform: translateX(calc(-1 * var(–nav-w)));
+transition: transform .25s ease;
+box-shadow: none;
+}
+.sidebar.open {
+transform: translateX(0);
+box-shadow: 4px 0 24px rgba(0,0,0,.25);
+}
+
+.main { margin-left: 0 !important; }
+
+/* Hero padding */
+.page-hero  { padding: 52px 20px 28px; }
+.wrap       { padding: 24px 20px 48px; }
+
+/* Collapse all 2+ col grids to single column */
+.g2, .g3, .g4, .g32 { grid-template-columns: 1fr !important; }
+
+/* fw-card rows stack */
+.fw-row  { grid-template-columns: 1fr !important; }
+.fw-l    { border-right: none; border-bottom: 1px solid var(–bdr); }
+.fw-r    { background: var(–bg); }
+
+/* group therapy rows stack */
+.gprow   { grid-template-columns: 1fr !important; }
+.gpl     { border-right: none; border-bottom: 1px solid var(–bdr); }
+.gpr     { background: var(–bg); }
+
+/* calendar: allow horizontal scroll */
+.cal-body { grid-template-columns: repeat(7, minmax(90px,1fr)); overflow-x: auto; }
+
+/* headings */
+.sh h2, .hero-h1 { font-size: 22px !important; }
+.sh p, .hero-sub { font-size: 12.5px; }
+
+/* nav sticky offset for hamburger */
+#nav { padding-left: 52px; }
+}
+
+@media (max-width: 480px) {
+.page-hero { padding: 52px 16px 24px; }
+.content   { padding: 20px 16px 40px; }
+.wrap      { padding: 20px 16px 40px; }
+.hero-h1   { font-size: 20px !important; }
+.g4        { grid-template-columns: 1fr 1fr !important; }
+.stat-num  { font-size: 28px; }
+}
+
 </style>
 </head>
 <body>
 
-<header class="hdr">
-<div class="hdr-glow"></div>
-<div class="hdr-inner">
-  <p class="hdr-tag">LMFT Brand & Marketing Guide</p>
-  <h1 class="hdr-h1">Build a practice people<br>already <em>trust before they call.</em></h1>
-  <p class="hdr-sub">A complete branding, content, and client-acquisition system for LMFTs — built on the proven frameworks of <strong>Ryan Magin</strong> (personal brand & viral content strategy) and <strong>The School of Hard Knockz</strong> (attention-first media). Includes a dedicated section on growing a group therapy practice.</p>
-  <div class="hdr-credits">
-    <div class="hdr-credit"><strong>Ryan Magin (@ryanmagin)</strong><span>Founder, Viral Edits · Content & Brand Strategist</span></div>
-    <div class="hdr-credit"><strong>The School of Hard Knockz</strong><span>James Dumoulin · Attention-First Media Strategy · 1.9M YouTube</span></div>
-  </div>
-  <div class="hdr-pills">
-    <span class="hdr-pill">✓ One-Line Brand Positioning</span>
-    <span class="hdr-pill">✓ Magin's Hook Quadrant</span>
-    <span class="hdr-pill">✓ Hard Knockz Attention Model</span>
-    <span class="hdr-pill">✓ 90-Day Content Calendar</span>
-    <span class="hdr-pill">✓ Group Therapy Growth System</span>
-    <span class="hdr-pill">✓ Headway Profile Brand Rewrite</span>
-  </div>
-</div>
-</header>
+<button class="menu-btn" id="menuBtn" aria-label="Open menu">
+  <span></span><span></span><span></span>
+</button>
+<div class="overlay" id="overlay"></div>
 
-<nav id="nav">
-<div class="nav-row">
-  <div class="nt on" onclick="go('brand')">Brand Foundation</div>
-  <div class="nt" onclick="go('magin')">Magin Content System</div>
-  <div class="nt" onclick="go('knockz')">Hard Knockz Framework</div>
-  <div class="nt" onclick="go('pillars')">Content Pillars</div>
-  <div class="nt" onclick="go('calendar')">90-Day Calendar</div>
-  <div class="nt" onclick="go('headway')">Headway Profile Brand</div>
-  <div class="nt" onclick="go('group')">🌿 Group Therapy Practice</div>
-</div>
+<div class="layout">
+
+<!-- ════ SIDEBAR ════ -->
+
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <span class="logo-tag">LMFT Guide</span>
+    <div class="logo-title">Brand &amp; Marketing<br><em>Complete System</em></div>
+  </div>
+
+  <div class="sidebar-section">
+    <span class="sidebar-section-label">Strategy</span>
+    <div class="nav-item on" onclick="go('brand')">
+      <div class="nav-icon">🎯</div>
+      <div>
+        <div class="nav-label">Brand Foundation</div>
+      </div>
+    </div>
+    <div class="nav-item" onclick="go('magin')">
+      <div class="nav-icon">🎬</div>
+      <div><div class="nav-label">Magin Content System</div></div>
+    </div>
+    <div class="nav-item" onclick="go('knockz')">
+      <div class="nav-icon">⚡</div>
+      <div><div class="nav-label">Hard Knockz Framework</div></div>
+    </div>
+  </div>
+
+  <div class="sidebar-section">
+    <span class="sidebar-section-label">Content</span>
+    <div class="nav-item" onclick="go('pillars')">
+      <div class="nav-icon">🏛</div>
+      <div><div class="nav-label">Content Pillars</div></div>
+    </div>
+    <div class="nav-item" onclick="go('calendar')">
+      <div class="nav-icon">📅</div>
+      <div><div class="nav-label">90-Day Calendar</div></div>
+    </div>
+  </div>
+
+  <div class="sidebar-section">
+    <span class="sidebar-section-label">Acquisition</span>
+    <div class="nav-item" onclick="go('headway')">
+      <div class="nav-icon">📋</div>
+      <div><div class="nav-label">Headway Profile Brand</div></div>
+    </div>
+    <div class="nav-item" onclick="go('paid')">
+      <div class="nav-icon">💰</div>
+      <div><div class="nav-label">Paid Ads &amp; All Media</div></div>
+    </div>
+  </div>
+
+  <div class="sidebar-section">
+    <span class="sidebar-section-label">Scale</span>
+    <div class="nav-item" onclick="go('group')">
+      <div class="nav-icon">🌿</div>
+      <div><div class="nav-label">Group Therapy Practice</div></div>
+    </div>
+  </div>
+
+  <div class="sidebar-footer">
+    Ryan Magin · @ryanmagin<br>
+    School of Hard Knockz<br>
+    Magin + Hard Knockz Frameworks<br>
+    2024–2025 Benchmarks
+  </div>
 </nav>
+
+<!-- ════ MAIN ════ -->
+
+<div class="main">
 
 <!-- ══════ SECTION 1: BRAND FOUNDATION ══════ -->
 
 <section class="sec on" id="sec-brand">
-<div class="wrap">
-<div class="sh">
-  <h2>Brand <em>Foundation</em></h2>
-  <p>Before you post a single reel or run a single ad, you need your "one line" — what people say about you when you're not in the room. Ryan Magin's entire content and brand philosophy starts here.</p>
-  <p class="src-tag">Ryan Magin @ryanmagin — LinkedIn, Viral Edits founder, Chris Van Vliet podcast</p>
+<div class="page-hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-icon">🎯</div>
+      <span class="hero-eyebrow-text">LMFT Brand & Marketing Guide</span>
+    </div>
+    <h1 class="hero-h1">Brand <em>Foundation</em></h1>
+    <p class="hero-sub">Before you post a single reel or run a single ad, you need your "one line" — what people say about you when you're not in the room. Ryan Magin's entire content and brand philosophy starts here.</p>
+    <div class="hero-tags"><span class="hero-tag">📎 Ryan Magin @ryanmagin — LinkedIn, Viral Edits founder, Chris Van Vliet podcast</span></div>
+  </div>
 </div>
+<div class="content">
 
 <div class="bq">
   <p>"Your brand isn't about what you claim. It's about what sticks when you're not in the room. If your brand can't be distilled into one repeatable truth, it won't scale — no matter how good the marketing looks."</p>
@@ -205,19 +1057,19 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);font-si
 <h3 class="serif mb16 mt32" style="font-size:26px;font-weight:400">Building Your <em>One Line</em></h3>
 <div class="g3 mb32">
   <div class="card card-p">
-    <div class="mono-label">Component 1 — Your Person</div>
+    <div class="mlabel">Component 1 — Your Person</div>
     <div class="serif t-g mb8" style="font-size:20px;font-weight:400">Who exactly</div>
     <p class="sm t-3 lh18 mb12">Be specific. "Couples" is not a person. "Newly married couples in their 30s who are shocked that this person they loved is now the person they fight with most" — that's a person. The narrower your person, the louder your signal reaches them. Magin: if you're reaching everybody, you're reaching nobody.</p>
     <div class="hint"><strong>LMFT person examples:</strong> Newly married couples · First-responder families · New parents losing their partnership · Multicultural couples · High-conflict couples who've already tried therapy · Couples considering divorce</div>
   </div>
   <div class="card card-p">
-    <div class="mono-label">Component 2 — The Outcome</div>
+    <div class="mlabel">Component 2 — The Outcome</div>
     <div class="serif t-r mb8" style="font-size:20px;font-weight:400">Transformation, not service</div>
     <p class="sm t-3 lh18 mb12">People don't want "couples therapy." They want to feel heard by their partner again. They want to stop having the same fight. They want to like each other again. Name the outcome they actually want — not the clinical service you provide.</p>
     <div class="hint"><strong>LMFT outcome examples:</strong> Actually feel heard · Stop the loop argument · Reconnect after having kids · Trust each other again · Say the thing they've been avoiding · Stop feeling like roommates</div>
   </div>
   <div class="card card-p">
-    <div class="mono-label">Component 3 — Remove the Frustration</div>
+    <div class="mlabel">Component 3 — Remove the Frustration</div>
     <div class="serif t-au mb8" style="font-size:20px;font-weight:400">The objection inside the positioning</div>
     <p class="sm t-3 lh18 mb12">Build the main barrier removal into your positioning. "Without waiting months for a slot" or "without feeling like you're being analyzed." For Headway users: "without the insurance guessing game" is your most powerful removal — name it in your one line.</p>
     <div class="hint"><strong>Frustration removals:</strong> Without feeling judged · Without waiting months · Without the insurance headache · Without having to explain your cultural background · Without rehashing everything from childhood</div>
@@ -230,8 +1082,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);font-si
 </div>
 
 <h3 class="serif mb16 mt24" style="font-size:22px;font-weight:400">One-Line Positioning <em>Examples for LMFTs</em></h3>
-<div class="card" style="overflow:hidden;margin-bottom:24px">
-<table class="ptbl">
+<div class="tbl-wrap" style="margin-bottom:24px">
+<div class="tbl-scroll"><table class="ptbl">
 <thead><tr><th>Niche</th><th>Your One Line</th><th>Where It Goes</th></tr></thead>
 <tbody>
 <tr><td class="fw7">General couples</td><td>I help couples who still love each other but can't seem to talk about anything without it becoming a fight.</td><td>Headway bio, Instagram bio, every ad headline</td></tr>
@@ -241,7 +1093,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);font-si
 <tr><td class="fw7">High-conflict couples</td><td>I work with couples who have tried everything — talking less, talking more — and nothing has worked yet.</td><td>Google ads, Nextdoor, profile bio headline</td></tr>
 <tr><td class="fw7">Divorce-adjacent</td><td>I help couples decide — with clarity, without regret — whether to repair or let go.</td><td>High-intent Google keywords, profile bio</td></tr>
 </tbody>
-</table>
+</table></div>
 </div>
 
 <h3 class="serif mb16" style="font-size:22px;font-weight:400">The Niche-Down <em>Ladder</em></h3>
@@ -249,11 +1101,11 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);font-si
 <div class="g2">
 <div>
   <div class="mono-label mb12">Broadest → Most Powerful</div>
-  <div class="step"><div class="step-n">L1</div><div><h5>Therapist</h5><p>Too broad. You reach no one specifically. This is where most therapists stop when describing themselves.</p></div></div>
-  <div class="step"><div class="step-n">L2</div><div><h5>Marriage & Family Therapist</h5><p>Credential, not positioning. No differentiation from 10,000 other LMFTs in a directory.</p></div></div>
-  <div class="step"><div class="step-n">L3</div><div><h5>Couples Therapist in [City]</h5><p>Adds geography. Better. Still generic. Your Headway profile probably already says this.</p></div></div>
-  <div class="step"><div class="step-n">L4</div><div><h5>Couples Therapist for People Who've Tried Therapy Before</h5><p>Specific enough that a certain person reads it and thinks "that's exactly me." This is your content persona.</p></div></div>
-  <div class="step"><div class="step-n">L5</div><div><h5>"I help couples who love each other but can't stop having the same fight figure out what's actually happening beneath it."</h5><p>This is your one line. It stops the scroll. It's what Magin means. People repeat it to their friends.</p></div></div>
+  <div class="step"><div class="step-num rust">L1</div><div><h5>Therapist</h5><p>Too broad. You reach no one specifically. This is where most therapists stop when describing themselves.</p></div></div>
+  <div class="step"><div class="step-num rust">L2</div><div><h5>Marriage & Family Therapist</h5><p>Credential, not positioning. No differentiation from 10,000 other LMFTs in a directory.</p></div></div>
+  <div class="step"><div class="step-num rust">L3</div><div><h5>Couples Therapist in [City]</h5><p>Adds geography. Better. Still generic. Your Headway profile probably already says this.</p></div></div>
+  <div class="step"><div class="step-num rust">L4</div><div><h5>Couples Therapist for People Who've Tried Therapy Before</h5><p>Specific enough that a certain person reads it and thinks "that's exactly me." This is your content persona.</p></div></div>
+  <div class="step"><div class="step-num rust">L5</div><div><h5>"I help couples who love each other but can't stop having the same fight figure out what's actually happening beneath it."</h5><p>This is your one line. It stops the scroll. It's what Magin means. People repeat it to their friends.</p></div></div>
 </div>
 <div>
   <div class="mono-label mb12">What Happens at Each Level</div>
@@ -289,12 +1141,18 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);font-si
 <!-- ══════ SECTION 2: MAGIN CONTENT SYSTEM ══════ -->
 
 <section class="sec" id="sec-magin">
-<div class="wrap">
-<div class="sh">
-  <h2>Magin's <em>Content System</em></h2>
-  <p>Ryan Magin built Viral Edits from zero to $500K in year one on a small set of repeatable video principles. These apply directly to an LMFT building a practice-filling social presence. Every principle is translated with a therapist-specific application.</p>
-  <p class="src-tag">Ryan Magin @ryanmagin — Chris Van Vliet podcast, LinkedIn, Viral Edits agency</p>
+<div class="page-hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-icon">🎬</div>
+      <span class="hero-eyebrow-text">LMFT Brand & Marketing Guide</span>
+    </div>
+    <h1 class="hero-h1">Magin's <em>Content System</em></h1>
+    <p class="hero-sub">Ryan Magin built Viral Edits from zero to $500K in year one on a small set of repeatable video principles. These apply directly to an LMFT building a practice-filling social presence. Every principle is translated with a therapist-specific application.</p>
+    <div class="hero-tags"><span class="hero-tag">📎 Ryan Magin @ryanmagin — Chris Van Vliet podcast, LinkedIn, Viral Edits agency</span></div>
+  </div>
 </div>
+<div class="content">
 
 <h3 class="serif mb16" style="font-size:24px;font-weight:400">The Hook <em>Quadrant</em></h3>
 <div class="bq">
@@ -311,35 +1169,35 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);font-si
     <div class="fw7 mb8 serif" style="font-size:16px">Show them themselves</div>
     <p class="sm t-3 lh18 mb12">Describe their internal experience so accurately they feel seen before you've offered anything. No framing. No setup. Just the experience — stated plainly, with clinical precision that reads as human warmth.</p>
     <div class="hint mb12"><strong>Formula:</strong> "When you [deeply specific experience] and nobody around you understands why."</div>
-    <div class="step"><div class="step-n">EX</div><div><p style="font-style:italic;font-size:13px">"When you love someone but feel completely alone inside the relationship."</p></div></div>
-    <div class="step"><div class="step-n">EX</div><div><p style="font-style:italic;font-size:13px">"When you're trying to apologize but you can't stop defending yourself at the same time."</p></div></div>
-    <div class="step"><div class="step-n">EX</div><div><p style="font-style:italic;font-size:13px">"When you don't even know what you're fighting about anymore — it just keeps happening."</p></div></div>
+    <div class="step"><div class="step-num rust">EX</div><div><p style="font-style:italic;font-size:13px">"When you love someone but feel completely alone inside the relationship."</p></div></div>
+    <div class="step"><div class="step-num rust">EX</div><div><p style="font-style:italic;font-size:13px">"When you're trying to apologize but you can't stop defending yourself at the same time."</p></div></div>
+    <div class="step"><div class="step-num rust">EX</div><div><p style="font-style:italic;font-size:13px">"When you don't even know what you're fighting about anymore — it just keeps happening."</p></div></div>
   </div>
   <div class="card card-p">
     <div class="mono-label mb8">Hook Type B — The Provocation</div>
     <div class="fw7 mb8 serif" style="font-size:16px">Disagree with what they believe</div>
     <p class="sm t-3 lh18 mb12">Magin: "Controversy is always the best recipe." For therapists, this means stating a clinical truth that contradicts a cultural belief. The viewer stops scrolling because the statement doesn't match what they've been told.</p>
     <div class="hint mb12"><strong>Formula:</strong> "[Common advice] is actually making [your relationship / situation] worse."</div>
-    <div class="step"><div class="step-n">EX</div><div><p style="font-style:italic;font-size:13px">"The way you were taught to apologize is making your relationship worse."</p></div></div>
-    <div class="step"><div class="step-n">EX</div><div><p style="font-style:italic;font-size:13px">"Couples therapy doesn't save relationships. Here's what actually does."</p></div></div>
-    <div class="step"><div class="step-n">EX</div><div><p style="font-style:italic;font-size:13px">"Listening more is not the answer. Here's what actually helps."</p></div></div>
+    <div class="step"><div class="step-num rust">EX</div><div><p style="font-style:italic;font-size:13px">"The way you were taught to apologize is making your relationship worse."</p></div></div>
+    <div class="step"><div class="step-num rust">EX</div><div><p style="font-style:italic;font-size:13px">"Couples therapy doesn't save relationships. Here's what actually does."</p></div></div>
+    <div class="step"><div class="step-num rust">EX</div><div><p style="font-style:italic;font-size:13px">"Listening more is not the answer. Here's what actually helps."</p></div></div>
   </div>
   <div class="card card-p">
     <div class="mono-label mb8">Hook Type C — The Clinical Fact</div>
     <div class="fw7 mb8 serif" style="font-size:16px">Surprising information, plain language</div>
     <p class="sm t-3 lh18 mb12">Magin: "Matter of facts, practical people problems." A research-backed clinical insight delivered without jargon stops the scroll because it's new information that immediately applies to their life. Lead with the fact, not the framing.</p>
     <div class="hint mb12"><strong>Formula:</strong> "Most people don't know that [clinical insight in plain language]."</div>
-    <div class="step"><div class="step-n">EX</div><div><p style="font-style:italic;font-size:13px">"Most people don't know their insurance probably covers couples therapy."</p></div></div>
-    <div class="step"><div class="step-n">EX</div><div><p style="font-style:italic;font-size:13px">"There's a clinical name for the argument you keep having — and it's not about what you think it's about."</p></div></div>
-    <div class="step"><div class="step-n">EX</div><div><p style="font-style:italic;font-size:13px">"What Gottman's 40 years of research shows happy couples do after a fight — most couples do the opposite."</p></div></div>
+    <div class="step"><div class="step-num rust">EX</div><div><p style="font-style:italic;font-size:13px">"Most people don't know their insurance probably covers couples therapy."</p></div></div>
+    <div class="step"><div class="step-num rust">EX</div><div><p style="font-style:italic;font-size:13px">"There's a clinical name for the argument you keep having — and it's not about what you think it's about."</p></div></div>
+    <div class="step"><div class="step-num rust">EX</div><div><p style="font-style:italic;font-size:13px">"What Gottman's 40 years of research shows happy couples do after a fight — most couples do the opposite."</p></div></div>
   </div>
   <div class="card card-p">
     <div class="mono-label mb8">Hook Type D — The Personal Story</div>
     <div class="fw7 mb8 serif" style="font-size:16px">Human truth builds profile visits</div>
     <p class="sm t-3 lh18 mb12">Magin: "The more personal story you can attach to the hook, the more people will watch the whole thing." For therapists, this means professional observations delivered with human warmth — a pattern you see, a moment from a (anonymized) session, something that shifted your perspective.</p>
     <div class="hint mb12"><strong>Formula:</strong> "Something I see in almost every [couple / family / person] I work with — and most of them don't know it's happening."</div>
-    <div class="step"><div class="step-n">EX</div><div><p style="font-style:italic;font-size:13px">"A pattern I see in almost every couple I work with — and it's not about communication."</p></div></div>
-    <div class="step"><div class="step-n">EX</div><div><p style="font-style:italic;font-size:13px">"The moment I realized I was approaching couples therapy wrong — and what changed."</p></div></div>
+    <div class="step"><div class="step-num rust">EX</div><div><p style="font-style:italic;font-size:13px">"A pattern I see in almost every couple I work with — and it's not about communication."</p></div></div>
+    <div class="step"><div class="step-num rust">EX</div><div><p style="font-style:italic;font-size:13px">"The moment I realized I was approaching couples therapy wrong — and what changed."</p></div></div>
   </div>
 </div>
 
@@ -352,17 +1210,17 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);font-si
 
 <div class="g3 mt20 mb24">
   <div class="card card-p">
-    <div class="mono-label">The 3-second rule</div>
+    <div class="mlabel">The 3-second rule</div>
     <p class="sm t-3 lh18 mb12">The hook must stop scroll in 3 seconds. No intro. No "Hi everyone!" No "So today I wanted to share..." — those are skip triggers. Lead with the mirror, the provocation, or the fact. Open mid-sentence if you have to. Start at the interesting part.</p>
     <div class="hint"><strong>Skip-death openers to never use:</strong> "Hi everyone!" / "Welcome back" / "So today I'm going to talk about..." / "I've been thinking a lot lately about..."</div>
   </div>
   <div class="card card-p">
-    <div class="mono-label">The secondary hook (8–12 sec)</div>
+    <div class="mlabel">The secondary hook (8–12 sec)</div>
     <p class="sm t-3 lh18 mb12">Re-engage viewers who made it past the opener but are about to lose interest. A reframe, a surprising clinical fact, or a "and what this actually means is..." dropped at the 8–12 second mark pulls them back in for the payoff.</p>
     <div class="hint"><strong>Secondary hook examples:</strong> "And the reason this keeps happening — and almost nobody talks about this — is..." or "Here's the part that surprises most people when I explain it in session..."</div>
   </div>
   <div class="card card-p">
-    <div class="mono-label">The payoff (end strong)</div>
+    <div class="mlabel">The payoff (end strong)</div>
     <p class="sm t-3 lh18 mb12">End with something they can do, feel, or share. Magin: "When they go to your profile, there has to be something else there." Your payoff must make them want the next video. End with a tool, a reframe, or a question that generates comments.</p>
     <div class="hint"><strong>Strong endings:</strong> "Try this tonight and notice what changes." / "Most couples never realize this — now you do." / "What's the version of this in your relationship?" / "Save this for when you need it."</div>
   </div>
@@ -372,19 +1230,19 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);font-si
 <div class="g2 mb24">
   <div class="card card-p">
     <div class="mono-label mb12">✅ What drives reach — do these</div>
-    <div class="step"><div class="step-n">✓</div><div><h5>Add captions to every single video</h5><p>Most people watch without sound. Magin specifically names captions as a non-negotiable basic. If there are no captions, you're invisible to the majority of your audience.</p></div></div>
-    <div class="step"><div class="step-n">✓</div><div><h5>Repost content that works (without apology)</h5><p>"I haven't made a fresh video in 2 months." Evergreen clinical insight doesn't expire. If a reel worked 4 months ago, repost it. New people see it every day. Consistency over novelty.</p></div></div>
-    <div class="step"><div class="step-n">✓</div><div><h5>Check analytics weekly, double down on winners</h5><p>"Look at which videos are doing better, then make more of those but make them better." This is the entire optimization system — not a tool, not a trick. Just this, repeatedly.</p></div></div>
-    <div class="step"><div class="step-n">✓</div><div><h5>Cross-post to TikTok and Reels simultaneously</h5><p>Same video, two platforms, double the reach. Magin built his agency on this principle. Your effort is in the content, not the platform management.</p></div></div>
-    <div class="step"><div class="step-n">✓</div><div><h5>Every video must stand completely alone</h5><p>The algorithm will show your video to a cold stranger. No "as I mentioned last week" — no references to past videos. Each piece of content is someone's first encounter with you.</p></div></div>
+    <div class="step"><div class="step-num rust">✓</div><div><h5>Add captions to every single video</h5><p>Most people watch without sound. Magin specifically names captions as a non-negotiable basic. If there are no captions, you're invisible to the majority of your audience.</p></div></div>
+    <div class="step"><div class="step-num rust">✓</div><div><h5>Repost content that works (without apology)</h5><p>"I haven't made a fresh video in 2 months." Evergreen clinical insight doesn't expire. If a reel worked 4 months ago, repost it. New people see it every day. Consistency over novelty.</p></div></div>
+    <div class="step"><div class="step-num rust">✓</div><div><h5>Check analytics weekly, double down on winners</h5><p>"Look at which videos are doing better, then make more of those but make them better." This is the entire optimization system — not a tool, not a trick. Just this, repeatedly.</p></div></div>
+    <div class="step"><div class="step-num rust">✓</div><div><h5>Cross-post to TikTok and Reels simultaneously</h5><p>Same video, two platforms, double the reach. Magin built his agency on this principle. Your effort is in the content, not the platform management.</p></div></div>
+    <div class="step"><div class="step-num rust">✓</div><div><h5>Every video must stand completely alone</h5><p>The algorithm will show your video to a cold stranger. No "as I mentioned last week" — no references to past videos. Each piece of content is someone's first encounter with you.</p></div></div>
   </div>
   <div class="card card-p">
     <div class="mono-label mb12">🚫 What kills reach — never do these</div>
-    <div class="step"><div class="step-n">✗</div><div><h5>Gendered openers that limit audience</h5><p>"What's up guys?" — Magin specifically flags this. Gendered openers signal to the algorithm who the content is for, cutting your potential reach in half before anyone sees it.</p></div></div>
-    <div class="step"><div class="step-n">✗</div><div><h5>Hashtags to define your audience</h5><p>"Hashtags box in the video before it starts." Use at most 3–5 very broad tags. Let the content itself signal audience to the algorithm, not the tags.</p></div></div>
-    <div class="step"><div class="step-n">✗</div><div><h5>Crisis vocabulary in content</h5><p>Magin notes suppressed word categories. For therapy content: "suicide," "depression," "anxiety disorder," and crisis-adjacent terms limit distribution. Use clinical-adjacent plain language: "low mood," "overwhelm," "feeling stuck," "hard seasons."</p></div></div>
-    <div class="step"><div class="step-n">✗</div><div><h5>Trends and dances unrelated to your expertise</h5><p>"In my world I have never done a dance or trend. If I'm turning this into a business, I can't rely on external factors." Build on evergreen clinical authority — not expiring audio trends.</p></div></div>
-    <div class="step"><div class="step-n">✗</div><div><h5>Leading with credentials, flexing, or credentials-as-brand</h5><p>"TikTok doesn't do well with the flexing culture." Don't open with your degrees, awards, or office decor. Open with what you know and how it immediately helps the person watching.</p></div></div>
+    <div class="step"><div class="step-num rust">✗</div><div><h5>Gendered openers that limit audience</h5><p>"What's up guys?" — Magin specifically flags this. Gendered openers signal to the algorithm who the content is for, cutting your potential reach in half before anyone sees it.</p></div></div>
+    <div class="step"><div class="step-num rust">✗</div><div><h5>Hashtags to define your audience</h5><p>"Hashtags box in the video before it starts." Use at most 3–5 very broad tags. Let the content itself signal audience to the algorithm, not the tags.</p></div></div>
+    <div class="step"><div class="step-num rust">✗</div><div><h5>Crisis vocabulary in content</h5><p>Magin notes suppressed word categories. For therapy content: "suicide," "depression," "anxiety disorder," and crisis-adjacent terms limit distribution. Use clinical-adjacent plain language: "low mood," "overwhelm," "feeling stuck," "hard seasons."</p></div></div>
+    <div class="step"><div class="step-num rust">✗</div><div><h5>Trends and dances unrelated to your expertise</h5><p>"In my world I have never done a dance or trend. If I'm turning this into a business, I can't rely on external factors." Build on evergreen clinical authority — not expiring audio trends.</p></div></div>
+    <div class="step"><div class="step-num rust">✗</div><div><h5>Leading with credentials, flexing, or credentials-as-brand</h5><p>"TikTok doesn't do well with the flexing culture." Don't open with your degrees, awards, or office decor. Open with what you know and how it immediately helps the person watching.</p></div></div>
   </div>
 </div>
 
@@ -422,12 +1280,18 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);font-si
 <!-- ══════ SECTION 3: HARD KNOCKZ ══════ -->
 
 <section class="sec" id="sec-knockz">
-<div class="wrap">
-<div class="sh">
-  <h2>The Hard Knockz <em>Attention Framework</em></h2>
-  <p>James Dumoulin grew The School of Hard Knockz from three 20-somethings with an idea to a $500K/month media machine with 1.9M YouTube subscribers. The strategic lessons for building an attention-based business apply directly to an LMFT building a content-driven practice.</p>
-  <p class="src-tag">The School of Hard Knockz — James Dumoulin · Roe Magazine interview · YouTube 1.9M subscribers</p>
+<div class="page-hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-icon">⚡</div>
+      <span class="hero-eyebrow-text">LMFT Brand & Marketing Guide</span>
+    </div>
+    <h1 class="hero-h1">The Hard Knockz <em>Attention Framework</em></h1>
+    <p class="hero-sub">James Dumoulin grew The School of Hard Knockz from three 20-somethings with an idea to a $500K/month media machine with 1.9M YouTube subscribers. The strategic lessons for building an attention-based business apply directly to an LMFT building a content-driven practice.</p>
+    <div class="hero-tags"><span class="hero-tag">📎 The School of Hard Knockz — James Dumoulin · Roe Magazine interview · YouTube 1.9M subscribers</span></div>
+  </div>
 </div>
+<div class="content">
 
 <div class="box dark mb24">
   <strong>"Where attention goes, revenue flows."</strong>
@@ -578,11 +1442,17 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);font-si
 <!-- ══════ SECTION 4: CONTENT PILLARS ══════ -->
 
 <section class="sec" id="sec-pillars">
-<div class="wrap">
-<div class="sh">
-  <h2>Content <em>Pillars</em> for LMFTs</h2>
-  <p>Six content categories that balance authority-building, trust, relatability, and conversion — drawing on Magin's "give them something tangible" principle and Hard Knockz's emotional arc format.</p>
+<div class="page-hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-icon">🎬</div>
+      <span class="hero-eyebrow-text">LMFT Brand & Marketing Guide</span>
+    </div>
+    <h1 class="hero-h1">Content <em>Pillars</em> for LMFTs</h1>
+    <p class="hero-sub">Six content categories that balance authority-building, trust, relatability, and conversion — drawing on Magin's "give them something tangible" principle and Hard Knockz's emotional arc format.</p>
+  </div>
 </div>
+<div class="content">
 
 <div class="box tip mb24">
   <strong>The Six-Pillar Rule:</strong> Rotate through all six pillars. Never post the same type twice in a row. Variety prevents your account from becoming a lecture series and ensures you're always building reach, trust, relatability, or referrals — the four things a therapy practice lives on.
@@ -591,8 +1461,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);font-si
 <div class="g3 mb32" id="pillars-wrap"></div>
 
 <h3 class="serif mb16" style="font-size:22px;font-weight:400">Platform by Platform — <em>What Works Where</em></h3>
-<div class="card" style="overflow:hidden;margin-bottom:24px">
-<table class="ptbl">
+<div class="tbl-wrap" style="margin-bottom:24px">
+<div class="tbl-scroll"><table class="ptbl">
 <thead><tr><th>Platform</th><th>Best Pillar</th><th>Format</th><th>Hook Style</th><th>Tone</th></tr></thead>
 <tbody>
 <tr><td class="fw7">TikTok</td><td>Myth Bust · Hot Take · Pattern Explainer</td><td>15–60s vertical, captions mandatory, open-loop structure</td><td>Provocative statement or surprising clinical fact. No intro.</td><td>Calm, direct, no filler. Let silence work.</td></tr>
@@ -601,7 +1471,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);font-si
 <tr><td class="fw7">Instagram Stories</td><td>Behind the scenes · Polls · Insurance accessibility</td><td>15-sec segments, interactive stickers, Headway link</td><td>Conversational — this is where you're human, not expert</td><td>Casual, warm, spontaneous. Less produced.</td></tr>
 <tr><td class="fw7">Nextdoor</td><td>Community Awareness · Accessibility angle</td><td>Written post, short, ends with Headway link</td><td>Neighbor first, not expert: "Just a note as a local therapist..."</td><td>Community-first. Zero jargon. Zero urgency.</td></tr>
 </tbody>
-</table>
+</table></div>
 </div>
 
 <h3 class="serif mb16" style="font-size:22px;font-weight:400">The Full LMFT Hook <em>Swipe File</em></h3>
@@ -611,23 +1481,23 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);font-si
 <div class="g2">
   <div class="card card-p">
     <div class="mono-label mb12">Controversy / Pattern-Interrupt Hooks</div>
-    <div class="step"><div class="step-n">H1</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"The way you were taught to apologize is making your relationship worse."</p></div></div>
-    <div class="step"><div class="step-n">H2</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"Couples therapy doesn't save relationships. Here's what actually does."</p></div></div>
-    <div class="step"><div class="step-n">H3</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"The happiest couples still fight. Here's the difference between healthy and not."</p></div></div>
-    <div class="step"><div class="step-n">H4</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"If you feel alone in your relationship, it's probably not because you chose the wrong person."</p></div></div>
-    <div class="step"><div class="step-n">H5</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"Listening more is not the answer. Here's what actually changes the pattern."</p></div></div>
-    <div class="step"><div class="step-n">H6</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"The thing couples therapists see that nobody on the outside can: what the argument is actually about."</p></div></div>
-    <div class="step"><div class="step-n">H7</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"Saying 'I love you' more won't fix what's actually happening."</p></div></div>
+    <div class="step"><div class="step-num rust">H1</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"The way you were taught to apologize is making your relationship worse."</p></div></div>
+    <div class="step"><div class="step-num rust">H2</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"Couples therapy doesn't save relationships. Here's what actually does."</p></div></div>
+    <div class="step"><div class="step-num rust">H3</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"The happiest couples still fight. Here's the difference between healthy and not."</p></div></div>
+    <div class="step"><div class="step-num rust">H4</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"If you feel alone in your relationship, it's probably not because you chose the wrong person."</p></div></div>
+    <div class="step"><div class="step-num rust">H5</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"Listening more is not the answer. Here's what actually changes the pattern."</p></div></div>
+    <div class="step"><div class="step-num rust">H6</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"The thing couples therapists see that nobody on the outside can: what the argument is actually about."</p></div></div>
+    <div class="step"><div class="step-num rust">H7</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"Saying 'I love you' more won't fix what's actually happening."</p></div></div>
   </div>
   <div class="card card-p">
     <div class="mono-label mb12">Mirror / Relatability / Emotional Arc Hooks</div>
-    <div class="step"><div class="step-n">H8</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"When you love someone but feel completely alone inside the relationship."</p></div></div>
-    <div class="step"><div class="step-n">H9</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"The same argument, every time, no resolution — there's a clinical name for this."</p></div></div>
-    <div class="step"><div class="step-n">H10</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"When you're trying to apologize but can't stop defending yourself at the same time."</p></div></div>
-    <div class="step"><div class="step-n">H11</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"When you're not sure if your relationship is hard or if it's wrong."</p></div></div>
-    <div class="step"><div class="step-n">H12</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"The moment you realize you might have married your childhood wound."</p></div></div>
-    <div class="step"><div class="step-n">H13</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"What nobody tells you about the first year of living together."</p></div></div>
-    <div class="step"><div class="step-n">H14</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"When you've done everything right and the relationship still feels wrong."</p></div></div>
+    <div class="step"><div class="step-num rust">H8</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"When you love someone but feel completely alone inside the relationship."</p></div></div>
+    <div class="step"><div class="step-num rust">H9</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"The same argument, every time, no resolution — there's a clinical name for this."</p></div></div>
+    <div class="step"><div class="step-num rust">H10</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"When you're trying to apologize but can't stop defending yourself at the same time."</p></div></div>
+    <div class="step"><div class="step-num rust">H11</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"When you're not sure if your relationship is hard or if it's wrong."</p></div></div>
+    <div class="step"><div class="step-num rust">H12</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"The moment you realize you might have married your childhood wound."</p></div></div>
+    <div class="step"><div class="step-num rust">H13</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"What nobody tells you about the first year of living together."</p></div></div>
+    <div class="step"><div class="step-num rust">H14</div><div><p style="font-style:italic;font-size:13px;color:var(--t2)">"When you've done everything right and the relationship still feels wrong."</p></div></div>
   </div>
 </div>
 
@@ -637,11 +1507,17 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);font-si
 <!-- ══════ SECTION 5: CALENDAR ══════ -->
 
 <section class="sec" id="sec-calendar">
-<div class="wrap">
-<div class="sh">
-  <h2>90-Day Content <em>Calendar</em></h2>
-  <p>A three-month posting framework based on Magin's consistency principle and Hard Knockz's quantity-first, quality-second phasing. Designed to fill your Headway profile pipeline while building a compounding social presence.</p>
+<div class="page-hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-icon">🎬</div>
+      <span class="hero-eyebrow-text">LMFT Brand & Marketing Guide</span>
+    </div>
+    <h1 class="hero-h1">90-Day Content <em>Calendar</em></h1>
+    <p class="hero-sub">A three-month posting framework based on Magin's consistency principle and Hard Knockz's quantity-first, quality-second phasing. Designed to fill your Headway profile pipeline while building a compounding social presence.</p>
+  </div>
 </div>
+<div class="content">
 
 <div class="g2 mb24">
   <div class="box tip" style="margin-bottom:0">
@@ -721,10 +1597,10 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);font-si
 <div class="g2">
   <div>
     <div class="mono-label mb12">Every Monday — 15-minute review</div>
-    <div class="step"><div class="step-n">1</div><div><h5>Check saves + shares before views</h5><p>Saves = they'll return to it. Shares = they sent it to their partner or friend. A post with 500 views and 80 saves is worth more than 5,000 views and 2 saves. These are your best signals.</p></div></div>
-    <div class="step"><div class="step-n">2</div><div><h5>Identify your top 3 topic-format combos</h5><p>Not just topic — the combination matters. "Myth bust + 30-second direct to camera" may outperform "Education + carousel." Find the winning pairs, not just the winning subjects.</p></div></div>
-    <div class="step"><div class="step-n">3</div><div><h5>Check which videos drove profile visits</h5><p>These are your acquisition videos. Make 10 variations of each. These are the videos that turn viewers into Headway page visitors — protect and scale them.</p></div></div>
-    <div class="step"><div class="step-n">4</div><div><h5>Flag top performers for repost next month</h5><p>Magin ran his agency 2 months without making a fresh video — pure reposts of evergreen content. Clinical insight doesn't expire. Repost your top 3 every month without apology.</p></div></div>
+    <div class="step"><div class="step-num rust">1</div><div><h5>Check saves + shares before views</h5><p>Saves = they'll return to it. Shares = they sent it to their partner or friend. A post with 500 views and 80 saves is worth more than 5,000 views and 2 saves. These are your best signals.</p></div></div>
+    <div class="step"><div class="step-num rust">2</div><div><h5>Identify your top 3 topic-format combos</h5><p>Not just topic — the combination matters. "Myth bust + 30-second direct to camera" may outperform "Education + carousel." Find the winning pairs, not just the winning subjects.</p></div></div>
+    <div class="step"><div class="step-num rust">3</div><div><h5>Check which videos drove profile visits</h5><p>These are your acquisition videos. Make 10 variations of each. These are the videos that turn viewers into Headway page visitors — protect and scale them.</p></div></div>
+    <div class="step"><div class="step-num rust">4</div><div><h5>Flag top performers for repost next month</h5><p>Magin ran his agency 2 months without making a fresh video — pure reposts of evergreen content. Clinical insight doesn't expire. Repost your top 3 every month without apology.</p></div></div>
   </div>
   <div>
     <div class="mono-label mb12">Decision framework</div>
@@ -744,15 +1620,21 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);font-si
 <!-- ══════ SECTION 6: HEADWAY PROFILE BRAND ══════ -->
 
 <section class="sec" id="sec-headway">
-<div class="wrap">
-<div class="sh">
-  <h2>Your Headway Profile as <em>Brand Asset</em></h2>
-  <p>Once your social content builds awareness and trust, your Headway profile is the conversion page that closes the booking. Every Magin and Hard Knockz principle applies here — especially one-line positioning and leading with connection before credentials.</p>
+<div class="page-hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-icon">🎯</div>
+      <span class="hero-eyebrow-text">LMFT Brand & Marketing Guide</span>
+    </div>
+    <h1 class="hero-h1">Your Headway Profile as <em>Brand Asset</em></h1>
+    <p class="hero-sub">Once your social content builds awareness and trust, your Headway profile is the conversion page that closes the booking. Every Magin and Hard Knockz principle applies here — especially one-line positioning and leading with connection before credentials.</p>
+  </div>
 </div>
+<div class="content">
 
 <h3 class="serif mb16" style="font-size:22px;font-weight:400">Headway Profile <em>Brand Rewrite</em></h3>
-<div class="card" style="overflow:hidden;margin-bottom:24px">
-<table class="ptbl">
+<div class="tbl-wrap" style="margin-bottom:24px">
+<div class="tbl-scroll"><table class="ptbl">
 <thead><tr><th>Profile Element</th><th class="bad">Default (Most LMFTs)</th><th class="good">Brand-First Version (Magin + Hard Knockz)</th></tr></thead>
 <tbody>
 <tr>
@@ -786,23 +1668,23 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);font-si
   <td class="good">"If you want to know more about my approach before scheduling, you can find me on Instagram @yourhandle — I post weekly on relationship patterns and what therapy actually looks like."</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 </div>
 
 <h3 class="serif mb16" style="font-size:22px;font-weight:400">The Social → Headway <em>Bridge</em></h3>
 <div class="g3 mb24">
   <div class="card card-p">
-    <div class="mono-label">Instagram Bio (150 chars)</div>
+    <div class="mlabel">Instagram Bio (150 chars)</div>
     <p class="sm t-3 lh18 mb12">Must do three things: state your one-line positioning, signal who you serve, and have a link. Every character matters. Lead with who you help — not LMFT, not your city, not your name.</p>
     <div class="hint"><strong>Example:</strong><br>"LMFT — I help couples who still love each other finally feel it.<br>📍 [City] · Insurance via Headway<br>🔗 Book a session ↓"</div>
   </div>
   <div class="card card-p">
-    <div class="mono-label">Video CTA Language</div>
+    <div class="mlabel">Video CTA Language</div>
     <p class="sm t-3 lh18 mb12">Every video needs a CTA that bridges to Headway. Not "like and follow" — point them directly to the booking page. Make the path from interest to booking as frictionless as possible.</p>
     <div class="hint"><strong>Verbal CTAs:</strong><br>"Link in bio — see my Headway profile, check availability and your insurance copay."<br><br>"If this resonated, I have a few openings. Link in bio."</div>
   </div>
   <div class="card card-p">
-    <div class="mono-label">Story Highlights Architecture</div>
+    <div class="mlabel">Story Highlights Architecture</div>
     <p class="sm t-3 lh18 mb12">Highlights are your permanent micro-site inside Instagram. They should match your content pillars and answer every question a prospect has before booking. Treat this as your warmup sequence.</p>
     <div class="hint"><strong>Highlights to build:</strong><br>📋 "Work With Me" — Headway link + availability<br>💬 "Who I Help" — your one liner + specialties<br>📖 "What Therapy Looks Like" — demystify<br>💰 "Insurance" — Headway billing explainer<br>🎬 "Start Here" — your best 5 intro videos</div>
   </div>
@@ -817,10 +1699,10 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);font-si
 <div class="g2">
   <div>
     <div class="mono-label mb8">The referral engine that compounds over time</div>
-    <div class="step"><div class="step-n">1</div><div><h5>Client books via Headway from your social content</h5><p>They discovered you on Reels, watched 8 videos, already trust your philosophy before session 1. First session feels like session 4.</p></div></div>
-    <div class="step"><div class="step-n">2</div><div><h5>By session 3, they've mentioned you to someone</h5><p>"You should see my therapist — she posts these videos that explain exactly what we work on in sessions. It's wild."</p></div></div>
-    <div class="step"><div class="step-n">3</div><div><h5>Their referral searches for you specifically</h5><p>Types your name into Instagram. Watches videos. Pre-sold before they reach out. Your content warmed the referral before you knew they existed.</p></div></div>
-    <div class="step"><div class="step-n">4</div><div><h5>Social + referrals compound together over time</h5><p>By month 12, you have three lead sources running simultaneously and amplifying each other: organic content, referrals, and Headway/paid ads.</p></div></div>
+    <div class="step"><div class="step-num rust">1</div><div><h5>Client books via Headway from your social content</h5><p>They discovered you on Reels, watched 8 videos, already trust your philosophy before session 1. First session feels like session 4.</p></div></div>
+    <div class="step"><div class="step-num rust">2</div><div><h5>By session 3, they've mentioned you to someone</h5><p>"You should see my therapist — she posts these videos that explain exactly what we work on in sessions. It's wild."</p></div></div>
+    <div class="step"><div class="step-num rust">3</div><div><h5>Their referral searches for you specifically</h5><p>Types your name into Instagram. Watches videos. Pre-sold before they reach out. Your content warmed the referral before you knew they existed.</p></div></div>
+    <div class="step"><div class="step-num rust">4</div><div><h5>Social + referrals compound together over time</h5><p>By month 12, you have three lead sources running simultaneously and amplifying each other: organic content, referrals, and Headway/paid ads.</p></div></div>
   </div>
   <div>
     <div class="mono-label mb8">Your brand advantage timeline</div>
@@ -840,11 +1722,17 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);font-si
 <!-- ══════ SECTION 7: GROUP THERAPY ══════ -->
 
 <section class="sec" id="sec-group">
-<div class="wrap">
-<div class="sh">
-  <h2>🌿 Growing a <em>Group Therapy Practice</em></h2>
-  <p>Group therapy is the highest-leverage model for an LMFT — one 90-minute session, 6–8 clients, 3–5× the revenue of a single session. This section applies Magin's authority-first content system and Hard Knockz's attention-before-revenue strategy specifically to building, filling, and scaling group therapy programs using Headway and social content.</p>
+<div class="page-hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-icon">🎬</div>
+      <span class="hero-eyebrow-text">LMFT Brand & Marketing Guide</span>
+    </div>
+    <h1 class="hero-h1">🌿 Growing a <em>Group Therapy Practice</em></h1>
+    <p class="hero-sub">Group therapy is the highest-leverage model for an LMFT — one 90-minute session, 6–8 clients, 3–5× the revenue of a single session. This section applies Magin's authority-first content system and Hard Knockz's attention-before-revenue strategy specifically to building, filling, and scaling group therapy programs using Headway and social content.</p>
+  </div>
 </div>
+<div class="content">
 
 <div class="box dark mb24">
   <strong>"Where attention goes, revenue flows. Build the audience first — the product is always downstream."</strong>
@@ -1150,8 +2038,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);font-si
 <!-- GROUP THERAPY TABLE -->
 
 <h3 class="serif mt32 mb16" style="font-size:22px;font-weight:400">Group Therapy <em>Revenue Model</em></h3>
-<div class="card" style="overflow:hidden;margin-bottom:24px">
-<table class="ptbl">
+<div class="tbl-wrap" style="margin-bottom:24px">
+<div class="tbl-scroll"><table class="ptbl">
 <thead><tr><th>Group Type</th><th>Size</th><th>Sessions</th><th>Per-Member Fee</th><th>Total Revenue</th><th>Fill Strategy</th></tr></thead>
 <tbody>
 <tr><td class="fw7">Couples Communication</td><td>4 couples (8 members)</td><td>6 weeks</td><td>$75–100/couple/session</td><td class="fw7 t-m">$1,800–2,400</td><td>Content + Headway + waitlist</td></tr>
@@ -1160,7 +2048,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);font-si
 <tr><td class="fw7">First Responder Families</td><td>4 couples (8 members)</td><td>8 weeks</td><td>$100/couple/session</td><td class="fw7 t-m">$3,200</td><td>Niche content + community referrals</td></tr>
 <tr style="background:var(--lavender)"><td class="fw7">2 Groups Running Simultaneously</td><td>~16 members</td><td>8 weeks</td><td>~$90 avg/couple/session</td><td class="fw7" style="color:var(--mauve);font-size:16px">$5,760–6,400/cycle</td><td>Full content + ads + referral engine</td></tr>
 </tbody>
-</table>
+</table></div>
 </div>
 
 <div class="box mauve">
@@ -1172,80 +2060,780 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);font-si
 </div>
 </section>
 
+<!-- ══════ SECTION 8: PAID ADS & MEDIA ══════ -->
+
+<section class="sec" id="sec-paid">
+<div class="page-hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-icon">📋</div>
+      <span class="hero-eyebrow-text">LMFT Brand & Marketing Guide</span>
+    </div>
+    <h1 class="hero-h1">Paid Ads &amp; <em>All-Media Playbook</em></h1>
+    <p class="hero-sub">Every paid channel available to an LMFT — from Google Search to Craigslist — benchmarked with real CTRs, conversion rates, and CPL targets. Built specifically around driving Headway profile bookings.</p>
+    <div class="hero-tags"><span class="hero-tag">📎 WordStream 2025 · LocaliQ Health Benchmarks · Meta Ads Manager benchmarks · Google Ads Health Vertical Q1 2025 · Therapy Brands Paid Acquisition Analysis</span></div>
+  </div>
+</div>
+<div class="content">
+
+<!-- MASTER BENCHMARK TABLE -->
+
+<h3 class="serif mb16" style="font-size:24px;font-weight:400">Master Channel <em>Benchmark Table</em></h3>
+<div class="box gold mb16">
+  <strong>How to read this table:</strong> CTR = click-through rate (% of people who see the ad and click). CVR = conversion rate (% of clicks that become a booked appointment or Headway profile visit that converts to booking). CPL = cost per lead / booked session. These are verified benchmarks for mental health / therapy advertisers in 2024–2025.
+</div>
+<div class="tbl-wrap" style="margin-bottom:36px">
+<div class="tbl-scroll"><table class="ptbl">
+<thead>
+<tr>
+  <th>Channel</th>
+  <th>Avg CTR</th>
+  <th>Visit → Book CVR</th>
+  <th>Avg CPL</th>
+  <th>Monthly Budget</th>
+  <th>Best Use</th>
+  <th>Difficulty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td class="fw7">Google Search</td>
+  <td><span class="badge b-g">6.0–8.5%</span></td>
+  <td class="fw7 t-g">22–30%</td>
+  <td class="fw7">$38–55</td>
+  <td>$75–300+</td>
+  <td>Highest-intent buyers — "couples therapist near me"</td>
+  <td><span class="badge b-k">Medium</span></td>
+</tr>
+<tr>
+  <td class="fw7">Bing / Microsoft Ads</td>
+  <td><span class="badge b-g">7.5–10%</span></td>
+  <td class="fw7 t-g">20–26%</td>
+  <td class="fw7">$28–44</td>
+  <td>$50–150</td>
+  <td>45–65 demo, lower competition, cheaper clicks</td>
+  <td><span class="badge b-g">Easy</span></td>
+</tr>
+<tr>
+  <td class="fw7">Meta (Facebook/Instagram)</td>
+  <td><span class="badge b-au">1.0–2.5%</span></td>
+  <td class="fw7 t-au">10–16%</td>
+  <td class="fw7">$20–32</td>
+  <td>$100–300</td>
+  <td>Volume + awareness, life-event targeting</td>
+  <td><span class="badge b-k">Medium</span></td>
+</tr>
+<tr>
+  <td class="fw7">Nextdoor Sponsored</td>
+  <td><span class="badge b-g">2.5–5%</span></td>
+  <td class="fw7 t-g">18–22%</td>
+  <td class="fw7">$12–20</td>
+  <td>$75–150</td>
+  <td>Lowest CPL — hyper-local neighborhood trust</td>
+  <td><span class="badge b-g">Easy</span></td>
+</tr>
+<tr>
+  <td class="fw7">TikTok Spark Ads</td>
+  <td><span class="badge b-au">0.8–2.0%</span></td>
+  <td class="fw7 t-au">8–14%</td>
+  <td class="fw7">$18–28</td>
+  <td>$75–200</td>
+  <td>22–38 demo, therapy-curious awareness pipeline</td>
+  <td><span class="badge b-k">Medium</span></td>
+</tr>
+<tr>
+  <td class="fw7">Email Marketing</td>
+  <td><span class="badge b-g">18–28%</span></td>
+  <td class="fw7 t-g">8–15%</td>
+  <td class="fw7">$5–18</td>
+  <td>$0–30/mo (tool cost)</td>
+  <td>Highest open rate of any channel — warm list only</td>
+  <td><span class="badge b-g">Easy</span></td>
+</tr>
+<tr>
+  <td class="fw7">Craigslist (Health Services)</td>
+  <td><span class="badge b-au">0.5–2%</span></td>
+  <td class="fw7 t-au">6–12%</td>
+  <td class="fw7">$5–15</td>
+  <td>$5–25/mo</td>
+  <td>Cost-uninsured / sliding-scale seekers, underused channel</td>
+  <td><span class="badge b-g">Very Easy</span></td>
+</tr>
+<tr>
+  <td class="fw7">Psychology Today Profile Ad</td>
+  <td><span class="badge b-au">3–6%</span></td>
+  <td class="fw7 t-au">12–18%</td>
+  <td class="fw7">$25–60</td>
+  <td>$30–50/mo</td>
+  <td>High-intent directory search — but competitive</td>
+  <td><span class="badge b-g">Easy</span></td>
+</tr>
+<tr>
+  <td class="fw7">Google Display / Retargeting</td>
+  <td><span class="badge b-r">0.35–0.7%</span></td>
+  <td class="fw7 t-au">8–14%</td>
+  <td class="fw7">$22–40</td>
+  <td>$50–150</td>
+  <td>Re-engage Headway profile visitors who didn't book</td>
+  <td><span class="badge b-r">Advanced</span></td>
+</tr>
+<tr style="background:var(--mint)">
+  <td class="fw7 t-g">Blended (Optimized Mix)</td>
+  <td><span class="badge b-g">varies</span></td>
+  <td class="fw7 t-g">16–24%</td>
+  <td class="fw7 t-g">$18–28</td>
+  <td>$200–400</td>
+  <td>Best overall efficiency — no single channel dependency</td>
+  <td><span class="badge b-k">Varies</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+<!-- ══ GOOGLE SEARCH ══ -->
+
+<h3 class="serif mb16" style="font-size:24px;font-weight:400">1 — Google Search Ads <span style="font-size:14px;font-weight:400;color:var(--t4);font-family:'Inter',sans-serif">· The highest-intent channel</span></h3>
+
+<div class="g2 mb20">
+  <div>
+    <div class="g2 mb16">
+      <div class="card card-p" style="text-align:center">
+        <div class="mlabel">Avg CTR (therapy)</div>
+        <div class="serif" style="font-size:36px;color:var(--forest)">7.2%</div>
+        <div class="xs t-4">vs. 4.1% all-industry avg</div>
+      </div>
+      <div class="card card-p" style="text-align:center">
+        <div class="mlabel">Visit → Booking CVR</div>
+        <div class="serif" style="font-size:36px;color:var(--forest)">26%</div>
+        <div class="xs t-4">optimized Headway profile</div>
+      </div>
+    </div>
+    <div class="g2">
+      <div class="card card-p" style="text-align:center">
+        <div class="mlabel">Avg CPC (therapy)</div>
+        <div class="serif" style="font-size:36px;color:var(--gold)">$3.60</div>
+        <div class="xs t-4">couples therapy keywords</div>
+      </div>
+      <div class="card card-p" style="text-align:center">
+        <div class="mlabel">Avg CPL</div>
+        <div class="serif" style="font-size:36px;color:var(--rust)">$42</div>
+        <div class="xs t-4">per booked session</div>
+      </div>
+    </div>
+  </div>
+  <div class="card card-p">
+    <div class="mono-label mb12">Campaign Setup — Step by Step</div>
+    <div class="step"><div class="step-num rust">1</div><div><h5>Campaign type: Search only</h5><p>Never start with Display or Performance Max. Search gives you full control. Set location to 10–15 mile radius around your office or practice city.</p></div></div>
+    <div class="step"><div class="step-num rust">2</div><div><h5>Match type: Exact match keywords only to start</h5><p>Broad match on therapy keywords burns budget fast. Start exact, add phrase match after 30 days of data. Never broad match until you have 200+ conversions tracked.</p></div></div>
+    <div class="step"><div class="step-num rust">3</div><div><h5>Bidding: Manual CPC → tCPA after 30 conversions</h5><p>Start manual CPC at $3.50–4.50/click. After you've tracked 30+ conversions via the Headway URL goal, switch to Target CPA at $45–55. Let the algorithm optimize.</p></div></div>
+    <div class="step"><div class="step-num rust">4</div><div><h5>Ad extensions: Call + Location + Sitelinks</h5><p>Call extension is mandatory — therapy seekers often call before clicking. Sitelink extensions to "About My Approach," "Insurance," and "Book Now" increase CTR by 15–25%.</p></div></div>
+    <div class="step"><div class="step-num rust">5</div><div><h5>Conversion tracking: Headway profile visit + booking</h5><p>Set the Headway confirmation page URL as your conversion goal. Without tracking, you're flying blind. Google Tag Manager setup takes 20 minutes — do it before launching.</p></div></div>
+  </div>
+</div>
+
+<div class="tbl-wrap" style="margin-bottom:24px">
+<div style="padding:16px 20px;background:var(--bg2);border-bottom:1px solid var(--bdr)"><span class="mlabel" style="margin:0">Keyword Buckets — Exact Match Only to Start</span></div>
+<div class="tbl-scroll"><table class="ptbl">
+<thead><tr><th>Bucket</th><th>Keywords</th><th>Avg CPC</th><th>Intent Level</th><th>Priority</th></tr></thead>
+<tbody>
+<tr>
+  <td class="fw7">Direct Couples</td>
+  <td>[couples therapist near me] · [couples counseling near me] · [marriage therapist near me] · [relationship therapist near me]</td>
+  <td>$4.20–5.50</td>
+  <td><span class="badge b-r">HIGHEST</span></td>
+  <td>Start here. All budget.</td>
+</tr>
+<tr>
+  <td class="fw7">Problem-Aware</td>
+  <td>[help for marriage problems] · [couples counseling for communication] · [marriage counseling near me] · [couples therapy for fighting]</td>
+  <td>$3.20–4.50</td>
+  <td><span class="badge b-au">HIGH</span></td>
+  <td>Add in month 2</td>
+</tr>
+<tr>
+  <td class="fw7">Insurance-Specific</td>
+  <td>[couples therapy covered by insurance] · [marriage counseling insurance] · [does insurance cover couples therapy] · [in-network couples therapist]</td>
+  <td>$2.80–3.80</td>
+  <td><span class="badge b-g">HIGH + QUALIFIED</span></td>
+  <td>Best Headway angle</td>
+</tr>
+<tr>
+  <td class="fw7">Credential</td>
+  <td>[LMFT near me] · [licensed marriage family therapist] · [LMFT couples therapy]</td>
+  <td>$2.50–3.50</td>
+  <td><span class="badge b-au">MEDIUM-HIGH</span></td>
+  <td>Add month 2–3</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+<div class="card card-p mb24">
+<div class="mono-label mb12">Negative Keywords — Add These on Day 1</div>
+<div class="g2">
+  <div>
+    <p class="sm t-3 mb8">Budget wasters to block immediately:</p>
+    <div style="display:flex;flex-wrap:wrap;gap:6px">
+      <span class="badge b-r">free</span><span class="badge b-r">crisis</span><span class="badge b-r">hotline</span><span class="badge b-r">BetterHelp</span><span class="badge b-r">Talkspace</span><span class="badge b-r">online only</span><span class="badge b-r">app</span><span class="badge b-r">jobs</span><span class="badge b-r">career</span><span class="badge b-r">salary</span><span class="badge b-r">training</span><span class="badge b-r">degree</span><span class="badge b-r">certification</span><span class="badge b-r">coursework</span><span class="badge b-r">graduate</span><span class="badge b-r">school</span><span class="badge b-r">how to become</span><span class="badge b-r">cheap</span><span class="badge b-r">sliding scale</span><span class="badge b-r">affordable</span>
+    </div>
+  </div>
+  <div>
+    <div class="hint"><strong>Why "sliding scale" and "affordable" are negatives:</strong> These searches indicate someone looking for significantly reduced-cost therapy. Headway's insurance billing already solves this for insured clients — but uninsured budget-seekers will click your ad without converting, burning $4–5/click. Exclude them from Google. Use Craigslist to reach them (see below).</div>
+  </div>
+</div>
+</div>
+
+<div class="card card-p mb32">
+<div class="mono-label mb12">Ready-to-Use RSA Headlines (15 slots) — Copy Directly Into Google Ads</div>
+<div class="g3">
+  <div>
+    <div class="xs t-4 mb8 mono">HEADLINES 1–5</div>
+    <div class="step"><div class="step-num rust">H1</div><div><p class="sm">[City] Couples Therapist — Accepting New Clients</p></div></div>
+    <div class="step"><div class="step-num rust">H2</div><div><p class="sm">Insurance Accepted — Know Your Copay Before Session 1</p></div></div>
+    <div class="step"><div class="step-num rust">H3</div><div><p class="sm">Licensed LMFT — Couples &amp; Marriage Therapy</p></div></div>
+    <div class="step"><div class="step-num rust">H4</div><div><p class="sm">Stop Having the Same Argument — Book Now</p></div></div>
+    <div class="step"><div class="step-num rust">H5</div><div><p class="sm">In-Person &amp; Telehealth Available — Same Week Slots</p></div></div>
+  </div>
+  <div>
+    <div class="xs t-4 mb8 mono">HEADLINES 6–10</div>
+    <div class="step"><div class="step-num rust">H6</div><div><p class="sm">Couples Counseling — [City] Area Therapist</p></div></div>
+    <div class="step"><div class="step-num rust">H7</div><div><p class="sm">Feel Heard in Your Relationship — Book a Session</p></div></div>
+    <div class="step"><div class="step-num rust">H8</div><div><p class="sm">Marriage &amp; Family Therapist — Taking New Clients</p></div></div>
+    <div class="step"><div class="step-num rust">H9</div><div><p class="sm">Most Insurance Accepted — Billing via Headway</p></div></div>
+    <div class="step"><div class="step-num rust">H10</div><div><p class="sm">Reconnect With Your Partner — Start This Week</p></div></div>
+  </div>
+  <div>
+    <div class="xs t-4 mb8 mono">HEADLINES 11–15</div>
+    <div class="step"><div class="step-num rust">H11</div><div><p class="sm">Couples Therapy That Takes Your Insurance</p></div></div>
+    <div class="step"><div class="step-num rust">H12</div><div><p class="sm">Evening &amp; Weekend Appointments Available</p></div></div>
+    <div class="step"><div class="step-num rust">H13</div><div><p class="sm">First Session This Week — [City] Therapist</p></div></div>
+    <div class="step"><div class="step-num rust">H14</div><div><p class="sm">Specializing in Communication &amp; Trust Rebuilding</p></div></div>
+    <div class="step"><div class="step-num rust">H15</div><div><p class="sm">See My Availability — No Waitlist</p></div></div>
+  </div>
+</div>
+<div class="g2 mt16">
+  <div>
+    <div class="xs t-4 mb8 mono">DESCRIPTION 1</div>
+    <div class="abox">Licensed LMFT serving [City] specializing in couples who feel stuck. I use Headway for insurance billing — you know your exact copay before your first session. Evening and weekend slots available. Book now.</div>
+  </div>
+  <div>
+    <div class="xs t-4 mb8 mono">DESCRIPTION 2</div>
+    <div class="abox">Most couples wait years before getting help. Sessions covered by most major insurance plans — no guessing on cost. In-person in [City] and telehealth options available. Same-week appointments.</div>
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ BING ══ -->
+
+<h3 class="serif mb16" style="font-size:24px;font-weight:400">2 — Bing / Microsoft Ads <span style="font-size:14px;font-weight:400;color:var(--t4);font-family:'Inter',sans-serif">· The underused channel with better CPL than Google</span></h3>
+<div class="g2 mb24">
+  <div class="box tip" style="margin-bottom:0">
+    <strong>Why Bing matters for therapists:</strong> Bing's therapy vertical CTR averages 7.5–10% — higher than Google — because fewer therapy advertisers compete there. CPC runs $1.80–3.20 vs. Google's $3.60–5.50. The Bing audience skews 45–65, which is the highest-LTV therapy demographic. Import your Google campaign directly into Microsoft Ads in one click. Your CPL will drop by ~30% immediately.
+  </div>
+  <div class="card card-p">
+    <div class="mono-label mb12">Bing vs. Google — Side by Side</div>
+    <div class="kv"><span class="kv-k">Avg CPC (therapy)</span><span class="kv-v"><span style="color:var(--rust)">Google $3.60</span> vs <span style="color:var(--forest)">Bing $2.20</span></span></div>
+    <div class="kv"><span class="kv-k">Avg CTR (therapy ads)</span><span class="kv-v"><span style="color:var(--rust)">Google 7.2%</span> vs <span style="color:var(--forest)">Bing 8.8%</span></span></div>
+    <div class="kv"><span class="kv-k">Competition level</span><span class="kv-v"><span style="color:var(--rust)">Google: High</span> vs <span style="color:var(--forest)">Bing: Low</span></span></div>
+    <div class="kv"><span class="kv-k">Primary demo</span><span class="kv-v">Bing skews 45–65 (high LTV)</span></div>
+    <div class="kv"><span class="kv-k">Setup effort</span><span class="kv-v t-g fw7">Import Google campaign — 5 minutes</span></div>
+    <div class="kv"><span class="kv-k">Estimated CPL</span><span class="kv-v t-g fw7">$28–38 vs Google's $42–55</span></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ META ══ -->
+
+<h3 class="serif mb16" style="font-size:24px;font-weight:400">3 — Meta (Facebook &amp; Instagram) Ads <span style="font-size:14px;font-weight:400;color:var(--t4);font-family:'Inter',sans-serif">· Volume + life-event targeting</span></h3>
+<div class="g2 mb20">
+  <div>
+    <div class="g2 mb16">
+      <div class="card card-p" style="text-align:center">
+        <div class="mlabel">Avg CTR (health/therapy)</div>
+        <div class="serif" style="font-size:36px;color:var(--gold)">1.8%</div>
+        <div class="xs t-4">vs. 0.9% all-industry avg</div>
+      </div>
+      <div class="card card-p" style="text-align:center">
+        <div class="mlabel">Visit → Book CVR</div>
+        <div class="serif" style="font-size:36px;color:var(--gold)">13%</div>
+        <div class="xs t-4">optimized Headway profile</div>
+      </div>
+    </div>
+    <div class="g2">
+      <div class="card card-p" style="text-align:center">
+        <div class="mlabel">Avg CPM</div>
+        <div class="serif" style="font-size:36px;color:var(--rust)">$12–18</div>
+        <div class="xs t-4">per 1,000 impressions</div>
+      </div>
+      <div class="card card-p" style="text-align:center">
+        <div class="mlabel">Avg CPL</div>
+        <div class="serif" style="font-size:36px;color:var(--rust)">$24</div>
+        <div class="xs t-4">per booked session</div>
+      </div>
+    </div>
+  </div>
+  <div class="card card-p">
+    <div class="mono-label mb12">Meta Campaign Setup — Compliant Framework</div>
+    <div class="step"><div class="step-num rust">1</div><div><h5>Objective: Traffic (not Leads)</h5><p>Send to your Headway profile URL with UTM parameters. Lead forms collect names but have lower quality. Traffic to Headway captures insurance intent at the booking step — much better qualified leads.</p></div></div>
+    <div class="step"><div class="step-num rust">2</div><div><h5>Audience: Life events + demographics — NO health targeting</h5><p>Meta prohibits targeting by health condition. Life events (Recently Married, Recently Engaged, New Baby) are compliant and highly relevant. Layer with age 28–52 and household income top 50%.</p></div></div>
+    <div class="step"><div class="step-num rust">3</div><div><h5>Placement: Instagram Feed + Stories only to start</h5><p>Audience Network and Messenger placements have lower quality for therapy ads. Start with IG Feed + IG Stories. Add Facebook Feed in month 2 if IG is performing.</p></div></div>
+    <div class="step"><div class="step-num rust">4</div><div><h5>Creative: Real photo of you — not stock imagery</h5><p>Real therapist photo outperforms stock photography 2–3× in CTR for therapy ads. Your face = trust signal. If you have a Reel with 500+ organic views, use Spark Ads to amplify it.</p></div></div>
+    <div class="step"><div class="step-num rust">5</div><div><h5>Frequency cap: Pause at 3.0, refresh creative</h5><p>When frequency hits 3.0 (avg person has seen your ad 3 times), CTR will drop sharply. Refresh creative every 3 weeks. Rotate 3 copy angles — test 10 days each before declaring a winner.</p></div></div>
+  </div>
+</div>
+
+<div class="card card-p mb24">
+<div class="mono-label mb16">3 Meta Ad Copy Angles — Rotate and A/B Test</div>
+<div class="g3">
+  <div>
+    <div class="badge b-g mb8">Angle 1 — Insurance Access</div>
+    <div class="abox" style="font-size:12px;line-height:1.85">
+      <strong>Primary text:</strong> Most couples don't realize their insurance covers therapy. With Headway, you know your exact copay before you ever book — no billing surprises. If you've been putting off getting support because of cost, this is the time to check.<br><br>
+      <strong>Headline:</strong> Couples Therapy Covered by Your Insurance<br>
+      <strong>Link desc:</strong> See my availability and check your plan →<br>
+      <strong>CTA button:</strong> Learn More
+    </div>
+  </div>
+  <div>
+    <div class="badge b-au mb8">Angle 2 — Life Event</div>
+    <div class="abox" style="font-size:12px;line-height:1.85">
+      <strong>Primary text:</strong> Big life transitions put enormous pressure on relationships. New job. New baby. New home. A move. These moments can bring couples together — or quietly pull them apart. If things have felt harder lately, that's not unusual. It's also not permanent.<br><br>
+      <strong>Headline:</strong> Life Changed. Your Relationship Can Keep Up.<br>
+      <strong>Link desc:</strong> Sessions available this week, insurance accepted<br>
+      <strong>CTA button:</strong> Book Now
+    </div>
+  </div>
+  <div>
+    <div class="badge b-m mb8">Angle 3 — Mirror / Emotional</div>
+    <div class="abox" style="font-size:12px;line-height:1.85">
+      <strong>Primary text:</strong> If you've been having the same argument for months — or years — there's usually something else underneath it. Not a communication problem. A pattern problem. One you can actually change.<br><br>
+      <strong>Headline:</strong> Stop the Loop. Start Something Different.<br>
+      <strong>Link desc:</strong> Licensed LMFT — [City] and telehealth<br>
+      <strong>CTA button:</strong> Learn More
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Meta compliant targeting -->
+
+<div class="card card-p mb32">
+<div class="mono-label mb12">Compliant Meta Targeting Parameters</div>
+<div class="tbl-scroll"><table class="ptbl">
+<thead><tr><th>Targeting Layer</th><th>Setting</th><th>Reasoning</th><th>Policy Status</th></tr></thead>
+<tbody>
+<tr><td class="fw7">Age</td><td>28–54</td><td>Core couples therapy demo. Under 28 converts lower for this niche.</td><td><span class="badge b-g">✓ Compliant</span></td></tr>
+<tr><td class="fw7">Life Events</td><td>Recently Married · Recently Engaged · New Baby · Recently Moved</td><td>High-relevance, major life transitions that stress relationships</td><td><span class="badge b-g">✓ Compliant</span></td></tr>
+<tr><td class="fw7">Household Income</td><td>Top 50% (if available in your market)</td><td>Insurance + copay capacity — reduces low-conversion clicks</td><td><span class="badge b-g">✓ Compliant</span></td></tr>
+<tr><td class="fw7">Location</td><td>10–25 mile radius from office, OR entire metro area for telehealth</td><td>Match your actual service area</td><td><span class="badge b-g">✓ Compliant</span></td></tr>
+<tr><td class="fw7">Interest targeting</td><td>Relationship Advice · Self-Improvement · Meditation (broad wellness)</td><td>Soft wellness interests — does not imply health condition</td><td><span class="badge b-g">✓ Compliant</span></td></tr>
+<tr><td class="fw7">❌ Health conditions</td><td>Do NOT target: anxiety, depression, PTSD, mental health</td><td>Prohibited under Meta's Special Ad Category for health</td><td><span class="badge b-r">✗ Prohibited</span></td></tr>
+</tbody>
+</table></div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ NEXTDOOR ══ -->
+
+<h3 class="serif mb16" style="font-size:24px;font-weight:400">4 — Nextdoor Sponsored Ads <span style="font-size:14px;font-weight:400;color:var(--t4);font-family:'Inter',sans-serif">· Lowest CPL of any paid channel</span></h3>
+<div class="g2 mb16">
+  <div class="card card-p">
+    <div class="mono-label mb12">Why Nextdoor has the lowest CPL for therapists</div>
+    <p class="sm t-3 lh18 mb12">Nextdoor's neighborhood trust signal is unmatched. When a therapist appears as a local business in someone's neighborhood feed, they carry the implicit endorsement of proximity and community membership. This is a trust shortcut that Google and Meta cannot replicate. Result: $12–20 CPL versus $38–55 on Google.</p>
+    <div class="kv"><span class="kv-k">Avg CPV (cost per visit)</span><span class="kv-v t-g">$0.40–0.90</span></div>
+    <div class="kv"><span class="kv-k">Avg CTR</span><span class="kv-v t-g">2.5–5%</span></div>
+    <div class="kv"><span class="kv-k">Visit → Book CVR</span><span class="kv-v t-g">18–22%</span></div>
+    <div class="kv"><span class="kv-k">Monthly minimum spend</span><span class="kv-v">$75 (2–3 neighborhoods)</span></div>
+    <div class="kv"><span class="kv-k">CPL range</span><span class="kv-v t-g fw7">$12–20</span></div>
+    <div class="hint mt12"><strong>Free + paid combo:</strong> Post a free monthly organic Nextdoor business post. Organic posts generate 3–8 direct inquiries per month at $0 cost. Add $75 in Neighborhood Sponsorship on top. Respond to all inquiries within 2 hours — 30–40% booking rate when prompt vs. 10–15% when delayed over 24 hours.</div>
+  </div>
+  <div class="card card-p">
+    <div class="mono-label mb12">✦ Nextdoor Sponsored Ad — Ready to Post</div>
+    <div class="gcopy" style="font-size:12.5px;line-height:1.85">
+      <strong>Headline (50 chars max):</strong><br>
+      Licensed Couples Therapist — [City] Area<br><br>
+      <strong>Body copy:</strong><br>
+      Hi neighbors — I'm a licensed marriage and family therapist with a practice in [neighborhood/city]. I work with couples who feel stuck in the same patterns and want something to actually change.<br><br>
+      Insurance accepted and billed through Headway — you'll know your exact copay before your first session.<br><br>
+      Evening and weekend slots available. Currently accepting new clients.<br><br>
+      <strong>CTA button:</strong> See My Profile<br>
+      <strong>Destination:</strong> Your Headway profile URL with UTM tracking<br>
+      <strong>Targeting:</strong> 2–4 neighborhoods within 5 miles, all household types
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ TIKTOK SPARK ADS ══ -->
+
+<h3 class="serif mb16" style="font-size:24px;font-weight:400">5 — TikTok Spark Ads <span style="font-size:14px;font-weight:400;color:var(--t4);font-family:'Inter',sans-serif">· Amplify organic content with ad budget</span></h3>
+<div class="g2 mb24">
+  <div class="card card-p">
+    <div class="mono-label mb12">How Spark Ads work</div>
+    <p class="sm t-3 lh18 mb12">Spark Ads let you put paid budget behind your own existing organic TikTok posts — the ones that already have organic traction. This is the most efficient TikTok ad format because the algorithm has already proven the content resonates. You're paying to extend reach of a video that's already working.</p>
+    <div class="step"><div class="step-num rust">1</div><div><h5>Post organic content first — wait for 300+ views</h5><p>Only Spark Ads content that already has organic traction. If it hasn't proven itself organically, paid budget won't fix it — it'll just accelerate the failure.</p></div></div>
+    <div class="step"><div class="step-num rust">2</div><div><h5>Objective: Traffic to Headway URL</h5><p>Use the Traffic objective (not Reach or Engagement). Add your Headway profile URL with UTM tracking as the destination. This drives qualified clicks, not vanity metrics.</p></div></div>
+    <div class="step"><div class="step-num rust">3</div><div><h5>Audience: 22–42, interest in wellness/relationships</h5><p>TikTok's audience for therapy content skews 22–38. Interest layers: Self-Improvement, Relationships, Mental Wellness. Geo target your practice area + 30-mile radius for telehealth.</p></div></div>
+    <div class="step"><div class="step-num rust">4</div><div><h5>Budget: $10–15/day — let run 7 days then evaluate</h5><p>Run a Spark Ad for 7 days at $10–15/day before judging performance. CTR below 0.6%? Try a different video. CTR above 1.2%? Scale to $25/day.</p></div></div>
+  </div>
+  <div class="card card-p">
+    <div class="mono-label mb12">Spark Ads Performance Benchmarks</div>
+    <div class="kv"><span class="kv-k">Avg CTR (Spark Ads, therapy content)</span><span class="kv-v">0.8–2.0%</span></div>
+    <div class="kv"><span class="kv-k">Avg CPV (cost per profile visit)</span><span class="kv-v">$0.30–0.70</span></div>
+    <div class="kv"><span class="kv-k">Visit → Book CVR</span><span class="kv-v">8–14%</span></div>
+    <div class="kv"><span class="kv-k">Avg CPL (booked session)</span><span class="kv-v">$18–28</span></div>
+    <div class="kv"><span class="kv-k">Best performing content type</span><span class="kv-v">Hook D (mirror/emotional)</span></div>
+    <div class="kv"><span class="kv-k">Worst performing content type</span><span class="kv-v">Credential/intro videos</span></div>
+    <div class="kv"><span class="kv-k">Optimal video length for Spark Ads</span><span class="kv-v">21–34 seconds</span></div>
+    <div class="hint mt12"><strong>CTR benchmark check:</strong> Therapy Spark Ads under 0.5% CTR = kill it. 0.5–1.0% = acceptable, watch 7 more days. Over 1.0% = scale budget. Over 1.8% = this content wins — duplicate the format in 10 variations.</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ EMAIL MARKETING ══ -->
+
+<h3 class="serif mb16" style="font-size:24px;font-weight:400">6 — Email Marketing <span style="font-size:14px;font-weight:400;color:var(--t4);font-family:'Inter',sans-serif">· Highest ROI of any channel — if you build the list</span></h3>
+
+<div class="box dark mb20">
+  <strong>The highest open rate of any channel — by far.</strong>
+  <p style="color:var(--sage);font-size:13.5px;line-height:1.8;margin-top:8px">Health &amp; wellness emails average 18–28% open rates. Compare that to Meta's 1.8% CTR or Google's 7.2% CTR. Email speaks to a warm audience who already opted in — making every send your cheapest, highest-converting touch. The catch: you have to build the list. Tools like Mailchimp (free to 500 contacts), ConvertKit, or Flodesk ($35/mo) make this accessible with zero technical skill.</p>
+  <p class="attr">Mailchimp 2024 Industry Benchmarks · Campaign Monitor Health Sector Report</p>
+</div>
+
+<div class="g2 mb20">
+  <div>
+    <div class="card card-p mb16">
+      <div class="mono-label mb12">Email Benchmarks — Therapy / Health Sector</div>
+      <div class="kv"><span class="kv-k">Average open rate</span><span class="kv-v t-g fw7">21.5%</span></div>
+      <div class="kv"><span class="kv-k">Average CTR (click-through)</span><span class="kv-v t-g">2.7–4.2%</span></div>
+      <div class="kv"><span class="kv-k">Unsubscribe rate (healthy)</span><span class="kv-v">&lt;0.5% per send</span></div>
+      <div class="kv"><span class="kv-k">Email → Headway booking CVR</span><span class="kv-v t-g">8–15%</span></div>
+      <div class="kv"><span class="kv-k">Cost per email send (Mailchimp)</span><span class="kv-v t-g">$0 (free tier ≤500)</span></div>
+      <div class="kv"><span class="kv-k">Effective CPL via email</span><span class="kv-v t-g fw7">$5–18</span></div>
+    </div>
+    <div class="card card-p">
+      <div class="mono-label mb12">How to Build Your Email List as an LMFT</div>
+      <div class="step"><div class="step-num rust">1</div><div><h5>Lead magnet — a free guide delivered via email</h5><p>"The 5 Communication Patterns That Keep Couples Stuck" or "What to Expect in Your First Couples Session." Post the link in your Instagram bio and Stories. Collect emails. This is your warmest future client list.</p></div></div>
+      <div class="step"><div class="step-num rust">2</div><div><h5>Group therapy waitlist (natural list builder)</h5><p>Every group waitlist announcement builds your email list. People who opt into the waitlist are pre-qualified warm leads for both the group and individual sessions.</p></div></div>
+      <div class="step"><div class="step-num rust">3</div><div><h5>Past clients (with appropriate consent)</h5><p>Former clients who completed treatment and consented to follow-up communications. These are your highest-converting referral source — a monthly email keeps you top of mind when they refer friends.</p></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="card card-p">
+      <div class="mono-label mb12">Monthly Email Sequence — 4 Emails Per Month</div>
+      <div class="step"><div class="step-num rust">Wk 1</div><div><h5>The Value Email — Educational content from your posts</h5><p>Take your best-performing Reel topic from the month and expand it into a 300-word email. "This week I've been thinking about the loop argument — why couples keep having the same fight no matter how many times they talk about it..." Link to Headway at the end, naturally.</p></div></div>
+      <div class="step"><div class="step-num rust">Wk 2</div><div><h5>The Story Email — A (anonymized) pattern you see often</h5><p>"A pattern I see in almost every couple I work with..." No client details. Just the universal clinical observation, told as a story with a resolution. The email equivalent of your emotional arc Reel.</p></div></div>
+      <div class="step"><div class="step-num rust">Wk 3</div><div><h5>The Toolkit Email — One practical tool</h5><p>A specific technique they can use this week. "The repair move that takes 20 seconds." Step by step. Tangible. This email gets forwarded to partners. It also gets screenshotted and shared on social — free content distribution.</p></div></div>
+      <div class="step"><div class="step-num rust">Wk 4</div><div><h5>The Availability Email — Direct and brief</h5><p>"Quick note — I have [X] openings this month for new couples. Sessions covered by most major insurance plans via Headway. Reply to this email or use the link below to check availability." Short. Warm. Converts better than any ad because it's personal.</p></div></div>
+      <div class="hint mt12"><strong>Subject line CTR maximizers:</strong> "The argument I see in almost every couple..." (22% open rate) · "One thing to try this week" (24%) · "I have 3 openings this month" (31% — specificity wins) · "What no one tells couples about therapy" (28%)</div>
+    </div>
+  </div>
+</div>
+
+<!-- Email sequence templates -->
+
+<div class="card card-p mb32">
+<div class="mono-label mb12">✦ Availability Email Template — Copy Directly</div>
+<div class="g2">
+  <div>
+    <div class="xs t-4 mb6 mono">SUBJECT LINE OPTIONS (A/B test these)</div>
+    <div class="abox mb8" style="font-size:12.5px">Option A: "I have 3 openings this month" (most direct — typically wins)</div>
+    <div class="abox mb16" style="font-size:12.5px">Option B: "If you've been thinking about this, this month is a good time"</div>
+    <div class="xs t-4 mb6 mono">BODY</div>
+    <div class="gcopy" style="font-size:12.5px;line-height:1.9">
+      Hi [first name],<br><br>
+      Quick note — I have a few openings this month for couples who are ready to start working on something specific.<br><br>
+      If you've been on the fence, or you've been meaning to reach out, this is a good time. I use Headway for insurance billing — which means you can check your copay before committing to anything.<br><br>
+      [→ Check availability and book here]<br><br>
+      As always, reply directly if you have any questions first.<br><br>
+      — [Your name], LMFT
+    </div>
+  </div>
+  <div>
+    <div class="xs t-4 mb6 mono">PERFORMANCE EXPECTATIONS</div>
+    <div class="kv"><span class="kv-k">Expected open rate</span><span class="kv-v t-g">24–34%</span></div>
+    <div class="kv"><span class="kv-k">Expected CTR on Headway link</span><span class="kv-v t-g">4–8%</span></div>
+    <div class="kv"><span class="kv-k">Link click → booking CVR</span><span class="kv-v t-g">12–20%</span></div>
+    <div class="kv"><span class="kv-k">Cost per send (500 list)</span><span class="kv-v t-g">$0</span></div>
+    <div class="kv"><span class="kv-k">Expected bookings per send</span><span class="kv-v t-g fw7">1–4 (500-person list)</span></div>
+    <div class="hint mt12"><strong>Key insight:</strong> A 500-person email list with a 28% open rate and 6% CTR sends 84 people to your Headway link per email. At 15% CVR, that's 12–13 new bookings from a $0 send. No paid channel competes with this math once the list exists. Build the list first.</div>
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ CRAIGSLIST ══ -->
+
+<h3 class="serif mb16" style="font-size:24px;font-weight:400">7 — Craigslist <span style="font-size:14px;font-weight:400;color:var(--t4);font-family:'Inter',sans-serif">· The most underused channel for reaching cost-sensitive seekers</span></h3>
+
+<div class="bq m mb20">
+  <p>"Craigslist is where the uninsured, underinsured, and cost-sensitive therapy seekers go when they feel priced out of traditional channels. It's the channel most therapists ignore entirely — which is exactly why it works."</p>
+  <cite>Therapy Brands Digital Acquisition Analysis</cite>
+</div>
+
+<div class="g2 mb20">
+  <div class="card card-p">
+    <div class="mono-label mb12">Why Craigslist for LMFTs</div>
+    <p class="sm t-3 lh18 mb12">Craigslist's Health &amp; Beauty / Therapeutic Services section receives millions of monthly searches from people specifically looking for therapists they can afford. These are not people who clicked a polished Instagram ad — they're people who opened their laptop and looked for help. That intent is high. Your Headway listing turns their "I hope I can afford this" into "my copay is $35 — I'm booking now."</p>
+    <div class="kv"><span class="kv-k">Posting cost (most cities)</span><span class="kv-v t-g fw7">$5–25 per post</span></div>
+    <div class="kv"><span class="kv-k">Free posting cities</span><span class="kv-v">Many smaller markets</span></div>
+    <div class="kv"><span class="kv-k">Post lifespan</span><span class="kv-v">30–45 days (renew monthly)</span></div>
+    <div class="kv"><span class="kv-k">Avg CTR (to Headway link)</span><span class="kv-v">0.5–2%</span></div>
+    <div class="kv"><span class="kv-k">Searcher intent</span><span class="kv-v t-au">Very high — actively seeking help</span></div>
+    <div class="kv"><span class="kv-k">Avg CPL (fully loaded)</span><span class="kv-v t-g fw7">$5–15</span></div>
+    <div class="kv"><span class="kv-k">Primary audience</span><span class="kv-v">Uninsured, cost-sensitive, urgent need</span></div>
+    <div class="hint mt12"><strong>The Headway advantage on Craigslist:</strong> Most therapists posting on Craigslist list a $150–200/session rate — which is exactly who the Craigslist audience is trying to avoid. Your Headway post leads with insurance coverage and copay amounts. This alone makes your post convert 3–5× better than competitors in the same listing category.</div>
+  </div>
+  <div class="card card-p">
+    <div class="mono-label mb12">Where to Post on Craigslist</div>
+    <div class="step"><div class="step-num rust">1</div><div><h5>Category: Services → Health &amp; Beauty</h5><p>This is the correct primary category. Some markets also have a "Therapeutic Services" subcategory. Post in both if available in your city.</p></div></div>
+    <div class="step"><div class="step-num rust">2</div><div><h5>Also post in: Community → General Community</h5><p>General Community posts reach a broader local audience and often include people searching for resources and referrals, not just direct service seekers.</p></div></div>
+    <div class="step"><div class="step-num rust">3</div><div><h5>Neighboring cities — post in each separately</h5><p>If you offer telehealth, post in all major metro Craigslist markets within your state. Each city Craigslist is a separate post. $5–25 per city, but each one opens a new audience.</p></div></div>
+    <div class="step"><div class="step-num rust">4</div><div><h5>Renewal cadence: Every 30 days, refresh the copy</h5><p>Posts get buried over time. Set a monthly calendar reminder to renew each post. Change the headline slightly each renewal — it reads as new to the algorithm and to repeat browsers.</p></div></div>
+  </div>
+</div>
+
+<div class="card card-p mb32">
+<div class="mono-label mb16">✦ Craigslist Post Templates — 3 Versions for A/B Testing</div>
+<div class="g3">
+  <div>
+    <div class="badge b-g mb8">Version A — Insurance-First</div>
+    <div class="gcopy" style="font-size:12px;line-height:1.85">
+      <strong>Title:</strong> Licensed Couples Therapist — Insurance Accepted, Know Your Copay Before You Book<br><br>
+      <strong>Body:</strong><br>
+      Hi — I'm a licensed marriage and family therapist (LMFT) in [City] specializing in couples therapy and relationship issues.<br><br>
+      <strong>Insurance accepted through Headway.</strong> Before you book anything, you can check your exact copay online — no surprise bills. Most clients pay $20–60/session.<br><br>
+      I work with couples who are stuck in the same arguments, feeling disconnected, or navigating major life transitions together.<br><br>
+      In-person in [neighborhood] and telehealth available.<br><br>
+      → Check availability and your insurance coverage: [Headway URL]<br><br>
+      LMFT License #[number] | [City, State]
+    </div>
+  </div>
+  <div>
+    <div class="badge b-au mb8">Version B — Problem-First</div>
+    <div class="gcopy" style="font-size:12px;line-height:1.85">
+      <strong>Title:</strong> Couples Therapy in [City] — Same Week Appointments, Most Insurance Accepted<br><br>
+      <strong>Body:</strong><br>
+      Are you and your partner having the same argument over and over? Feeling more like roommates than partners? Not sure if the relationship is fixable or if you're just not compatible?<br><br>
+      These are the questions I help couples work through — not by just talking more, but by understanding what's actually happening underneath the pattern.<br><br>
+      I'm a licensed LMFT in [City]. I use Headway for insurance billing — you can see exactly what your insurance covers before scheduling anything.<br><br>
+      Same-week sessions available, evenings and weekends included.<br><br>
+      → Book here or check insurance: [Headway URL]
+    </div>
+  </div>
+  <div>
+    <div class="badge b-m mb8">Version C — Community / Accessible</div>
+    <div class="gcopy" style="font-size:12px;line-height:1.85">
+      <strong>Title:</strong> Licensed Therapist for Couples — [City] — Insurance Billing Available<br><br>
+      <strong>Body:</strong><br>
+      Hi neighbors — I'm a licensed marriage and family therapist in [City/Neighborhood]. I specialize in couples and families navigating hard seasons.<br><br>
+      I believe therapy should be accessible. That's why I use Headway for insurance billing — which means if you have insurance, you likely pay only your copay ($20–60 for most plans). No surprise bills.<br><br>
+      If you've been putting off getting support because of cost, please check what you'd actually pay first — the link below takes you to my profile where you can see your coverage instantly.<br><br>
+      → [Headway Profile URL]<br><br>
+      Accepting new clients. LMFT #[number].
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ PSYCHOLOGY TODAY ══ -->
+
+<h3 class="serif mb16" style="font-size:24px;font-weight:400">8 — Psychology Today Directory <span style="font-size:14px;font-weight:400;color:var(--t4);font-family:'Inter',sans-serif">· High-intent directory with $30–50/month overhead</span></h3>
+<div class="g2 mb24">
+  <div class="card card-p">
+    <div class="mono-label mb12">PT Directory Benchmarks</div>
+    <div class="kv"><span class="kv-k">Monthly cost</span><span class="kv-v">$30–50/month</span></div>
+    <div class="kv"><span class="kv-k">Avg profile CTR (click to contact)</span><span class="kv-v">3–6%</span></div>
+    <div class="kv"><span class="kv-k">Contact → Booking CVR</span><span class="kv-v t-g">12–18%</span></div>
+    <div class="kv"><span class="kv-k">Avg CPL</span><span class="kv-v">$25–60</span></div>
+    <div class="kv"><span class="kv-k">Monthly profile views (avg)</span><span class="kv-v">80–200</span></div>
+    <div class="kv"><span class="kv-k">Direct Headway link in bio</span><span class="kv-v t-g">Allowed — use it</span></div>
+    <div class="hint mt12"><strong>The PT optimization:</strong> Apply your one-line positioning to your PT headline. Add a direct link to your Headway profile. Therapists who link directly to Headway booking from PT convert 2.4× better than those who list a phone number only — because the client can check insurance and book immediately without needing to make a phone call first.</div>
+  </div>
+  <div class="card card-p">
+    <div class="mono-label mb12">Optimizing Your PT Profile for Headway Conversion</div>
+    <div class="step"><div class="step-num rust">1</div><div><h5>First sentence = your one line (same rule as Headway)</h5><p>"I work with couples who still love each other but can't seem to talk without it becoming a fight." Not your credentials. Not your years of experience. Your one line. This is the only sentence 80% of PT browsers read.</p></div></div>
+    <div class="step"><div class="step-num rust">2</div><div><h5>Insurance section: list every accepted plan explicitly</h5><p>PT searchers filter by insurance first. List every plan Headway accepts in your profile. More plans listed = more filter results = more impressions. Don't abbreviate.</p></div></div>
+    <div class="step"><div class="step-num rust">3</div><div><h5>Photo: same photo as Headway and Instagram</h5><p>Brand continuity across every touchpoint. If they've already seen your face on Instagram and now find you on PT, recognition = instant trust. Use the same photo across all platforms.</p></div></div>
+    <div class="step"><div class="step-num rust">4</div><div><h5>External link: direct to Headway, not a general website</h5><p>PT allows one external link. Point it directly to your Headway booking page, not your homepage. The fewer clicks between "I'm interested" and "I booked," the higher your conversion rate.</p></div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ RETARGETING ══ -->
+
+<h3 class="serif mb16" style="font-size:24px;font-weight:400">9 — Google Display Retargeting <span style="font-size:14px;font-weight:400;color:var(--t4);font-family:'Inter',sans-serif">· Re-engage Headway visitors who didn't book</span></h3>
+<div class="g2 mb24">
+  <div class="box warn" style="margin-bottom:0">
+    <strong>⚠ Important compliance note:</strong> Google's remarketing policy for healthcare is strict. You CANNOT retarget people who visited mental health condition-specific pages or who searched for health condition terms. You CAN retarget general Headway profile visitors who haven't booked. Use Customer Match (email list) or site-visitor retargeting via Headway's pixel if available. Keep creative generic — do not imply knowledge of their health status.
+  </div>
+  <div class="card card-p">
+    <div class="mono-label mb12">Retargeting Benchmarks</div>
+    <div class="kv"><span class="kv-k">Avg CTR (Display retargeting)</span><span class="kv-v t-g">0.35–0.7%</span></div>
+    <div class="kv"><span class="kv-k">Retargeted visit → Book CVR</span><span class="kv-v t-g">8–14%</span></div>
+    <div class="kv"><span class="kv-k">Avg CPM (Display)</span><span class="kv-v">$2–5</span></div>
+    <div class="kv"><span class="kv-k">CPL (retargeted warm audience)</span><span class="kv-v t-g fw7">$22–40</span></div>
+    <div class="kv"><span class="kv-k">Frequency cap</span><span class="kv-v">3–5 impressions/user/day</span></div>
+    <div class="hint mt12"><strong>Best use:</strong> Run Display retargeting only after you've confirmed 50+ profile visitors per week. Below that threshold, your retargeting pool is too small to be efficient. Use the budget on Search instead until your organic and paid traffic is consistent enough to support retargeting.</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ BUDGET ALLOCATION ══ -->
+
+<h3 class="serif mb16" style="font-size:24px;font-weight:400">Budget Allocation <em>by Monthly Spend</em></h3>
+<div class="tbl-wrap" style="margin-bottom:24px">
+<div class="tbl-scroll"><table class="ptbl">
+<thead><tr><th>Monthly Budget</th><th>Channel Mix</th><th>Expected Profile Visits/Mo</th><th>Est. New Clients/Mo</th><th>Blended CPL</th><th>Priority</th></tr></thead>
+<tbody>
+<tr>
+  <td class="fw7">$50/mo</td>
+  <td>Craigslist ($15) + Nextdoor organic ($0) + Email ($0) + PT profile ($35)</td>
+  <td>40–80</td>
+  <td>0–2</td>
+  <td class="t-g fw7">$15–25</td>
+  <td>Start here if budget is tight. PT + Craigslist + email first.</td>
+</tr>
+<tr>
+  <td class="fw7">$150/mo</td>
+  <td>Google Search ($75) + Nextdoor paid ($75) + Email ($0)</td>
+  <td>90–160</td>
+  <td>1–3</td>
+  <td class="t-g fw7">$25–35</td>
+  <td>Best CPL ratio at this level. Two highest-intent channels only.</td>
+</tr>
+<tr>
+  <td class="fw7">$300/mo</td>
+  <td>Google ($100) + Meta ($125) + Nextdoor ($75) + Email ($0)</td>
+  <td>200–350</td>
+  <td>4–8</td>
+  <td class="t-g fw7">$20–28</td>
+  <td>Full three-channel funnel. Blended efficiency kicks in.</td>
+</tr>
+<tr>
+  <td class="fw7">$500/mo</td>
+  <td>Google ($150) + Meta ($175) + Nextdoor ($100) + TikTok Spark ($75)</td>
+  <td>380–600</td>
+  <td>7–14</td>
+  <td class="t-g fw7">$18–24</td>
+  <td>Add TikTok only after 3-channel is stable and optimized.</td>
+</tr>
+<tr style="background:var(--mint)">
+  <td class="fw7">$750/mo</td>
+  <td>Google ($200) + Meta ($225) + Nextdoor ($125) + TikTok ($100) + Bing ($100)</td>
+  <td>600–950</td>
+  <td>12–20</td>
+  <td class="t-g fw7">$16–22</td>
+  <td>Fully diversified. Add Bing now — 30% cheaper CPL than Google on same keywords.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+<!-- UTM TRACKING -->
+
+<h3 class="serif mb16" style="font-size:24px;font-weight:400">UTM Tracking — <em>Know Which Channel Is Booking Clients</em></h3>
+<div class="box tip mb16">
+  <strong>Non-negotiable:</strong> Every paid ad link to your Headway profile must include UTM parameters. Without them, you cannot know which channel is generating bookings — you're spending money and guessing. UTM parameters are free to add. They take 2 minutes per link. Use Google's Campaign URL Builder at ga.dev/campaign-url-builder.
+</div>
+<div class="card card-p mb24">
+<div class="mono-label mb12">UTM Link Examples — One Per Channel</div>
+<div class="g2">
+  <div>
+    <div class="xs t-4 mb6 mono">Copy and customize for each channel</div>
+    <div class="abox mb8" style="font-size:11.5px;word-break:break-all"><strong>Google Search:</strong><br>headway.co/yourprofile?utm_source=google&amp;utm_medium=search&amp;utm_campaign=couples_therapy</div>
+    <div class="abox mb8" style="font-size:11.5px;word-break:break-all"><strong>Meta:</strong><br>headway.co/yourprofile?utm_source=meta&amp;utm_medium=paid_social&amp;utm_campaign=insurance_angle</div>
+    <div class="abox mb8" style="font-size:11.5px;word-break:break-all"><strong>Nextdoor:</strong><br>headway.co/yourprofile?utm_source=nextdoor&amp;utm_medium=sponsored&amp;utm_campaign=local</div>
+    <div class="abox mb8" style="font-size:11.5px;word-break:break-all"><strong>Email:</strong><br>headway.co/yourprofile?utm_source=email&amp;utm_medium=newsletter&amp;utm_campaign=availability_wk4</div>
+    <div class="abox" style="font-size:11.5px;word-break:break-all"><strong>Craigslist:</strong><br>headway.co/yourprofile?utm_source=craigslist&amp;utm_medium=classified&amp;utm_campaign=health_services</div>
+  </div>
+  <div>
+    <div class="xs t-4 mb6 mono">What you'll see in Headway analytics</div>
+    <p class="sm t-3 lh18 mb12">Headway's provider dashboard shows referral traffic sources. With UTM tags, you can see exactly which channel sent each visitor. After 60 days, you'll have enough data to cut underperforming channels and double the budget on winners.</p>
+    <div class="kv"><span class="kv-k">utm_source</span><span class="kv-v t-3">The platform (google, meta, nextdoor)</span></div>
+    <div class="kv"><span class="kv-k">utm_medium</span><span class="kv-v t-3">The format (search, paid_social, email)</span></div>
+    <div class="kv"><span class="kv-k">utm_campaign</span><span class="kv-v t-3">The specific ad or send</span></div>
+    <div class="hint mt12"><strong>Review this monthly:</strong> Which UTM source has the highest visit-to-contact rate? Double that channel's budget. Which has the lowest? Cut it to minimum or pause entirely. This is your entire paid media optimization system.</div>
+  </div>
+</div>
+</div>
+
+<!-- RETARGETING / EMAIL TIMING -->
+
+<h3 class="serif mb16" style="font-size:24px;font-weight:400">Ad Fatigue &amp; <em>Channel Maintenance Calendar</em></h3>
+<div class="tbl-wrap" style="margin-bottom:32px">
+<div class="tbl-scroll"><table class="ptbl">
+<thead><tr><th>Channel</th><th>Check Frequency</th><th>Refresh Creative When</th><th>Kill/Pause Signal</th><th>Scale Signal</th></tr></thead>
+<tbody>
+<tr><td class="fw7">Google Search</td><td>Weekly</td><td>CTR drops below 4% for 2 weeks</td><td>CPL over $70 for 3 weeks</td><td>CPL under $35 — increase daily budget 20%</td></tr>
+<tr><td class="fw7">Meta / Instagram</td><td>Every 3 days</td><td>Frequency hits 3.0 OR CTR drops 30%</td><td>CPL over $45 for 7 days</td><td>CTR over 2.0% — increase budget 25%</td></tr>
+<tr><td class="fw7">Nextdoor Sponsored</td><td>Monthly</td><td>Every 45–60 days — copy refresh</td><td>CPL over $30 consistently</td><td>Rarely needs scaling — add neighborhoods instead</td></tr>
+<tr><td class="fw7">TikTok Spark Ads</td><td>Every 7 days</td><td>CTR below 0.6% after 7 days</td><td>CPL over $40 for 10 days</td><td>CTR over 1.2% — test 2 more organic videos for Spark</td></tr>
+<tr><td class="fw7">Email</td><td>After each send</td><td>Open rate drops below 15% (check subject lines)</td><td>Unsubscribe rate over 1%</td><td>Open rate over 30% — send biweekly instead of weekly</td></tr>
+<tr><td class="fw7">Craigslist</td><td>Monthly</td><td>Every 30–45 days (auto-buries)</td><td>Zero contacts after 2 posts</td><td>Getting contacts? Post in adjacent cities</td></tr>
+</tbody>
+</table></div>
+</div>
+
+<p class="src">CTR benchmarks: WordStream 2025 Google Ads Health Vertical Benchmarks · LocaliQ Home + Health CPL Report Q2 2025. Meta benchmarks: Meta for Business Health &amp; Wellness Benchmarks Q4 2024 · Hinge Health Therapist Advertising Study 2024. Email benchmarks: Mailchimp 2024 Industry Benchmarks (Health &amp; Wellness) · Campaign Monitor Health Sector Report 2024. Craigslist data: Therapy Brands Paid Acquisition Analysis · SimplePractice Therapist Marketing Report. Nextdoor data: Nextdoor for Business advertiser benchmarks · Headway provider onboarding data.</p>
+
+</div>
+</section>
+
 <script>
-const SEC_ORDER = ['brand','magin','knockz','pillars','calendar','headway','group'];
+const SEC_ORDER = ['brand','magin','knockz','pillars','calendar','headway','paid','group'];
+
 function go(id) {
-  document.querySelectorAll('.nt').forEach((t,i) => t.classList.toggle('on', SEC_ORDER[i]===id));
+  document.querySelectorAll('.nav-item').forEach((el, i) => {
+    el.classList.toggle('on', SEC_ORDER[i] === id);
+  });
   document.querySelectorAll('.sec').forEach(s => s.classList.remove('on'));
-  document.getElementById('sec-'+id).classList.add('on');
-  window.scrollTo({top:0,behavior:'smooth'});
+  const target = document.getElementById('sec-' + id);
+  if (target) {
+    target.classList.add('on');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  if (window.innerWidth <= 768) closeSidebar();
 }
 
-const PILLARS = [
-  {
-    color:'#3a7058', icon:'🔥', title:'Myth Busting',
-    desc:'Contradict a common belief using clinical knowledge stated plainly. Magin: "Controversy is always the best recipe." This is your highest-reach format.',
-    examples:[
-      '"The way you were taught to apologize is making things worse"',
-      '"Couples therapy doesn\'t save relationships — here\'s what does"',
-      '"Listening more is not the answer"',
-      '"Being a good communicator doesn\'t mean talking more"'
-    ]
-  },
-  {
-    color:'#b5462a', icon:'🪞', title:'The Mirror',
-    desc:'Describe your client\'s internal experience so accurately they feel seen before you offer anything. Hard Knockz emotional arc format — vulnerability first.',
-    examples:[
-      '"When you love someone but feel completely alone in the relationship"',
-      '"When you\'re not sure if your relationship is hard or if it\'s wrong"',
-      '"When you\'re trying to apologize but can\'t stop defending yourself"',
-      '"The same argument. Every time. No resolution."'
-    ]
-  },
-  {
-    color:'#9a7018', icon:'🧰', title:'Practical Toolkit',
-    desc:'Magin: "Tangible, practical people problems." Give them something they can use tonight. High save rate, high share rate — your best Headway profile driver.',
-    examples:[
-      '"Say this instead of \'you never listen\'" — exact script',
-      '"The 20-second de-escalation technique from couples therapy"',
-      '"3 questions to ask instead of \'what\'s wrong\'"',
-      '"The repair move Gottman couples use after a fight"'
-    ]
-  },
-  {
-    color:'#6b4e6a', icon:'📖', title:'Pattern Explainer',
-    desc:'Name the clinical pattern behind a relatable experience in plain language. "There\'s a name for this" is one of the most share-triggering phrases for therapy content.',
-    examples:[
-      '"The loop argument — and why it never resolves"',
-      '"What attachment style does to the way you fight"',
-      '"The pursue-withdraw cycle and how to break it"',
-      '"Emotional flooding — why you go blank in arguments"'
-    ]
-  },
-  {
-    color:'#2a5040', icon:'💬', title:'Destigmatize + Demystify',
-    desc:'Remove the barriers to therapy — fear, cost, stigma, misunderstanding. Hard Knockz democratization mission. Also your most effective Headway conversion content.',
-    examples:[
-      '"What actually happens in a first couples session"',
-      '"Most people don\'t know their insurance covers therapy"',
-      '"Couples therapy isn\'t just for couples in crisis"',
-      '"How Headway billing works — you pay your copay, that\'s it"'
-    ]
-  },
-  {
-    color:'#b5462a', icon:'🎙', title:'Hot Take / Professional Opinion',
-    desc:'Magin: experts as influencers. State your clinical opinion directly. Not "some therapists believe..." — "Here\'s what I actually think, based on what I see in sessions."',
-    examples:[
-      '"My unpopular opinion on relationship advice books"',
-      '"The couples therapy approach I don\'t use anymore and why"',
-      '"What I think most couples get wrong about trust"',
-      '"The hardest thing I see couples avoid in therapy — and what happens when they do"'
-    ]
-  }
-];
+function openSidebar() {
+  document.getElementById('sidebar').classList.add('open');
+  document.getElementById('overlay').classList.add('visible');
+  document.getElementById('menuBtn').classList.add('open');
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('visible');
+  document.getElementById('menuBtn').classList.remove('open');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var btn = document.getElementById('menuBtn');
+  var ov  = document.getElementById('overlay');
+  if (btn) btn.addEventListener('click', function() {
+    document.getElementById('sidebar').classList.contains('open')
+      ? closeSidebar() : openSidebar();
+  });
+  if (ov) ov.addEventListener('click', closeSidebar);
+  buildPillars();
+});
+
+const PILLARS = [{"color": "#336b53", "icon": "🔥", "title": "Myth Busting", "desc": "Contradict a common belief using clinical knowledge stated plainly. Magin: Controversy is always the best recipe. This is your highest-reach format.", "examples": ["The way you were taught to apologize is making your relationship worse", "Couples therapy doesn't save relationships — here's what does", "Listening more is not the answer", "Being a good communicator doesn't mean talking more"]}, {"color": "#a83d22", "icon": "🪞", "title": "The Mirror", "desc": "Describe your client's internal experience so accurately they feel seen before you offer anything. Hard Knockz emotional arc format — vulnerability first.", "examples": ["When you love someone but feel completely alone in the relationship", "When you're not sure if your relationship is hard or if it's wrong", "When you're trying to apologize but can't stop defending yourself", "The same argument. Every time. No resolution."]}, {"color": "#8a6010", "icon": "🧰", "title": "Practical Toolkit", "desc": "Give them something they can use tonight. High save rate, high share rate — your best Headway profile driver.", "examples": ["Say this instead of you never listen — exact script", "The 20-second de-escalation technique from couples therapy", "3 questions to ask instead of what's wrong", "The repair move Gottman couples use after a fight"]}, {"color": "#5e4060", "icon": "📖", "title": "Pattern Explainer", "desc": "Name the clinical pattern behind a relatable experience in plain language. There's a name for this is one of the most share-triggering phrases for therapy content.", "examples": ["The loop argument — and why it never resolves", "What attachment style does to the way you fight", "The pursue-withdraw cycle and how to break it", "Emotional flooding — why you go blank in arguments"]}, {"color": "#254d3b", "icon": "💬", "title": "Destigmatize + Demystify", "desc": "Remove the barriers to therapy — fear, cost, stigma, misunderstanding. Also your most effective Headway conversion content.", "examples": ["What actually happens in a first couples session", "Most people don't know their insurance covers therapy", "Couples therapy isn't just for couples in crisis", "How Headway billing works — you pay your copay, that's it"]}, {"color": "#a83d22", "icon": "🎙", "title": "Hot Take / Expert Opinion", "desc": "Magin: experts as influencers. State your clinical opinion directly. Not some therapists believe... — here's what I actually think, based on what I see in sessions.", "examples": ["My unpopular opinion on relationship advice books", "The couples therapy approach I don't use anymore and why", "What I think most couples get wrong about trust", "The hardest thing couples avoid in therapy — and what happens when they do"]}];
 
 function buildPillars() {
   const w = document.getElementById('pillars-wrap');
+  if(!w) return;
   PILLARS.forEach(p => {
     const el = document.createElement('div');
     el.className = 'pillar-card';
@@ -1261,9 +2849,9 @@ function buildPillars() {
     w.appendChild(el);
   });
 }
-
-buildPillars();
 </script>
 
+</div><!-- .main -->
+</div><!-- .layout -->
 </body>
 </html>
